@@ -1,0 +1,85 @@
+/* Design System — layout primitives. */
+
+.uiLayout {
+  min-width: 0;
+}
+
+.uiStack {
+  display: flex;
+  flex-direction: column;
+}
+
+.uiInline,
+.uiSplit {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.uiGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+}
+
+.uiGap--none {
+  gap: 0;
+}
+
+.uiGap--xs {
+  gap: var(--bd-space-1);
+}
+
+.uiGap--sm {
+  gap: var(--bd-space-2);
+}
+
+.uiGap--md {
+  gap: var(--bd-space-3);
+}
+
+.uiGap--lg {
+  gap: var(--bd-space-5);
+}
+
+.uiGap--xl {
+  gap: var(--bd-space-7);
+}
+
+.uiAlign--start {
+  align-items: flex-start;
+}
+
+.uiAlign--center {
+  align-items: center;
+}
+
+.uiAlign--end {
+  align-items: flex-end;
+}
+
+.uiAlign--stretch {
+  align-items: stretch;
+}
+
+.uiAlign--baseline {
+  align-items: baseline;
+}
+
+.uiJustify--start {
+  justify-content: flex-start;
+}
+
+.uiJustify--center {
+  justify-content: center;
+}
+
+.uiJustify--end {
+  justify-content: flex-end;
+}
+
+.uiJustify--between {
+  justify-content: space-between;
+}
+
+.uiJustify--around {
+  justify-content: space-around;
+}

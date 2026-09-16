@@ -1,0 +1,29 @@
+// Config TS partagée.
+// Strict: écarts détectés tôt.
+
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": [
+      "ES2022",
+      "DOM"
+    ],
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "baseUrl": ".",
+    "paths": {
+      "@botdeck/shared": [
+        "packages/shared/src/index.ts"
+      ],
+      "@botdeck/shared/*": [
+        "packages/shared/src/*"
+      ]
+    }
+  }
+}

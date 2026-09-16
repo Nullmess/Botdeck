@@ -1,0 +1,1644 @@
+/* Consolidated from modal-unified-parts/*.css. Keep domain styles in this file. */
+
+/* ---- apps/web/src/app/styles/modal-unified-parts/part-01.css ---- */
+/* Esthétique unifiée des modales / panneaux.
+   Objectif: garder le langage visuel Slash Studio + Bot Observatory partout. */
+
+:root {
+	--botdeck-modal-bg: rgba(8, 13, 18, 0.985);
+	--botdeck-modal-border: rgba(255, 255, 255, 0.105);
+	--botdeck-modal-border-strong: rgba(45, 226, 179, 0.26);
+	--botdeck-modal-surface: rgba(255, 255, 255, 0.045);
+	--botdeck-modal-surface-strong: rgba(255, 255, 255, 0.07);
+	--botdeck-modal-accent: rgba(45, 226, 179, 0.72);
+	--botdeck-modal-accent-soft: rgba(45, 226, 179, 0.14);
+	--botdeck-modal-violet-soft: rgba(124, 140, 255, 0.12);
+	--botdeck-modal-shadow: 0 30px 110px rgba(0, 0, 0, 0.58), 0 0 0 1px rgba(255, 255, 255, 0.025) inset;
+}
+
+.modalBackdrop,
+.settingsBackdrop,
+.permissionPanelOverlay,
+.serverSettingsBackdrop,
+.externalLinkBackdrop {
+	background:
+		radial-gradient(circle at 18% 8%, rgba(45, 226, 179, 0.18), transparent 32%),
+		radial-gradient(circle at 88% 14%, rgba(124, 140, 255, 0.14), transparent 34%),
+		radial-gradient(circle at 50% 100%, rgba(255, 184, 107, 0.07), transparent 32%),
+		rgba(5, 6, 10, 0.78) !important;
+	backdrop-filter: blur(22px) saturate(1.12) !important;
+}
+
+.botModal,
+.botModal.botTokenModal,
+.externalLinkModal,
+.botSettingsModal,
+.botSettingsDiscordModal,
+.embedComposerModal,
+.embedStudioModal,
+.permissionPanelCard,
+.memberProfilePanel,
+.serverSettingsPanel,
+.slashCommandDeleteCard,
+.slashCommandJsonPanel {
+	border: 1px solid var(--botdeck-modal-border) !important;
+	border-radius: 28px !important;
+	background:
+		radial-gradient(circle at 12% 0%, rgba(45, 226, 179, 0.16), transparent 34%),
+		radial-gradient(circle at 100% 12%, rgba(124, 140, 255, 0.11), transparent 36%),
+		linear-gradient(145deg, rgba(255, 255, 255, 0.075), transparent 36%),
+		var(--botdeck-modal-bg) !important;
+	box-shadow: var(--botdeck-modal-shadow) !important;
+	color: var(--text) !important;
+}
+
+.botModal::before,
+.botModal.botTokenModal::before,
+.externalLinkModal::before,
+.botSettingsModal::before,
+.embedComposerModal::before,
+.permissionPanelCard::before,
+.memberProfilePanel::before,
+.serverSettingsPanel::before,
+.slashCommandDeleteCard::before,
+.slashCommandJsonPanel::before {
+	content: "";
+	position: absolute;
+	inset: 0 0 auto;
+	height: 1px;
+	background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.28), transparent);
+	pointer-events: none;
+}
+
+.botModal,
+.externalLinkModal,
+.botSettingsModal,
+.embedComposerModal,
+.permissionPanelCard,
+.slashCommandDeleteCard,
+.slashCommandJsonPanel {
+	position: relative;
+	overflow: hidden;
+}
+
+.memberProfilePanel {
+	position: fixed;
+	inset: 50% auto auto 50%;
+	overflow-y: auto;
+	transform: translate(-50%, -50%);
+	animation: memberProfilePanelIn 180ms ease;
+}
+
+@keyframes memberProfilePanelIn {
+	from {
+		transform: translate(-50%, calc(-50% + 10px)) scale(0.98);
+		opacity: 0;
+	}
+
+	to {
+		transform: translate(-50%, -50%) scale(1);
+		opacity: 1;
+	}
+}
+
+.serverSettingsPanel {
+	position: fixed !important;
+	top: 50% !important;
+	left: 50% !important;
+	z-index: var(--server-settings-panel-z, 1201) !important;
+	width: min(1180px, calc(100vw - 28px)) !important;
+	height: min(860px, calc(100vh - 28px)) !important;
+	max-height: calc(100vh - 28px) !important;
+	transform: translate(-50%, -50%) !important;
+	overflow: hidden;
+}
+
+.botModalHeader,
+.settingsHeader,
+.embedStudioHeader,
+.permissionPanelHeader,
+.serverSettingsHeader,
+.slashCommandsPanelHeader {
+	border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+	background: transparent !important;
+}
+
+.botModalHeader,
+.settingsHeader,
+.embedStudioHeader,
+.permissionPanelHeader,
+.serverSettingsHeader,
+.slashCommandsPanelHeader {
+	padding-bottom: 16px;
+}
+
+.modalClose,
+.externalLinkClose,
+.permissionPanelClose,
+.memberProfileCloseButton,
+.serverSettingsHeader > button,
+.slashCommandsPanelHeader > button {
+	border: 1px solid rgba(255, 255, 255, 0.085) !important;
+	background: rgba(255, 255, 255, 0.055) !important;
+	color: rgba(255, 255, 255, 0.86) !important;
+	box-shadow: none !important;
+	transition: background 160ms ease, border-color 160ms ease, color 160ms ease, transform 160ms ease !important;
+}
+
+.modalClose:hover,
+.externalLinkClose:hover,
+.permissionPanelClose:hover,
+.memberProfileCloseButton:hover,
+.serverSettingsHeader > button:hover,
+.slashCommandsPanelHeader > button:hover {
+	transform: translateY(-1px);
+	border-color: rgba(45, 226, 179, 0.28) !important;
+	background: rgba(45, 226, 179, 0.1) !important;
+	color: #fff !important;
+}
+
+.externalLinkIcon,
+.serverSettingsIcon {
+	border: 1px solid rgba(255, 255, 255, 0.09);
+	background:
+		linear-gradient(145deg, rgba(45, 226, 179, 0.72), rgba(124, 140, 255, 0.34)),
+		rgba(255, 255, 255, 0.075) !important;
+	box-shadow: 0 16px 36px var(--accent-glow) !important;
+}
+
+.modalStatus,
+.externalLinkBody,
+.externalLinkTarget,
+.permissionPanelSummaryItem,
+.permissionPanelItem,
+.discordSearchResult,
+.serverSettingsFormSurface,
+.serverSettingsMemberTable,
+.serverSettingsRoleList,
+.serverSettingsRoleEditor,
+.memberProfileCard,
+.slashCommandDeleteCard .slashCommandDeleteActions,
+.slashCommandJsonPanel pre {
+	border-color: rgba(255, 255, 255, 0.075) !important;
+	background:
+		linear-gradient(145deg, rgba(255, 255, 255, 0.05), transparent 42%),
+		rgba(255, 255, 255, 0.038) !important;
+}
+
+.serverSettingsFormSurface.isProfileEditor {
+	border-color: transparent !important;
+	background: transparent !important;
+	box-shadow: none !important;
+}
+
+.botSettingsModal input,
+.botSettingsModal textarea,
+.botSettingsModal select,
+.embedComposerModal input,
+.embedComposerModal textarea,
+.embedComposerModal select,
+.permissionPanelCard input,
+.serverSettingsPanel input,
+.serverSettingsPanel textarea,
+.serverSettingsPanel select,
+.botModal input,
+.botModal textarea,
+.botModal select {
+	border-color: rgba(255, 255, 255, 0.095) !important;
+	background: rgba(8, 9, 13, 0.66) !important;
+	color: var(--text) !important;
+}
+
+.botSettingsModal input:focus,
+.botSettingsModal textarea:focus,
+.botSettingsModal select:focus,
+.embedComposerModal input:focus,
+.embedComposerModal textarea:focus,
+.embedComposerModal select:focus,
+.permissionPanelCard input:focus,
+.serverSettingsPanel input:focus,
+.serverSettingsPanel textarea:focus,
+.serverSettingsPanel select:focus,
+.botModal input:focus,
+.botModal textarea:focus,
+.botModal select:focus {
+	border-color: var(--botdeck-modal-accent) !important;
+	box-shadow: 0 0 0 4px var(--botdeck-modal-accent-soft) !important;
+	outline: none !important;
+}
+
+.serverSettingsNav,
+.botSettingsTabs,
+.discordSettingsSidebar,
+.embedComposerSidebar,
+.permissionPanelSummary {
+	border-color: rgba(255, 255, 255, 0.075) !important;
+	background: rgba(0, 0, 0, 0.16) !important;
+}
+
+.serverSettingsNav button,
+.botSettingsTabs button,
+.discordSettingsSidebar button,
+.embedComposerSidebar button button {
+	border-radius: 14px !important;
+}
+
+.serverSettingsNav button:hover,
+.serverSettingsNav button.isActive,
+.botSettingsTabs button:hover,
+.botSettingsTabs button.isActive,
+.discordSettingsSidebar button:hover,
+.discordSettingsSidebar button.isActive,
+.embedComposerSidebar button:hover,
+.embedComposerSidebar button.isActive button:hover button.isActive {
+	border-color: rgba(45, 226, 179, 0.24) !important;
+	background:
+		linear-gradient(135deg, rgba(45, 226, 179, 0.11), rgba(124, 140, 255, 0.08)),
+		rgba(255, 255, 255, 0.035) !important;
+	color: #fff !important;
+}
+
+.modalActions .sendButton,
+.externalLinkActions .sendButton,
+.serverSettingsActions button,
+.serverSettingsToolbar button,
+.slashCommandDeleteActions button,
+.botSettingsModal .sendButton,
+.embedComposerModal .sendButton {
+	border-radius: 14px !important;
+}
+
+.modalActions .secondaryButton,
+.externalLinkActions .secondaryButton,
+.slashCommandDeleteActions .secondaryButton,
+.botSettingsModal .secondaryButton,
+.embedComposerModal .secondaryButton {
+	border: 1px solid rgba(255, 255, 255, 0.08) !important;
+	background: rgba(255, 255, 255, 0.055) !important;
+	color: rgba(255, 255, 255, 0.86) !important;
+}
+
+.modalActions .dangerButton,
+.slashCommandDeleteActions .dangerButton,
+.serverSettingsActions .danger,
+.serverSettingsInlineDanger {
+	border-color: rgba(237, 66, 69, 0.34) !important;
+	background: rgba(237, 66, 69, 0.14) !important;
+	color: #ffb8ba !important;
+}
+
+@media (max-width: 760px) {
+	.botModal,
+	.botModal.botTokenModal,
+	.externalLinkModal,
+	.botSettingsModal,
+	.embedComposerModal,
+	.permissionPanelCard,
+		.memberProfilePanel,
+		.serverSettingsPanel,
+	.slashCommandDeleteCard,
+	.slashCommandJsonPanel {
+		border-radius: 22px !important;
+	}
+}
+
+/* Couche finale DA Botdeck: neutralise les restes visuels trop proches de Discord. */
+.clientShell,
+.discordShell {
+	background:
+		radial-gradient(circle at 15% 8%, rgba(45, 226, 179, 0.13), transparent 30%),
+		radial-gradient(circle at 86% 18%, rgba(124, 140, 255, 0.12), transparent 34%),
+		linear-gradient(180deg, #0d1720, #071017) !important;
+}
+
+.guildRail,
+.userPanel {
+	background:
+		linear-gradient(180deg, rgba(45, 226, 179, 0.06), transparent 44%),
+		var(--panel-strong) !important;
+	border-color: rgba(255, 255, 255, 0.06) !important;
+}
+
+.channelSidebar,
+.chatPane,
+.memberPane {
+	background:
+		linear-gradient(180deg, rgba(255, 255, 255, 0.025), transparent 36%),
+		var(--panel) !important;
+}
+
+.chatPane {
+	background:
+		radial-gradient(circle at 78% 0%, rgba(45, 226, 179, 0.055), transparent 28%),
+		linear-gradient(180deg, rgba(16, 25, 34, 0.98), rgba(9, 16, 23, 0.98)) !important;
+}
+
+.messageList {
+	background:
+		linear-gradient(180deg, rgba(255, 255, 255, 0.012), transparent 28%) !important;
+}
+
+.serverHeader,
+.chatTopbar,
+.composer,
+.panelCard,
+.modalStatus,
+.channelLoading,
+.emptyState,
+.workspaceSkeleton,
+.embedCard,
+.attachmentCard,
+.memberList li,
+.botList li button,
+.pinPanelItem,
+.pinsPanel,
+.messageContextMenu,
+.botMenu,
+.presenceMenu,
+.discordSearchPanel,
+.discordSearchResultCard,
+.discordSearchChannelGroup,
+.slashStudioPage,
+.slashStudioWorkspace,
+.slashStudioRail,
+.slashCommandCard,
+.commandFlowCard,
+.commandComposerMain,
+.embedComposerModal,
+.embedStudioModal {
+	background:
+		linear-gradient(145deg, rgba(255, 255, 255, 0.045), transparent 44%),
+		rgba(16, 25, 34, 0.84) !important;
+	border-color: rgba(255, 255, 255, 0.075) !important;
+}
+
+.serverHeader,
+.chatTopbar,
+.composer {
+	backdrop-filter: blur(18px) saturate(1.08) !important;
+}
+
+.messageRow:hover,
+.systemMessageRow:hover,
+.channelButton:hover,
+.userIdentity:hover,
+.userControlButton:hover,
+.topbarIconButton:hover,
+.messageToolbarButton:hover,
+.reactionButton:hover,
+.discordSearchResultCard:hover {
+	background: rgba(255, 255, 255, 0.055) !important;
+}
+
+.channelButton.isActive,
+.botList li.botListActive button,
+.presenceMenu button.isSelected,
+.discordSearchPill.isActive,
+.discordSearchQuickFilters button.isActive,
+.slashCommandCard:hover {
+	border-color: rgba(45, 226, 179, 0.24) !important;
+	background:
+		linear-gradient(135deg, rgba(45, 226, 179, 0.13), rgba(124, 140, 255, 0.08)) !important;
+	color: #fff !important;
+}
+
+.guildButton,
+.botDockItem {
+	background:
+		linear-gradient(145deg, rgba(255, 255, 255, 0.07), transparent),
+		rgba(18, 30, 40, 0.9) !important;
+}
+
+.guildButton.isActive,
+.botDockItem.isActive,
+.botDockAdd,
+.brandMark,
+.avatar,
+.profileAvatar,
+.userAvatarWrap,
+.globalMemberAvatar,
+.launchLogo {
+	background: linear-gradient(135deg, var(--accent), var(--accent-2)) !important;
+	box-shadow: 0 16px 34px var(--accent-glow) !important;
+}
+
+.brandMark.isActive,
+.guildButton.isActive {
+	box-shadow: inset 4px 0 0 rgba(255, 255, 255, 0.86), 0 16px 34px var(--accent-glow) !important;
+}
+
+.composerInput,
+.discordSearchInputWrap input,
+.serverSettingsPanel input,
+.serverSettingsPanel textarea,
+.serverSettingsPanel select,
+.botSettingsModal input,
+.botSettingsModal textarea,
+.botSettingsModal select,
+.embedComposerModal input,
+.embedComposerModal textarea,
+.embedComposerModal select {
+	background: rgba(6, 11, 16, 0.7) !important;
+	border-color: rgba(255, 255, 255, 0.085) !important;
+	color: var(--text) !important;
+}
+
+.composerInput:focus,
+.discordSearchInputWrap input:focus,
+.serverSettingsPanel input:focus,
+.serverSettingsPanel textarea:focus,
+.serverSettingsPanel select:focus {
+	border-color: rgba(45, 226, 179, 0.52) !important;
+	box-shadow: 0 0 0 4px rgba(45, 226, 179, 0.1) !important;
+}
+
+.composerSendButton,
+.sendButton,
+.settingsSaveButton,
+.modalActions .sendButton,
+.serverAutomationModalFooter button.primary,
+.recentMessagesButton {
+	background: linear-gradient(135deg, var(--accent), var(--accent-2)) !important;
+	color: #06110f !important;
+	box-shadow: 0 14px 32px var(--accent-glow) !important;
+}
+
+.recentMessagesButton:hover {
+	filter: brightness(1.08) !important;
+}
+
+.composerSendButton::before {
+	border-left-color: #06110f !important;
+}
+
+.composerAttachButton,
+.composerEmbedButton,
+.topbarIconButton,
+.mobileChannelToggle,
+.sidebarCloseButton,
+.userControlButton {
+	background: rgba(255, 255, 255, 0.055) !important;
+	border-color: rgba(255, 255, 255, 0.075) !important;
+	color: rgba(242, 247, 250, 0.84) !important;
+}
+
+.composerAttachButton:hover,
+.composerEmbedButton:hover,
+.topbarIconButton:hover,
+.mobileChannelToggle:hover,
+.sidebarCloseButton:hover,
+.userControlButton:hover {
+	border-color: rgba(45, 226, 179, 0.22) !important;
+	background: rgba(45, 226, 179, 0.08) !important;
+	color: #fff !important;
+}
+
+.channelSidebarResizeHandle:hover::after,
+body.isResizingChannelSidebar .channelSidebarResizeHandle::after {
+	background: rgba(45, 226, 179, 0.72) !important;
+}
+
+.homeSearch input:focus,
+.messageSearchBox input:focus,
+.settingsSearchBar input:focus {
+	border-color: rgba(45, 226, 179, 0.52) !important;
+	box-shadow: 0 0 0 4px rgba(45, 226, 179, 0.1) !important;
+}
+
+.messageContent,
+.messageBody p,
+.discordSearchResultBody p {
+	color: rgba(242, 247, 250, 0.9) !important;
+}
+
+.messageMeta span,
+.chatTopbarLeft p,
+.homeMemberCard small,
+.subtle,
+.channelTypeIcon,
+.discordSearchMeta time,
+.discordSearchChannelHeader span {
+	color: var(--muted) !important;
+}
+
+/* ---- apps/web/src/app/styles/modal-unified-parts/part-02.css ---- */
+.messageLink,
+.discordSearchResultBody mark,
+.discordHelpLink {
+	color: #6ff5d7 !important;
+}
+
+.messageList.isDraggingFiles {
+	outline-color: rgba(45, 226, 179, 0.68) !important;
+	background: rgba(45, 226, 179, 0.06) !important;
+}
+
+.serverSettingsFormSurface,
+.serverSettingsFormSurface.isProfileEditor,
+.serverAutomationPanel,
+.serverInfoPanel,
+.serverInfoHero,
+.serverInfoGrid > div,
+.serverAutomationCard,
+.serverSettingsStats > div,
+.serverSettingsCard,
+.serverSettingsPreviewRow {
+	background:
+		linear-gradient(145deg, rgba(255, 255, 255, 0.042), transparent 42%),
+		rgba(16, 25, 34, 0.76) !important;
+	border-color: rgba(255, 255, 255, 0.078) !important;
+	box-shadow: none !important;
+}
+
+.serverAutomationPanel,
+.serverInfoPanel {
+	background:
+		linear-gradient(145deg, rgba(255, 255, 255, 0.018), transparent 48%),
+		rgba(8, 13, 18, 0.2) !important;
+	border-color: rgba(255, 255, 255, 0.055) !important;
+}
+
+.serverSettingsFormSurface.isProfileEditor.serverInfoPanel {
+	background: transparent !important;
+	border-color: transparent !important;
+	box-shadow: none !important;
+	padding: 0 !important;
+}
+
+.serverInfoPanel .serverInfoHero,
+.serverInfoPanel .discordSettingsBlock {
+	background:
+		linear-gradient(145deg, rgba(255, 255, 255, 0.026), transparent 48%),
+		rgba(8, 13, 18, 0.22) !important;
+	border-color: rgba(255, 255, 255, 0.065) !important;
+	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.035) !important;
+}
+
+.serverInfoPanel .discordSettingsPanel,
+.serverInfoPanel .discordSettingsRow {
+	background:
+		linear-gradient(145deg, rgba(255, 255, 255, 0.035), transparent 42%),
+		rgba(11, 19, 27, 0.72) !important;
+	border-color: rgba(255, 255, 255, 0.07) !important;
+}
+
+.serverAutomationCard {
+	background:
+		radial-gradient(circle at 0% 0%, rgba(45, 226, 179, 0.075), transparent 34%),
+		linear-gradient(145deg, rgba(255, 255, 255, 0.045), transparent 42%),
+		rgba(13, 22, 30, 0.84) !important;
+}
+
+.slashStudioMain {
+	background:
+		linear-gradient(145deg, rgba(255, 255, 255, 0.04), transparent 44%),
+		rgba(11, 19, 27, 0.94) !important;
+	border-color: rgba(255, 255, 255, 0.078) !important;
+	box-shadow: 0 28px 82px rgba(0, 0, 0, 0.42) !important;
+}
+
+.slashStudioRail button:hover,
+.slashStudioRail button.isActive {
+	border-color: rgba(45, 226, 179, 0.24) !important;
+	background: rgba(45, 226, 179, 0.09) !important;
+}
+
+.serverAutomationCardHeader > span.isActive {
+	border-color: rgba(45, 226, 179, 0.32) !important;
+	background: rgba(45, 226, 179, 0.12) !important;
+	color: #a8ffe8 !important;
+}
+
+.discordSearchPanel,
+.discordSearchHeader,
+.discordSearchInputWrap,
+.discordSearchToolbar,
+.discordSearchQuickFilters,
+.discordSearchResults,
+.discordSearchEmpty {
+	background:
+		linear-gradient(145deg, rgba(255, 255, 255, 0.04), transparent 44%),
+		rgba(11, 19, 27, 0.96) !important;
+	border-color: rgba(255, 255, 255, 0.078) !important;
+}
+
+.discordSearchPanel {
+	border-radius: 18px !important;
+	box-shadow: 0 28px 82px rgba(0, 0, 0, 0.56) !important;
+}
+
+.discordSearchHeader h3,
+.discordSearchToolbar strong,
+.discordSearchChannelHeader,
+.discordSearchMeta .authorNameLine {
+	color: var(--text) !important;
+}
+
+.discordSearchInputWrap span,
+.discordSearchAttachmentLine,
+.discordSearchEmpty {
+	color: var(--muted) !important;
+}
+
+.discordSearchPill,
+.discordSearchQuickFilters button,
+.discordSearchJumpButton {
+	background: rgba(255, 255, 255, 0.055) !important;
+	border-color: rgba(255, 255, 255, 0.08) !important;
+	color: rgba(242, 247, 250, 0.86) !important;
+}
+
+.discordSearchPill:hover,
+.discordSearchQuickFilters button:hover,
+.discordSearchJumpButton:hover {
+	border-color: rgba(45, 226, 179, 0.22) !important;
+	background: rgba(45, 226, 179, 0.08) !important;
+	color: #fff !important;
+}
+
+.discordSearchPill.isActive,
+.discordSearchQuickFilters button.isActive {
+	border-color: rgba(45, 226, 179, 0.32) !important;
+	background: rgba(45, 226, 179, 0.13) !important;
+}
+
+.discordSearchResultCard {
+	background:
+		linear-gradient(145deg, rgba(255, 255, 255, 0.04), transparent 42%),
+		rgba(16, 25, 34, 0.78) !important;
+	border-color: rgba(255, 255, 255, 0.078) !important;
+}
+
+.discordSearchResultCard:hover {
+	border-color: rgba(45, 226, 179, 0.2) !important;
+	background:
+		linear-gradient(145deg, rgba(45, 226, 179, 0.075), transparent 42%),
+		rgba(18, 30, 40, 0.86) !important;
+}
+
+.discordSearchResultBody mark {
+	background: rgba(255, 184, 107, 0.25) !important;
+	color: #fff7df !important;
+}
+
+.pinsPanel,
+.pinsPanel header,
+.pinsPanelList,
+.pinPanelItem,
+.pinsPanelEmpty {
+	background:
+		linear-gradient(145deg, rgba(255, 255, 255, 0.04), transparent 44%),
+		rgba(11, 19, 27, 0.96) !important;
+	border-color: rgba(255, 255, 255, 0.078) !important;
+}
+
+.pinsPanel {
+	border-radius: 22px !important;
+	box-shadow: 0 28px 82px rgba(0, 0, 0, 0.56) !important;
+}
+
+.pinPanelItem:hover {
+	border-color: rgba(45, 226, 179, 0.18) !important;
+	background:
+		linear-gradient(145deg, rgba(45, 226, 179, 0.07), transparent 42%),
+		rgba(18, 30, 40, 0.84) !important;
+}
+
+.pinPanelAvatar {
+	background: linear-gradient(135deg, var(--accent), var(--accent-2)) !important;
+	color: #06110f !important;
+}
+
+.pinPanelJumpButton,
+.pinPanelCloseItemButton {
+	background: rgba(255, 255, 255, 0.055) !important;
+	border-color: rgba(255, 255, 255, 0.08) !important;
+	color: rgba(242, 247, 250, 0.86) !important;
+}
+
+.pinPanelJumpButton:hover,
+.pinPanelCloseItemButton:hover {
+	border-color: rgba(45, 226, 179, 0.22) !important;
+	background: rgba(45, 226, 179, 0.08) !important;
+	color: #fff !important;
+}
+
+.pinPanelMeta .authorNameLine,
+.pinPanelContent strong,
+.pinsPanel h3 {
+	color: var(--text) !important;
+}
+
+.pinPanelItem p,
+.pinPanelItem small,
+.pinsPanelTitle span {
+	color: var(--muted) !important;
+}
+
+.memberProfilePanel,
+.memberProfileCard,
+.memberProfileInfoPanel,
+.memberProfileSwitchCard,
+.profileModal,
+.profileModalCard,
+.botSettingsModal,
+.botSettingsDiscordModal,
+.discordSettingsPanel,
+.discordSettingsBlock,
+.discordSettingsRow,
+.presencePreviewCard,
+.botDashboardPanel,
+.botDashboardHeroCard,
+.botDashboardPresenceCard,
+.dashboardCard,
+.dashboardPreviewCard,
+.dashboardTruthCard,
+.botOpsPanel,
+.botOpsStatusCard,
+.botOpsIssueCard,
+.botOpsGuildPanel,
+.botOpsStatCard,
+.botOpsIncidentsPanel,
+.botOpsEventsPanel,
+.permissionPanelCard,
+.permissionPanelSummary,
+.permissionPanelSummaryItem,
+.permissionPanelItem,
+.slashCommandsPanelCard,
+.slashCommandDeleteCard,
+.slashCommandJsonPanel,
+.slashCommandComparePanel,
+.slashCommandBuilder,
+.slashCommandJsonEditor,
+.slashCommandCard,
+.slashCommandOptionCard,
+.slashCommandMultiSelect,
+.slashCommandValidationList,
+.commandComposerCard,
+.commandControlCard,
+.commandDiagnosticPanel,
+.commandFlowCard,
+.commandModalDesigner,
+.commandModalInlineCard,
+.commandModalAddCard,
+.commandModalResponseCard,
+.commandModalResponseEditor,
+.commandModalResponseCreateModal,
+.commandStudioPane,
+.commandStudioRuleGrid button,
+.botdeckHomeCard,
+.homeMemberCard,
+.workspaceSkeletonCard,
+.externalLinkModal,
+.externalLinkTarget,
+.languagePickerMenu,
+.languagePickerMenuHeader,
+.mediaPreviewModal,
+.attachmentCard,
+.embedCard,
+.richEmbedCard,
+.forumPostCard,
+.forumCreatePanel,
+.composerMentionMenu,
+.reactionPicker,
+.embedComposerModal {
+	background:
+		linear-gradient(145deg, rgba(255, 255, 255, 0.04), transparent 44%),
+		rgba(11, 19, 27, 0.94) !important;
+	border-color: rgba(255, 255, 255, 0.078) !important;
+	box-shadow: none !important;
+}
+
+.memberProfilePanel,
+.botSettingsModal,
+.botDashboardPanel,
+.permissionPanelCard,
+.slashCommandsPanelCard,
+.slashCommandDeleteCard,
+.slashCommandJsonPanel,
+.externalLinkModal,
+.mediaPreviewModal,
+.embedComposerModal {
+	box-shadow: 0 28px 82px rgba(0, 0, 0, 0.56) !important;
+}
+
+.memberProfileBanner,
+.botDashboardHeroCard,
+.serverInfoHero,
+.commandComposerHero,
+.commandDeployBar {
+	background:
+		radial-gradient(circle at 12% 8%, rgba(45, 226, 179, 0.16), transparent 32%),
+		linear-gradient(135deg, rgba(124, 140, 255, 0.16), rgba(8, 13, 18, 0.92)) !important;
+	border-color: rgba(45, 226, 179, 0.14) !important;
+}
+
+.permissionPanelSummaryItem.isAllowed,
+.permissionPanelItem.isAllowed,
+.dashboardCard.isOk,
+.botOpsStatusCard.isOk,
+.commandStudioBadge.isEnabled {
+	background: rgba(45, 226, 179, 0.105) !important;
+	border-color: rgba(45, 226, 179, 0.24) !important;
+	color: #b8ffec !important;
+}
+
+.permissionPanelSummaryItem.isDenied,
+.permissionPanelItem.isDenied,
+.dashboardCard.isWarn,
+.botOpsIssueCard,
+.commandStudioBadge.isWarn,
+.slashCommandValidationList {
+	background: rgba(255, 184, 107, 0.105) !important;
+	border-color: rgba(255, 184, 107, 0.24) !important;
+	color: #ffe8bf !important;
+}
+
+.slashCommandsPanelToolbar button,
+.slashCommandActions button,
+.slashCommandDeleteActions button,
+.commandMenuPreviewButtons button,
+.commandModalAddChoices button,
+.commandModalCreateChoices button,
+.commandModalResponseEditor footer button,
+.languagePickerButton,
+.externalLinkActions button,
+.mediaPreviewAction,
+.reactionPickerEmoji,
+.forumCreatePanel button {
+	background: rgba(255, 255, 255, 0.055) !important;
+	border-color: rgba(255, 255, 255, 0.08) !important;
+	color: rgba(242, 247, 250, 0.86) !important;
+}
+
+.slashCommandsPanelToolbar button:hover,
+.slashCommandActions button:hover,
+.slashCommandDeleteActions button:hover,
+.commandMenuPreviewButtons button:hover,
+.commandModalAddChoices button:hover,
+.commandModalCreateChoices button:hover,
+.commandModalResponseEditor footer button:hover,
+.languagePickerButton:hover,
+.externalLinkActions button:hover,
+.mediaPreviewAction:hover,
+.reactionPickerEmoji:hover,
+.forumCreatePanel button:hover {
+	border-color: rgba(45, 226, 179, 0.22) !important;
+	background: rgba(45, 226, 179, 0.08) !important;
+	color: #fff !important;
+}
+
+.slashCommandActions button:first-child,
+.slashCommandsPanelToolbar button:first-child,
+.commandModalResponseEditor footer button:last-child,
+.externalLinkActions button:last-child,
+.forumCreatePanel button[type="submit"] {
+	background: linear-gradient(135deg, var(--accent), var(--accent-2)) !important;
+	border-color: rgba(45, 226, 179, 0.3) !important;
+	color: #06110f !important;
+}
+
+.slashCommandActions .dangerButton,
+.slashCommandDeleteActions .dangerButton,
+.dangerButton {
+	background: rgba(255, 97, 136, 0.12) !important;
+	border-color: rgba(255, 97, 136, 0.24) !important;
+	color: #ffd1dc !important;
+}
+
+.memberProfilePanel h2,
+.memberProfilePanel h3,
+.botSettingsModal h2,
+.botDashboardPanel h2,
+.botDashboardPanel h3,
+.permissionPanelCard h2,
+.permissionPanelCard h3,
+.slashCommandsPanelCard h2,
+.slashCommandJsonPanel h2,
+.slashCommandDeleteCard h2,
+.externalLinkModal h2,
+.mediaPreviewModal h2,
+.embedComposerModal h2,
+.forumPostCard strong,
+.reactionPickerCategory strong {
+	color: var(--text) !important;
+}
+
+.memberProfilePanel p,
+.memberProfilePanel small,
+.botSettingsModal p,
+.botDashboardPanel p,
+.permissionPanelCard p,
+.slashCommandsPanelCard p,
+.slashCommandJsonPanel p,
+.slashCommandDeleteCard p,
+.externalLinkModal p,
+.mediaPreviewModal p,
+.embedComposerModal p,
+.forumPostCard p,
+.reactionPickerEmpty {
+	color: var(--muted) !important;
+}
+
+.reactionPickerSearch,
+.botSettingsModal input,
+.botSettingsModal textarea,
+.botSettingsModal select,
+.slashCommandJsonPanel textarea,
+.slashCommandJsonPanel pre,
+.slashCommandBuilder input,
+.slashCommandBuilder textarea,
+.slashCommandBuilder select,
+.commandModalDesigner input,
+.commandModalDesigner textarea,
+.commandModalDesigner select,
+.commandModalResponseEditor textarea,
+.embedComposerModal input,
+.embedComposerModal textarea,
+.embedComposerModal select {
+	background: rgba(6, 11, 16, 0.7) !important;
+	border-color: rgba(255, 255, 255, 0.085) !important;
+	color: var(--text) !important;
+}
+
+.settingsBackdrop {
+	display: flex !important;
+	align-items: center !important;
+	justify-content: center !important;
+	min-height: 100vh !important;
+	padding: 14px !important;
+	overflow: hidden !important;
+}
+
+.botSettingsModal {
+	position: relative !important;
+	inset: auto !important;
+	display: grid !important;
+	grid-template-rows: auto minmax(0, 1fr) auto !important;
+	margin: 0 !important;
+	width: min(980px, calc(100vw - 28px)) !important;
+	height: min(860px, calc(100vh - 28px)) !important;
+	max-height: calc(100vh - 28px) !important;
+	transform: none !important;
+}
+
+.settingsScroll,
+.botDiscordScroll,
+.settingsSearchBar,
+.botSettingsDashboardModal,
+.embedDashboardModal,
+.embedStudioModal,
+.embedPreviewStage,
+.dashboardModalBody,
+.dashboardModalSidebar,
+.dashboardModalPreview,
+.dashboardModalSection,
+.dashboardModalCard,
+.embedComposerModal .settingsScroll,
+.botModalBody,
+.botModalFooter,
+.externalLinkTarget,
+.mediaPreviewBody,
+.mediaPreviewStage,
+.mediaPreviewDetails,
+.reactionPickerGrid,
+.profileModalBody,
+.profileModalFooter {
+	background:
+		linear-gradient(145deg, rgba(255, 255, 255, 0.035), transparent 42%),
+		rgba(11, 19, 27, 0.82) !important;
+	border-color: rgba(255, 255, 255, 0.078) !important;
+}
+
+.discordSettingsBlock {
+	display: grid !important;
+	gap: 12px !important;
+	max-width: 820px !important;
+	margin: 0 auto 16px !important;
+	padding: 16px !important;
+	border: 1px solid rgba(255, 255, 255, 0.065) !important;
+	border-radius: 20px !important;
+	background:
+		linear-gradient(145deg, rgba(255, 255, 255, 0.026), transparent 48%),
+		rgba(8, 13, 18, 0.22) !important;
+	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.035) !important;
+}
+
+.discordSettingsBlockHeader {
+	display: grid !important;
+	gap: 5px !important;
+	margin: 0 !important;
+	padding: 0 2px 2px !important;
+	background: transparent !important;
+	border: 0 !important;
+}
+
+/* ---- apps/web/src/app/styles/modal-unified-parts/part-03.css ---- */
+.discordSettingsBlockHeader h3 {
+	margin: 0 !important;
+	color: var(--text) !important;
+	font-size: 1.02rem !important;
+	font-weight: 850 !important;
+	letter-spacing: 0 !important;
+}
+
+.discordSettingsBlockHeader p {
+	margin: 0 !important;
+	max-width: 680px !important;
+	color: rgba(199, 214, 221, 0.68) !important;
+	font-size: 0.84rem !important;
+	line-height: 1.45 !important;
+}
+
+.serverAutomationModal .commandLogsVisualEmbed {
+	padding: 0 !important;
+	border: 0 !important;
+	background: transparent !important;
+	box-shadow: none !important;
+}
+
+.serverAutomationModal .commandEmbedViewTabs,
+.serverAutomationModal .commandEmbedPageTabs,
+.serverAutomationModal .commandLogsEmbedControls,
+.serverAutomationModal .commandLogsEmbedMediaInputs {
+	background:
+		linear-gradient(145deg, rgba(255, 255, 255, 0.024), transparent 46%),
+		rgba(8, 13, 18, 0.26) !important;
+	border-color: rgba(255, 255, 255, 0.062) !important;
+	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.032) !important;
+}
+
+.serverAutomationModal .commandLogsEmbedCanvas,
+.serverAutomationModal .commandEmbedPreview,
+.serverAutomationModal .commandEmbedPreviewPane {
+	width: min(100%, 520px) !important;
+	max-width: 520px !important;
+	overflow: hidden !important;
+	border-radius: 10px !important;
+	background: #2b2d31 !important;
+	border-color: rgba(255, 255, 255, 0.08) !important;
+	box-shadow: none !important;
+}
+
+.serverAutomationModal .commandEmbedPreviewPane {
+	justify-self: start !important;
+	background: transparent !important;
+	border: 0 !important;
+	border-radius: 0 !important;
+	overflow: visible !important;
+}
+
+.serverAutomationModal .commandEmbedPreview {
+	border-radius: 10px !important;
+}
+
+.serverAutomationModal .commandEmbedPreviewBody,
+.serverAutomationModal .commandLogsEmbedCanvas,
+.serverAutomationModal .commandEmbedPreview strong,
+.serverAutomationModal .commandEmbedPreview p,
+.serverAutomationModal .commandEmbedPreview dt,
+.serverAutomationModal .commandEmbedPreview dd,
+.serverAutomationModal .commandEmbedPreview footer,
+.serverAutomationModal .commandLogsEmbedTitleInput,
+.serverAutomationModal .commandLogsEmbedDescriptionInput,
+.serverAutomationModal .commandLogsEmbedFieldNameInput,
+.serverAutomationModal .commandLogsEmbedFieldValueInput,
+.serverAutomationModal .commandLogsEmbedFooterInput {
+	overflow-wrap: anywhere !important;
+	word-break: break-word !important;
+}
+
+.serverAutomationModal .commandEmbedPageTextCounter {
+	display: inline-flex;
+	align-items: center;
+	min-height: 28px;
+	padding: 5px 8px;
+	border: 1px solid rgba(255, 255, 255, 0.075);
+	border-radius: 999px;
+	background: rgba(255, 255, 255, 0.045);
+	color: rgba(199, 214, 221, 0.74);
+	font-size: 11px;
+	font-weight: 850;
+}
+
+.serverAutomationModal .commandEmbedPageTextCounter.isNear {
+	border-color: rgba(255, 184, 107, 0.28);
+	background: rgba(255, 184, 107, 0.1);
+	color: #ffe4b8;
+}
+
+.serverAutomationModal .commandEmbedPageTextCounter.isOver {
+	border-color: rgba(255, 97, 136, 0.28);
+	background: rgba(255, 97, 136, 0.1);
+	color: #ffd1dc;
+}
+
+.serverAutomationModal .commandMarkdownVisualField input,
+.serverAutomationModal .commandMarkdownVisualField textarea,
+.serverAutomationModal .commandLogsEmbedMediaInputs input {
+	background: rgba(5, 10, 15, 0.48) !important;
+	border-color: rgba(255, 255, 255, 0.07) !important;
+}
+
+.settingsHeader,
+.settingsSaveBar,
+.botModalFooter,
+.embedStudioHeader,
+.embedStudioFooter,
+.mediaPreviewHeader,
+.mediaPreviewFooter,
+.profileModalHeader,
+.profileModalFooter,
+.externalLinkActions,
+.serverAutomationModalHeader,
+.serverAutomationModalFooter {
+	background: rgba(8, 13, 18, 0.72) !important;
+	border-color: rgba(255, 255, 255, 0.078) !important;
+}
+
+.serverAutomationModal,
+.botSettingsDashboardModal,
+.embedDashboardModal,
+.embedStudioModal,
+.mediaPreviewModal,
+.profileModal,
+.profileModalCard,
+.reactionPicker,
+.languagePickerMenu,
+.externalLinkModal,
+.botModal {
+	background:
+		radial-gradient(circle at 12% 0%, rgba(45, 226, 179, 0.16), transparent 34%),
+		radial-gradient(circle at 100% 12%, rgba(124, 140, 255, 0.11), transparent 36%),
+		linear-gradient(145deg, rgba(255, 255, 255, 0.06), transparent 36%),
+		rgba(8, 13, 18, 0.985) !important;
+	border-color: rgba(255, 255, 255, 0.105) !important;
+	box-shadow: var(--botdeck-modal-shadow) !important;
+	color: var(--text) !important;
+}
+
+.discordSettingsPanel,
+.discordSettingsRow,
+.settingsSection,
+.settingsCard,
+.dashboardCard,
+.dashboardPreviewCard,
+.dashboardTruthCard,
+.botOpsStatusCard,
+.botOpsIssueCard,
+.botOpsStatCard,
+.commandLogsEmbedCanvas,
+.commandEmbedPreview,
+.commandEmbedPreviewPane,
+.commandLogsEmbedControls,
+.commandLogsEmbedMediaInputs,
+.commandEmbedPageTabs,
+.commandEmbedFieldTabs,
+.commandModalResponseCard,
+.commandModalInlineCard,
+.commandModalAddCard,
+.commandModalResponseEditor,
+.embedComposerPreview,
+.embedComposerField,
+.embedPreview,
+.richEmbedCard {
+	background:
+		linear-gradient(145deg, rgba(255, 255, 255, 0.04), transparent 44%),
+		rgba(13, 22, 30, 0.84) !important;
+	border-color: rgba(255, 255, 255, 0.078) !important;
+}
+
+.settingsSegmented button.isSelected,
+.discordActivityTypes button.isSelected,
+.discordStreamSources button.isSelected,
+.serverRolePermissionSwitch.isAllowed,
+.commandEmbedViewTabs button.isActive,
+.commandEmbedPageTab.isActive,
+.commandEmbedFieldTab.isActive,
+.commandLogsEmbedAddField,
+.commandEmbedAddPage:hover,
+.discordSettingsBadge {
+	background: rgba(45, 226, 179, 0.12) !important;
+	border-color: rgba(45, 226, 179, 0.26) !important;
+	color: #b8ffec !important;
+}
+
+.commandLogsEmbedDanger,
+.settingsCancelButton,
+.discordMutedBadge {
+	background: rgba(255, 184, 107, 0.095) !important;
+	border-color: rgba(255, 184, 107, 0.2) !important;
+	color: #ffe4b8 !important;
+}
+
+
+.botModalHeader {
+	background: transparent !important;
+	border-color: rgba(255, 255, 255, 0.08) !important;
+	color: inherit !important;
+}
+
+.serverAutomationVariableChips code,
+.commandLogsVariables,
+.commandWelcomeVariables {
+	border-color: rgba(45, 226, 179, 0.18) !important;
+	background: rgba(45, 226, 179, 0.08) !important;
+	color: #b7ffe9 !important;
+}
+
+/* Composer send button keeps the icon only. The accessible label stays on the button. */
+.composerSendButton {
+	width: 48px !important;
+	min-width: 48px !important;
+	padding: 0 !important;
+	color: transparent !important;
+	font-size: 0 !important;
+}
+
+/* Server automation modal: keep embed editor surfaces identical to Slash Studio */
+.serverAutomationModal .commandLogsVisualEmbed > .commandLogsEmbedControls,
+.serverAutomationModal .commandLogsVisualEmbed > .commandLogsEmbedMediaInputs,
+.serverAutomationModal .commandLogsVisualEmbed > .commandEmbedPageTabs,
+.serverAutomationModal .commandLogsVisualEmbed > .commandEmbedViewTabs {
+	background: transparent !important;
+	border-color: rgba(255, 255, 255, 0.075) !important;
+	box-shadow: none !important;
+}
+
+.serverAutomationModal .commandLogsVisualEmbed > .commandLogsEmbedCanvas,
+.serverAutomationModal .commandLogsVisualEmbed .commandEmbedPreview {
+	width: min(100%, 520px) !important;
+	max-width: 520px !important;
+	padding: 12px !important;
+	border: 0 !important;
+	border-left: 4px solid var(--command-embed-accent, #5865f2) !important;
+	border-radius: 4px !important;
+	background: #2b2d31 !important;
+	box-shadow: none !important;
+}
+
+.serverAutomationModal .commandLogsVisualEmbed > .commandEmbedPreviewPane {
+	width: min(100%, 560px) !important;
+	max-width: 560px !important;
+	padding: 12px 14px !important;
+	border: 0 !important;
+	border-radius: 8px !important;
+	background: #313338 !important;
+	box-shadow: none !important;
+	justify-self: start !important;
+	overflow: visible !important;
+}
+
+.serverAutomationModal .commandLogsVisualEmbed .commandLogsEmbedCanvas input,
+.serverAutomationModal .commandLogsVisualEmbed .commandLogsEmbedCanvas textarea {
+	background: transparent !important;
+	border-color: transparent !important;
+	box-shadow: none !important;
+}
+
+.serverAutomationModal .commandLogsVisualEmbed .commandLogsEmbedCanvas input:hover,
+.serverAutomationModal .commandLogsVisualEmbed .commandLogsEmbedCanvas textarea:hover,
+.serverAutomationModal .commandLogsVisualEmbed .commandLogsEmbedCanvas input:focus,
+.serverAutomationModal .commandLogsVisualEmbed .commandLogsEmbedCanvas textarea:focus {
+	background: rgba(255, 255, 255, 0.04) !important;
+	border-color: rgba(255, 255, 255, 0.12) !important;
+}
+
+/* Harmonisation finale BotDeck: retire les fonds trop Discord sur les pages cockpit. */
+.botdeckHomeHero,
+.botdeckHomeCard,
+.homeMemberCard {
+	border: 1px solid rgba(255, 255, 255, 0.075) !important;
+	background:
+		linear-gradient(145deg, rgba(255, 255, 255, 0.045), transparent 44%),
+		rgba(16, 25, 34, 0.84) !important;
+	backdrop-filter: blur(16px) saturate(1.08) !important;
+	box-shadow: 0 18px 48px rgba(0, 0, 0, 0.22) !important;
+}
+
+.botdeckHomeHero {
+	border-radius: 22px !important;
+}
+
+.botdeckHomeCard,
+.homeMemberCard {
+	border-radius: 18px !important;
+}
+
+.slashStudioPage,
+.botOpsPage {
+	background:
+		radial-gradient(circle at 15% 8%, rgba(45, 226, 179, 0.13), transparent 30%),
+		radial-gradient(circle at 86% 18%, rgba(124, 140, 255, 0.12), transparent 34%),
+		linear-gradient(180deg, #0d1720, #071017) !important;
+}
+
+.slashStudioPageHeader,
+.botOpsHeader,
+.botDashboardHeader,
+.botDashboardHeader.isOpsHeader,
+.botDiscordHeader,
+.settingsHeader,
+.slashCommandsPanelHeader,
+.commandStudioPaneHeader,
+.discordSearchHeader,
+.permissionPanelHeader,
+.externalLinkHeader {
+	border-bottom: 1px solid rgba(255, 255, 255, 0.075) !important;
+	background:
+		linear-gradient(135deg, rgba(45, 226, 179, 0.07), rgba(124, 140, 255, 0.055)),
+		rgba(8, 13, 18, 0.82) !important;
+	backdrop-filter: blur(18px) saturate(1.08) !important;
+}
+
+.botOpsScroll,
+.botDashboardScroll,
+.botDashboardScroll.isOpsScroll,
+.botDiscordScroll,
+.settingsScroll,
+.slashCommandsPanelScroll,
+.commandStudioWorkspace,
+.commandWorkflowCanvas,
+.permissionPanelScroll,
+.isLeanOpsScroll {
+	background:
+		radial-gradient(circle at 78% 0%, rgba(45, 226, 179, 0.055), transparent 28%),
+		linear-gradient(180deg, rgba(13, 23, 32, 0.98), rgba(7, 16, 23, 0.98)) !important;
+}
+
+.botOpsStatusCard,
+.botOpsPanel,
+.botOpsGuildPanel,
+.botOpsIssueCard,
+.botOpsIncidentsPanel,
+.botDashboardHero,
+.botDashboardHeroCard,
+.dashboardCard,
+.dashboardPreviewCard,
+.discordSettingsPanel,
+.commandControlCard,
+.commandDiagnosticPanel,
+.commandModalInlineCard,
+.commandModalAddCard,
+.commandModalResponseCard,
+.commandStudioPane,
+.commandStudioHero,
+.commandComposerCard,
+.commandComposerCreatorCard,
+.commandComposerConfidenceCard,
+.commandFlowShell,
+.commandFlowCard,
+.commandConfirmCard,
+.slashCommandCard,
+.slashCommandComparePanel,
+.slashCommandDiffCard,
+.permissionPanelCard,
+.forumPostCard,
+.forumChannelHero,
+.forumCreatePanel,
+.presenceDesignerHero,
+.presencePreviewCard {
+	border: 1px solid rgba(255, 255, 255, 0.075) !important;
+	background:
+		linear-gradient(145deg, rgba(255, 255, 255, 0.045), transparent 44%),
+		rgba(16, 25, 34, 0.84) !important;
+	box-shadow: 0 16px 42px rgba(0, 0, 0, 0.2) !important;
+}
+
+.botOpsHeaderRight strong,
+.botOpsHeaderRight button,
+.botOpsLogFilters button,
+.dashboardPresetRail,
+.commandStudioTabRail,
+.commandLogsRail,
+.commandEssentialHeader,
+.commandWelcomeHeader,
+.commandModalResponseHeader,
+.commandDiagnosticHeader,
+.discordSettingsBlockHeader,
+.botDashboardPanelHeader,
+.memberProfileSectionHeader,
+.slashCommandsSectionHeader,
+.slashCommandOptionHeader,
+.embedComposerSidebar,
+.embedComposerSidebar button,
+.serverAutomationEmbedControls,
+.serverAutomationSettingControls {
+	border-color: rgba(255, 255, 255, 0.075) !important;
+	background:
+		linear-gradient(145deg, rgba(255, 255, 255, 0.035), transparent 48%),
+		rgba(255, 255, 255, 0.045) !important;
+}
+
+.botOpsHeaderRight button:hover,
+.botOpsLogFilters button:hover,
+.embedComposerSidebar button:hover {
+	border-color: rgba(45, 226, 179, 0.24) !important;
+	background:
+		linear-gradient(135deg, rgba(45, 226, 179, 0.12), rgba(124, 140, 255, 0.08)),
+		rgba(255, 255, 255, 0.055) !important;
+}
+
+.botOpsHeaderRight strong.isOk,
+.botOpsHeaderRight strong.isWarn,
+.botOpsHeaderRight strong.isError {
+	background: rgba(255, 255, 255, 0.045) !important;
+}
+
+/* Neutralise les restes Discord sans toucher aux vraies previews d'embed Discord. */
+.botDiscordHeader,
+.botDiscordScroll,
+.discordSettingsPanel,
+.discordSettingsBlockHeader,
+.botDashboardHeader,
+.botDashboardScroll,
+.botDashboardHero,
+.botDashboardHeroCard,
+.botDashboardPanelHeader,
+.dashboardCard,
+.dashboardPreviewCard,
+.dashboardPresetRail,
+.commandStudioPane,
+.commandStudioWorkspace,
+.commandStudioHero,
+.commandStudioPaneHeader,
+.commandWorkflowCanvas,
+.commandComposerCard,
+.slashStudioPageHeader,
+.botOpsHeader,
+.botOpsScroll {
+	color: var(--text) !important;
+}
+
+/* Modal cleanup: child blocks inherit their modal surface instead of stacking tinted layers. */
+.botModal .serverSettingsFormSurface,
+.botModal .serverAutomationPanel,
+.botModal .serverAutomationEmbedControls,
+.botModal .serverAutomationSettingControls,
+.botModal .serverLogEventEditor,
+.botModal .serverLogEventTabs,
+.botModal .commandLogsEmbedControls,
+.botModal .commandLogsEmbedMediaInputs,
+.botModal .commandLogsVisualEmbed > .commandLogsEmbedControls,
+.serverAutomationModal .serverSettingsFormSurface,
+.serverAutomationModal .serverAutomationPanel,
+.serverAutomationModal .serverAutomationEmbedControls,
+.serverAutomationModal .serverLogEventEditor,
+.serverAutomationModal .serverLogEventTabs,
+.serverAutomationModal .commandLogsEmbedControls,
+.serverAutomationModal .commandLogsEmbedMediaInputs,
+.serverAutomationModal .commandLogsVisualEmbed > .commandLogsEmbedControls,
+.serverSettingsOverlay .serverSettingsFormSurface,
+.serverSettingsOverlay .serverAutomationPanel,
+.serverSettingsOverlay .serverAutomationEmbedControls,
+.serverSettingsOverlay .serverLogEventEditor,
+.serverSettingsOverlay .serverLogEventTabs,
+.serverSettingsOverlay .commandLogsEmbedControls,
+.serverSettingsOverlay .commandLogsEmbedMediaInputs,
+.serverSettingsOverlay .commandLogsVisualEmbed > .commandLogsEmbedControls {
+	background: transparent !important;
+	box-shadow: none !important;
+}
+
+.botModal .serverSettingsFormSurface,
+.botModal .serverAutomationPanel,
+.botModal .serverAutomationEmbedControls,
+.serverAutomationModal .serverSettingsFormSurface,
+.serverAutomationModal .serverAutomationPanel,
+.serverAutomationModal .serverAutomationEmbedControls,
+.serverSettingsOverlay .serverSettingsFormSurface,
+.serverSettingsOverlay .serverAutomationPanel,
+.serverSettingsOverlay .serverAutomationEmbedControls {
+	border-color: transparent !important;
+}
+
+.botModal .serverAutomationCard,
+.serverAutomationModal .serverAutomationCard,
+.serverSettingsOverlay .serverAutomationCard {
+	background: rgba(255, 255, 255, 0.028) !important;
+	border-color: rgba(255, 255, 255, 0.075) !important;
+	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.025) !important;
+}
+
+.botModal .discordSettingsBlockHeader,
+.serverAutomationModal .discordSettingsBlockHeader,
+.serverSettingsOverlay .discordSettingsBlockHeader {
+	background: transparent !important;
+	border-color: rgba(255, 255, 255, 0.06) !important;
+	box-shadow: none !important;
+}
+
+/* Server automation rows: status, channel select, test icon and edit icon stay aligned. */
+.serverAutomationSettingRow {
+	grid-template-columns: minmax(0, 1fr) minmax(360px, 480px) !important;
+}
+
+.serverAutomationCardHeader {
+	align-items: center !important;
+}
+
+.serverAutomationCardHeader > span {
+	min-width: 68px;
+	text-align: center;
+}
+
+/* ---- apps/web/src/app/styles/modal-unified-parts/part-04.css ---- */
+.serverAutomationSettingControls {
+	grid-template-columns: minmax(0, 1fr) 39px 39px !important;
+	align-items: center !important;
+	gap: 10px !important;
+	background: transparent !important;
+	border-color: transparent !important;
+	box-shadow: none !important;
+}
+
+.automationChannelField {
+	gap: 0 !important;
+}
+
+.automationChannelField select {
+	min-height: 39px;
+}
+
+.serverAutomationCard .iconButton.automationTestButton,
+.serverAutomationCard .iconButton.automationEditButton {
+	justify-self: stretch;
+	align-self: center;
+	width: 39px;
+	height: 39px;
+	border-radius: 12px;
+}
+
+.serverAutomationCard .iconButton.automationTestButton svg,
+.serverAutomationCard .iconButton.automationEditButton svg {
+	width: 18px;
+	height: 18px;
+}
+
+.serverAutomationCard .iconButton.automationTestButton:disabled,
+.serverAutomationCard .iconButton.automationEditButton:disabled {
+	opacity: 0.45;
+	cursor: not-allowed;
+}
+
+@media (max-width: 760px) {
+	.serverAutomationSettingRow {
+		grid-template-columns: 1fr !important;
+	}
+
+	.serverAutomationSettingControls {
+		grid-template-columns: minmax(0, 1fr) 39px 39px !important;
+	}
+}
+
+/* Keep variable hints readable without the old green badge/card background. */
+.commandFlowNote.commandWelcomeVariables,
+.commandLogsVariables,
+.commandVariablePreviewList {
+	background: transparent !important;
+	border-color: transparent !important;
+	box-shadow: none !important;
+}
+
+.memberModerationReasonField {
+	display: grid;
+	gap: 8px;
+	margin-top: 18px;
+}
+
+.memberModerationReasonField > span {
+	font-weight: 700;
+	color: rgba(255, 255, 255, 0.88);
+}
+
+.memberModerationReasonField small {
+	justify-self: end;
+	color: var(--muted-text);
+}
+
+/* Compact confirmation modals keep the header clean without the old separator line. */
+.actionConfirmModal {
+	display: grid;
+	gap: 14px;
+}
+
+.actionConfirmModal form {
+	display: grid;
+	gap: 14px;
+}
+
+.actionConfirmModal .botModalHeader {
+	border-bottom: 0 !important;
+	padding-bottom: 0;
+}
+
+.actionConfirmModal h2,
+.actionConfirmModal .subtle,
+.actionConfirmModal .modalActions,
+.actionConfirmModal .memberModerationReasonField {
+	margin-top: 0;
+}
+
+.actionConfirmModal .modalActions {
+	padding-top: 2px;
+}

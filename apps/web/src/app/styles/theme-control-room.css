@@ -1,0 +1,1704 @@
+/* Consolidated from theme-control-room-parts/*.css. Keep domain styles in this file. */
+
+/* ---- apps/web/src/app/styles/theme-control-room-parts/part-01.css ---- */
+/*
+ * BotDeck Control Room
+ * Couche finale de DA globale. Elle s'applique au cockpit entier.
+ * Les seules zones volontairement Discord sont les previews de messages/embeds.
+ */
+
+html,
+body {
+	background: var(--bd-bg-0) !important;
+	color: var(--bd-text) !important;
+}
+
+body {
+	background:
+		linear-gradient(rgba(255, 255, 255, 0.018) 1px, transparent 1px),
+		linear-gradient(90deg, rgba(255, 255, 255, 0.014) 1px, transparent 1px),
+		radial-gradient(circle at 18% 8%, rgba(53, 242, 196, 0.08), transparent 32%),
+		radial-gradient(circle at 86% 10%, rgba(139, 124, 255, 0.075), transparent 34%),
+		linear-gradient(180deg, var(--bd-bg-1), var(--bd-bg-0) 48%, #04070a) !important;
+	background-size: 44px 44px, 44px 44px, auto, auto, auto !important;
+}
+
+/* Shell principal */
+.clientShell,
+.discordShell,
+.launchShell,
+.botPickerShell {
+	background:
+		radial-gradient(circle at 15% 12%, rgba(53, 242, 196, 0.11), transparent 31%),
+		radial-gradient(circle at 88% 10%, rgba(139, 124, 255, 0.10), transparent 34%),
+		linear-gradient(180deg, var(--bd-bg-1), var(--bd-bg-0)) !important;
+	color: var(--bd-text) !important;
+}
+
+.chatPane,
+.channelSidebar,
+.botDock,
+.userPanel,
+.botdeckHome,
+.slashStudioPage,
+.slashStudioMain,
+.botOpsPage,
+.botDashboardOverlay,
+.botSettingsModal,
+.botSettingsDashboardModal,
+.botSettingsDiscordModal,
+.serverSettingsOverlay,
+.serverSettingsBackdrop,
+.settingsBackdrop,
+.profileModalBackdrop,
+.commandJsonOverlay,
+.slashCommandJsonOverlay,
+.slashCommandsPanelOverlay {
+	background: transparent !important;
+	color: var(--bd-text) !important;
+}
+
+.botDock,
+.channelSidebar,
+.userPanel {
+	background: rgba(6, 9, 13, 0.68) !important;
+	border-color: var(--bd-border) !important;
+	box-shadow: inset -1px 0 rgba(255, 255, 255, 0.025) !important;
+}
+
+.chatPane {
+	background:
+		radial-gradient(circle at 70% 0%, rgba(53, 242, 196, 0.055), transparent 28%),
+		linear-gradient(180deg, rgba(9, 15, 21, 0.82), rgba(6, 9, 13, 0.92)) !important;
+}
+
+.chatTopbar,
+.serverHeader,
+.botModalHeader,
+.settingsHeader,
+.serverSettingsHeader,
+.serverAutomationModalHeader,
+.botDashboardHeader,
+.botDiscordHeader,
+.botOpsHeader,
+.slashStudioPageHeader,
+.commandComposerHeader,
+.commandStudioPaneHeader,
+.slashCommandsPanelHeader,
+.discordSearchHeader,
+.profileModalHeader,
+.memberProfileHeader {
+	background: transparent !important;
+	border-color: var(--bd-border) !important;
+	box-shadow: none !important;
+	color: var(--bd-text) !important;
+}
+
+/* Surfaces cockpit */
+.botdeckHomeHero,
+.botdeckHomeCard,
+.homeMemberCard,
+.serverInfoHero,
+.serverInfoPanel,
+.serverSettingsPanel,
+.serverSettingsCard,
+.serverSettingsFormSurface,
+.serverAutomationCard,
+.serverAutomationPanel,
+.serverAutomationModal,
+.settingsSection,
+.settingsCard,
+.botModal,
+.profileModal,
+.profileModalCard,
+.externalLinkModal,
+.memberProfileCard,
+.memberProfileSection,
+.botDashboardHero,
+.botDashboardHeroCard,
+.botDashboardPanel,
+.botDashboardPresenceCard,
+.botOpsPanel,
+.botOpsStatusCard,
+.botOpsStatCard,
+.botOpsIssueCard,
+.botOpsEventsPanel,
+.botOpsGuildPanel,
+.botOpsIncidentsPanel,
+.botOpsCommandsPanel,
+.botOpsDebuggerPanel,
+.botOpsAlertsPanel,
+.commandStudioPane,
+.commandWorkflowCanvas,
+.commandComposerCard,
+.commandComposerCreatorCard,
+.commandComposerConfidenceCard,
+.commandComposerHero,
+.commandComposerMain,
+.commandControlCard,
+.commandDiagnosticPanel,
+.commandModalInlineCard,
+.commandModalAddCard,
+.commandModalResponseCard,
+.commandFlowShell,
+.commandFlowCard,
+.commandConfirmCard,
+.slashCommandCard,
+.slashCommandOptionCard,
+.slashCommandComparePanel,
+.slashCommandDiffCard,
+.slashCommandJsonPanel,
+.slashCommandsPanelCard,
+.permissionPanelCard,
+.forumPostCard,
+.forumChannelHero,
+.forumCreatePanel,
+.presenceDesignerHero,
+.presencePreviewCard,
+.discordSearchPanel,
+.discordSearchResultCard,
+.discordSearchChannelGroup,
+.searchPanel,
+.attachmentCard,
+.richEmbedCard,
+.voiceMoveList,
+.reactionPicker,
+.botTokenModal,
+.botForm {
+	background:
+		linear-gradient(145deg, rgba(255, 255, 255, 0.026), transparent 46%),
+		rgba(13, 20, 29, 0.72) !important;
+	border: 1px solid var(--bd-border) !important;
+	border-radius: var(--bd-radius-lg) !important;
+	box-shadow: 0 18px 46px rgba(0, 0, 0, 0.24), inset 0 1px 0 rgba(255, 255, 255, 0.025) !important;
+	color: var(--bd-text) !important;
+}
+
+/* Radius tiers Control Room: the broad surface reset above owns the background,
+   so it must also own the rounding. Otherwise some cards stay visually square. */
+.botModal,
+.profileModal,
+.externalLinkModal,
+.botTokenModal,
+.serverAutomationModal {
+	border-radius: 24px !important;
+	overflow: hidden;
+}
+
+.botdeckHomeHero,
+.serverInfoHero,
+.botDashboardHero,
+.commandComposerHero,
+.presenceDesignerHero,
+.forumChannelHero {
+	border-radius: 24px !important;
+}
+
+.botdeckHomeCard,
+.homeMemberCard,
+.serverInfoPanel,
+.serverSettingsPanel,
+.serverSettingsCard,
+.serverSettingsFormSurface,
+.serverAutomationCard,
+.serverAutomationPanel,
+.settingsSection,
+.settingsCard,
+.botDashboardPanel,
+.botDashboardPresenceCard,
+.botOpsPanel,
+.botOpsStatusCard,
+.botOpsStatCard,
+.botOpsIssueCard,
+.commandStudioPane,
+.commandWorkflowCanvas,
+.commandComposerCard,
+.commandComposerCreatorCard,
+.commandComposerConfidenceCard,
+.commandControlCard,
+.commandDiagnosticPanel,
+.commandModalInlineCard,
+.commandModalAddCard,
+.commandModalResponseCard,
+.commandFlowShell,
+.commandFlowCard,
+.commandConfirmCard,
+.slashCommandCard,
+.slashCommandOptionCard,
+.slashCommandComparePanel,
+.slashCommandDiffCard,
+.slashCommandJsonPanel,
+.slashCommandsPanelCard,
+.permissionPanelCard,
+.forumPostCard,
+.forumCreatePanel,
+.presencePreviewCard,
+.discordSearchPanel,
+.discordSearchResultCard,
+.discordSearchChannelGroup,
+.searchPanel,
+.attachmentCard,
+.voiceMoveList,
+.reactionPicker,
+.botForm {
+	border-radius: var(--bd-radius-lg) !important;
+}
+
+.memberProfileCard,
+.memberProfileSection,
+.profileModalCard {
+	border-radius: 18px !important;
+}
+
+/* Real Discord embeds keep Discord's small radius, not the cockpit card radius. */
+.embedCard.richEmbedCard,
+.embedStack .richEmbedCard,
+.messageRow .richEmbedCard {
+	border-radius: 4px !important;
+}
+
+/* Les enfants de modals doivent éviter les surcouches de couleur. */
+.botModalBody,
+.botModalFooter,
+.serverSettingsBody,
+.serverSettingsContent,
+.serverSettingsToolbar,
+.serverSettingsActions,
+.serverAutomationModalBody,
+.serverAutomationModalFooter,
+.serverAutomationSettingControls,
+.serverAutomationEmbedControls,
+.serverLogEventEditor,
+.serverLogEventTabs,
+.serverAutomationVariableChips,
+.commandLogsEmbedControls,
+.commandLogsEmbedMediaInputs,
+.commandEmbedFieldTabs,
+.commandEmbedPageTabs,
+.embedComposerSidebar,
+.commandEssentialHeader,
+.commandWelcomeHeader,
+.commandModalResponseHeader,
+.commandDiagnosticHeader,
+.discordSettingsBlockHeader,
+.botDashboardPanelHeader,
+.memberProfileSectionHeader,
+.slashCommandsSectionHeader,
+.slashCommandOptionHeader,
+.commandStudioTabRail,
+.commandLogsRail,
+.dashboardPresetRail,
+.settingsSegmented,
+.botSettingsTabs {
+	background: transparent !important;
+	box-shadow: none !important;
+	border-color: rgba(255, 255, 255, 0.06) !important;
+}
+
+.serverAutomationCard,
+.settingsSection,
+.serverSettingsCard,
+.serverInfoPanel,
+.botOpsPanel,
+.botDashboardPanel,
+.commandStudioPane,
+.commandComposerCard,
+.slashCommandCard {
+	border-radius: 18px !important;
+}
+
+/* Champs */
+input,
+textarea,
+select,
+.botTokenInput,
+.messageComposerInput,
+.composerTextarea,
+.replyComposerPreview,
+.reactionPickerSearch input,
+.settingsSearchBar input,
+.discordSearchInputWrap input,
+.commandComposerSlashInput,
+.commandComposerReplyField textarea,
+.slashCommandJsonEditor textarea,
+.slashCommandMultiSelect,
+.serverRoleNativeColor,
+.serverRoleColorField input,
+.automationChannelField select,
+.serverSettingsField input,
+.serverSettingsField textarea,
+.serverSettingsField select,
+.settingsField input,
+.settingsField textarea,
+.settingsField select,
+.commandLogsEmbedCanvas input,
+.commandLogsEmbedCanvas textarea {
+	background: rgba(255, 255, 255, 0.052) !important;
+	border-color: rgba(255, 255, 255, 0.095) !important;
+	color: var(--bd-text) !important;
+	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.025) !important;
+}
+
+input::placeholder,
+textarea::placeholder {
+	color: var(--bd-muted-2) !important;
+}
+
+input:hover,
+textarea:hover,
+select:hover,
+.botTokenInput:hover,
+.messageComposerInput:hover,
+.composerTextarea:hover,
+.commandComposerSlashInput:hover,
+.automationChannelField select:hover {
+	border-color: rgba(53, 242, 196, 0.24) !important;
+	background: rgba(255, 255, 255, 0.064) !important;
+}
+
+input:focus,
+textarea:focus,
+select:focus,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+.botTokenInput:focus,
+.messageComposerInput:focus,
+.composerTextarea:focus,
+.commandComposerSlashInput:focus,
+.automationChannelField select:focus {
+	outline: none !important;
+	border-color: var(--bd-accent-border) !important;
+	box-shadow: 0 0 0 3px rgba(53, 242, 196, 0.11), inset 0 1px 0 rgba(255, 255, 255, 0.035) !important;
+}
+
+/* Boutons */
+.primaryButton,
+.settingsSaveButton,
+.sendButton,
+.composerSendButton,
+.botDockAdd,
+.createBotButton,
+.commandDeployBar button:last-child,
+.commandComposerCreateButton,
+.commandComposerPrimaryButton,
+.commandComposerGenerateButton {
+	background: linear-gradient(135deg, var(--bd-accent), #6ee7d8) !important;
+	border-color: rgba(53, 242, 196, 0.38) !important;
+	color: #04100d !important;
+	box-shadow: 0 14px 34px rgba(53, 242, 196, 0.18) !important;
+}
+
+.secondaryButton,
+.settingsCancelButton,
+.topbarIconButton,
+.iconButton,
+.userControlButton,
+.channelButton,
+.voiceChannelButton,
+.voiceMemberButton,
+.reactionButton,
+.searchTopbarButton,
+.recentMessagesButton,
+.serverSettingsInlineDanger,
+.botOpsModeButton,
+.botHealthTopbarButton,
+.slashCommandTopbarButton,
+.commandStudioTabRail button,
+.commandLogsRail button,
+.settingsSegmented button,
+.botSettingsTabs button,
+.serverLogEventTabs button,
+.commandEmbedPageTabs button,
+.commandEmbedFieldTabs button,
+.discordActivityTypes button,
+.discordStreamSources button {
+	background: rgba(255, 255, 255, 0.052) !important;
+	border-color: rgba(255, 255, 255, 0.09) !important;
+	color: var(--bd-text-soft) !important;
+	box-shadow: none !important;
+}
+
+.secondaryButton:hover,
+.settingsCancelButton:hover,
+.topbarIconButton:hover,
+.iconButton:hover,
+.userControlButton:hover,
+.channelButton:hover,
+.voiceChannelButton:hover,
+.voiceMemberButton:hover,
+.reactionButton:hover,
+.searchTopbarButton:hover,
+.recentMessagesButton:hover,
+.botHealthTopbarButton:hover,
+.slashCommandTopbarButton:hover,
+.commandStudioTabRail button:hover,
+.commandLogsRail button:hover,
+.settingsSegmented button:hover,
+.botSettingsTabs button:hover,
+.serverLogEventTabs button:hover,
+.commandEmbedPageTabs button:hover,
+.commandEmbedFieldTabs button:hover {
+	background: rgba(53, 242, 196, 0.095) !important;
+	border-color: rgba(53, 242, 196, 0.22) !important;
+	color: var(--bd-text) !important;
+}
+
+/* ---- apps/web/src/app/styles/theme-control-room-parts/part-02.css ---- */
+.isActive,
+.channelButton.isActive,
+.voiceChannelButton.isActive,
+.botDockItem.isActive,
+.settingsSegmented button.isActive,
+.botSettingsTabs button.isActive,
+.commandStudioTabRail button.isActive,
+.commandLogsRail button.isActive,
+.serverLogEventTabs button.isActive,
+.commandEmbedPageTabs button.isActive,
+.commandEmbedFieldTabs button.isActive,
+.slashCommandsPanelTabs button.isActive,
+.discordActivityTypes button.isSelected,
+.discordStreamSources button.isSelected {
+	background: rgba(53, 242, 196, 0.13) !important;
+	border-color: rgba(53, 242, 196, 0.32) !important;
+	color: #d7fff5 !important;
+}
+
+/* Badges et états */
+.statusPill,
+.appBadge,
+.applicationCommandBadge,
+.transportPill,
+.discordSettingsBadge,
+.discordMutedBadge,
+.botDashboardHealthPill,
+.botOpsHeaderRight strong,
+.slashCommandSyncBadge,
+.topbarReadonlyBadge,
+.commandComposerScopeBadge,
+.commandComposerStepPill,
+.commandComposerStatusBubble {
+	background: rgba(255, 255, 255, 0.052) !important;
+	border: 1px solid rgba(255, 255, 255, 0.09) !important;
+	color: var(--bd-text-soft) !important;
+}
+
+.statusPill.isActive,
+.statusPill.isOk,
+.botOpsHeaderRight strong.isOk,
+.botDashboardHealthPill.isOk {
+	background: rgba(52, 211, 153, 0.13) !important;
+	border-color: rgba(52, 211, 153, 0.34) !important;
+	color: #bff7dd !important;
+}
+
+.statusPill.isInactive,
+.statusPill.isDisabled,
+.botOpsHeaderRight strong.isIdle {
+	background: rgba(255, 255, 255, 0.04) !important;
+	border-color: rgba(255, 255, 255, 0.075) !important;
+	color: var(--bd-muted) !important;
+}
+
+.statusPill.isWarn,
+.botOpsHeaderRight strong.isWarn,
+.botDashboardHealthPill.isWarn,
+.toast-warning {
+	background: rgba(248, 184, 78, 0.13) !important;
+	border-color: rgba(248, 184, 78, 0.34) !important;
+	color: #ffe0a6 !important;
+}
+
+.statusPill.isError,
+.botOpsHeaderRight strong.isError,
+.botDashboardHealthPill.isError,
+.toast-error,
+.serverSettingsFieldError {
+	background: rgba(255, 93, 115, 0.12) !important;
+	border-color: rgba(255, 93, 115, 0.32) !important;
+	color: #ffc6ce !important;
+}
+
+.toast,
+.settingsSaveBar,
+.serverSettingsFloatingSaveBar,
+.serverSettingsSaveNotice {
+	background:
+		linear-gradient(145deg, rgba(255, 255, 255, 0.045), transparent 44%),
+		rgba(9, 15, 21, 0.96) !important;
+	border: 1px solid var(--bd-border-strong) !important;
+	box-shadow: 0 20px 56px rgba(0, 0, 0, 0.34) !important;
+	color: var(--bd-text) !important;
+}
+
+/* Home */
+.botdeckHomeHero {
+	background:
+		radial-gradient(circle at 12% 0%, rgba(53, 242, 196, 0.14), transparent 30%),
+		radial-gradient(circle at 90% 0%, rgba(139, 124, 255, 0.12), transparent 34%),
+		linear-gradient(145deg, rgba(18, 27, 38, 0.88), rgba(9, 15, 21, 0.88)) !important;
+}
+
+.botdeckLogo,
+.brandMark,
+.searchGlyph,
+.serverSettingsIcon,
+.serverInfoIcon,
+.commandComposerFriendlyTitle svg,
+.commandStudioGlyph,
+.slashCommandGlyph {
+	background: linear-gradient(135deg, var(--bd-accent), var(--bd-violet)) !important;
+	color: #04100d !important;
+}
+
+/* Slash Studio = violet discret, pas Discord. */
+.slashStudioPageHeader,
+.commandStudioWorkspace,
+.commandWorkflowCanvas,
+.commandStudioPane,
+.commandComposerCreatorCard,
+.commandComposerTemplateShelf,
+.commandComposerShell {
+	background:
+		radial-gradient(circle at 10% 0%, rgba(139, 124, 255, 0.11), transparent 32%),
+		linear-gradient(145deg, rgba(255, 255, 255, 0.022), transparent 46%),
+		rgba(13, 20, 29, 0.72) !important;
+}
+
+.slashStudioPageHeader,
+.commandStudioWorkspace {
+	border-color: rgba(139, 124, 255, 0.16) !important;
+}
+
+/* Bot Ops = console technique. */
+.botOpsScroll,
+.botDashboardScroll,
+.botDiscordScroll,
+.slashStudioPageScroll,
+.settingsScroll,
+.slashCommandsPanelScroll {
+	background: transparent !important;
+}
+
+.botOpsLogRow,
+.botDashboardLogRow,
+.botLeanLogRow,
+.serverMemberTableRow,
+.serverMemberRow,
+.discordSettingsRow,
+.slashCommandChoiceRow,
+.commandEmbedFieldRow,
+.messageRow {
+	background: transparent !important;
+	border-color: rgba(255, 255, 255, 0.055) !important;
+}
+
+.botOpsLogRow:hover,
+.botDashboardLogRow:hover,
+.botLeanLogRow:hover,
+.serverMemberTableRow:hover,
+.serverMemberRow:hover,
+.discordSettingsRow:hover,
+.slashCommandChoiceRow:hover,
+.messageRow:hover {
+	background: rgba(255, 255, 255, 0.036) !important;
+}
+
+/* Automatisations serveur. */
+.serverAutomationSettingRow {
+	border-color: rgba(255, 255, 255, 0.06) !important;
+}
+
+.serverAutomationCardHeader > span {
+	font-weight: 800 !important;
+}
+
+.automationTestButton svg,
+.automationEditButton svg {
+	color: currentColor !important;
+}
+
+/* Textes */
+p,
+span,
+small,
+label,
+.serverSettingsHint,
+.subtle,
+.channelMeta,
+.discordSettingsRow span,
+.botDashboardTitleBlock p,
+.botOpsStateText,
+.commandComposerMicroChecklist,
+.profileMutedParagraph {
+	color: var(--bd-muted) !important;
+}
+
+h1,
+h2,
+h3,
+strong,
+.serverHeaderTitle,
+.channelName,
+.userNameLine,
+.authorNameLine,
+.botDashboardTitleBlock h2,
+.botOpsPanelHead h3,
+.slashStudioPageTitle h1,
+.commandComposerFriendlyTitle,
+.discordSettingsRow strong {
+	color: var(--bd-text) !important;
+}
+
+/* Avatars et images restent sobres. */
+.avatar,
+.botDashboardAvatar,
+.userAvatarImage,
+.serverMemberAvatar,
+.botDockItem,
+.serverInfoIcon,
+.memberProfileAvatar {
+	box-shadow: 0 8px 24px rgba(0, 0, 0, 0.24) !important;
+}
+
+/* Garde uniquement les previews Discord en rendu Discord réel. */
+.commandEmbedPreviewPane,
+.commandLogsEmbedCanvas,
+.commandEmbedPreview,
+.commandComposerDiscordPreview,
+.commandComposerMiniDiscord,
+.commandComposerResultPreview,
+.commandDiscordPreview,
+.commandDiscordEmbed,
+.serverAutomationModal .commandEmbedPreviewPane,
+.serverAutomationModal .commandLogsEmbedCanvas,
+.serverAutomationModal .commandEmbedPreview,
+.serverAutomationModal .commandLogsVisualEmbed > .commandEmbedPreviewPane,
+.serverAutomationModal .commandLogsVisualEmbed > .commandLogsEmbedCanvas {
+	background: var(--discord-bg-main) !important;
+	border-color: var(--discord-border) !important;
+	color: var(--discord-text) !important;
+	box-shadow: 0 18px 48px rgba(0, 0, 0, 0.28) !important;
+}
+
+.commandEmbedPreview,
+.commandLogsEmbedCanvas,
+.commandDiscordEmbed {
+	max-width: 520px !important;
+}
+
+.commandEmbedPreviewBody,
+.commandEmbedPreview strong,
+.commandEmbedPreview p,
+.commandEmbedPreview dt,
+.commandEmbedPreview dd,
+.commandEmbedPreview footer,
+.commandLogsEmbedCanvas strong,
+.commandLogsEmbedCanvas p,
+.commandLogsEmbedCanvas dt,
+.commandLogsEmbedCanvas dd,
+.commandLogsEmbedCanvas footer,
+.commandDiscordPreview strong,
+.commandDiscordPreview p,
+.commandDiscordEmbed strong,
+.commandDiscordEmbed p {
+	color: var(--discord-text) !important;
+}
+
+.commandEmbedPreview small,
+.commandEmbedPreview footer,
+.commandLogsEmbedCanvas small,
+.commandLogsEmbedCanvas footer,
+.commandDiscordPreview small,
+.commandDiscordEmbed small {
+	color: var(--discord-muted) !important;
+}
+
+/* Dans l'éditeur d'embed, les inputs restent BotDeck, pas Discord, même si la preview l'est. */
+.commandLogsEmbedCanvas input,
+.commandLogsEmbedCanvas textarea,
+.serverAutomationModal .commandLogsVisualEmbed .commandLogsEmbedCanvas input,
+.serverAutomationModal .commandLogsVisualEmbed .commandLogsEmbedCanvas textarea {
+	background: rgba(255, 255, 255, 0.055) !important;
+	border-color: rgba(255, 255, 255, 0.095) !important;
+	color: var(--bd-text) !important;
+}
+
+/* Fallback: neutralise les fonds blurple/Discord restants dans le cockpit hors preview. */
+.botDiscordHeader,
+.botDiscordScroll,
+.discordSettingsPanel,
+.discordSettingsBlock,
+.discordSettingsBlockHeader,
+.discordSettingsFormWrap,
+.discordSettingsForm,
+.discordCompactRow,
+.discordToggle,
+.discordCheckboxRow,
+.discordSearchPanel,
+.discordSearchHeader,
+.discordSearchInputWrap,
+.discordSearchToolbar,
+.discordSearchQuickFilters,
+.discordSearchResults,
+.discordSearchEmpty {
+	background: transparent !important;
+	color: var(--bd-text) !important;
+}
+
+.discordSettingsPanel,
+.discordSettingsBlock,
+.discordSettingsRow,
+.discordSearchResultCard {
+	background: rgba(13, 20, 29, 0.58) !important;
+	border-color: var(--bd-border) !important;
+}
+
+@media (max-width: 860px) {
+	.clientShell,
+	.discordShell,
+	.launchShell,
+	.botPickerShell {
+		background:
+			radial-gradient(circle at 20% 8%, rgba(53, 242, 196, 0.08), transparent 35%),
+			linear-gradient(180deg, var(--bd-bg-1), var(--bd-bg-0)) !important;
+	}
+}
+
+/* --------------------------------------------------------------------------
+   Control Room visibility guardrails
+   Objectif: éviter qu'une refonte globale rende des vues critiques invisibles.
+   Slash Studio et Bot Observatory sont des pages overlay complètes: elles ont
+   besoin de surfaces opaques, de textes explicites et d'un z-index sûr.
+   -------------------------------------------------------------------------- */
+:root {
+	--text-main: var(--bd-text);
+	--text-primary: var(--bd-text);
+	--text-secondary: var(--bd-text-soft);
+	--text-muted: var(--bd-muted);
+	--command-embed-discord-bg: var(--discord-bg-main);
+	--command-embed-card-bg: var(--discord-bg-card);
+	--command-embed-input-bg: var(--discord-bg-input);
+	--botdeck-modal-bg: var(--bd-bg-2);
+	--botdeck-modal-border: var(--bd-border);
+	--botdeck-modal-shadow: var(--bd-shadow-elevated);
+	--botdeck-modal-accent: var(--bd-accent);
+	--botdeck-modal-accent-soft: var(--bd-accent-soft);
+}
+
+.slashStudioPage,
+.botOpsPage {
+	position: fixed !important;
+	inset: 0 !important;
+	z-index: 2147482500 !important;
+	display: grid !important;
+	grid-template-rows: auto 1fr !important;
+	isolation: isolate !important;
+	background:
+		radial-gradient(circle at 14% 0%, rgba(53, 242, 196, 0.115), transparent 32%),
+		radial-gradient(circle at 88% 8%, rgba(139, 124, 255, 0.105), transparent 34%),
+		linear-gradient(180deg, #0b1118 0%, #071017 48%, #05080c 100%) !important;
+	color: var(--bd-text) !important;
+}
+
+.slashStudioPage::before,
+.botOpsPage::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	z-index: -1;
+	pointer-events: none;
+	background:
+		linear-gradient(rgba(255, 255, 255, 0.018) 1px, transparent 1px),
+		linear-gradient(90deg, rgba(255, 255, 255, 0.012) 1px, transparent 1px);
+	background-size: 42px 42px;
+	mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.75), transparent 78%);
+}
+
+.slashStudioPageHeader,
+.botOpsHeader {
+	background:
+		linear-gradient(135deg, rgba(53, 242, 196, 0.065), rgba(139, 124, 255, 0.055)),
+		rgba(7, 12, 18, 0.96) !important;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.095) !important;
+	box-shadow: 0 18px 48px rgba(0, 0, 0, 0.28) !important;
+	backdrop-filter: blur(18px) saturate(1.05) !important;
+	color: var(--bd-text) !important;
+}
+
+.slashStudioPageScroll,
+.botOpsScroll {
+	min-height: 0 !important;
+	overflow: auto !important;
+	background: transparent !important;
+	color: var(--bd-text) !important;
+}
+
+.slashStudioWorkspace,
+.slashStudioRail,
+.slashStudioMain,
+.slashStudioCommandBoard,
+.slashStudioComposerSurface,
+.botOpsStatusGrid,
+.botOpsFocusGrid,
+.botOpsGraphs,
+.botOpsLogList {
+	color: var(--bd-text) !important;
+}
+
+.slashStudioRail,
+.slashStudioMain,
+.slashCommandCard,
+.slashCommandsPanelSection,
+.slashCommandJsonPanel,
+.slashCommandDeleteCard,
+.botOpsPanel,
+.botOpsStatusCard,
+.botOpsGuildPanel,
+.botOpsIssueCard,
+.botOpsIncidentsPanel,
+.botOpsEventsPanel,
+.botOpsCommandsPanel,
+.botOpsDebuggerPanel,
+.botOpsAlertsPanel,
+.botOpsLogRow,
+.botOpsIssueStack button,
+.botOpsChartTooltip,
+.botOpsChartReadout {
+	background:
+		linear-gradient(145deg, rgba(255, 255, 255, 0.035), transparent 44%),
+		rgba(13, 20, 29, 0.88) !important;
+	border-color: rgba(255, 255, 255, 0.09) !important;
+	box-shadow: 0 16px 44px rgba(0, 0, 0, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.025) !important;
+	color: var(--bd-text) !important;
+}
+
+/* ---- apps/web/src/app/styles/theme-control-room-parts/part-03.css ---- */
+.slashCommandsPanelSection {
+	background: transparent !important;
+	border-color: transparent !important;
+	box-shadow: none !important;
+}
+
+.slashStudioPage h1,
+.slashStudioPage h2,
+.slashStudioPage h3,
+.slashStudioPage h4,
+.slashStudioPage strong,
+.slashCommandCardMain strong,
+.slashCommandActions button,
+.slashStudioRailHead strong,
+.slashStudioRail button strong,
+.botOpsPage h1,
+.botOpsPage h2,
+.botOpsPage h3,
+.botOpsPage h4,
+.botOpsPage strong,
+.botOpsPanelHead h3,
+.botOpsStatusCard strong,
+.botOpsDonut strong,
+.botOpsLegend strong,
+.botOpsLogRow strong,
+.botOpsIssueStack strong {
+	color: var(--bd-text) !important;
+}
+.slashStudioPage p,
+.slashStudioPage span,
+.slashStudioPage small,
+.slashStudioPage label,
+.slashCommandCardMain p,
+.slashCommandMeta span,
+.slashCommandOptions span,
+.slashCommandsEmpty,
+.botOpsPage p,
+.botOpsPage span,
+.botOpsPage small,
+.botOpsPage label,
+.botOpsStatusCard span,
+.botOpsStatusCard p,
+.botOpsPanelHead span,
+.botOpsLegend div,
+.botOpsLogRow p,
+.botOpsLogRow span,
+.botOpsLogRow time,
+.botOpsIssueStack span,
+.botOpsIssueStack em,
+.botOpsEmpty,
+.botOpsChartReadout span {
+	color: var(--bd-text-soft) !important;
+}
+
+.slashStudioPageTitle p,
+.botOpsHeader p,
+.slashStudioRailHead span,
+.botOpsPanelHead span,
+.slashCommandsSectionHeader h3,
+.botOpsDonut span {
+	color: var(--bd-muted) !important;
+}
+
+.slashStudioPageTitle h2,
+.botOpsHeader h2 {
+	color: var(--bd-text) !important;
+	text-shadow: 0 1px 0 rgba(0, 0, 0, 0.26) !important;
+}
+
+.slashStudioPageActions strong,
+.botOpsHeaderRight strong,
+.slashCommandScope,
+.slashCommandSyncBadge {
+	background: rgba(255, 255, 255, 0.055) !important;
+	border-color: rgba(255, 255, 255, 0.11) !important;
+	color: var(--bd-text-soft) !important;
+}
+
+.slashStudioPageActions strong.isOk,
+.botOpsHeaderRight strong.isOk,
+.botOpsStatusCard.isOk strong,
+.botOpsStatusCard.isInfo strong {
+	background: rgba(52, 211, 153, 0.13) !important;
+	border-color: rgba(52, 211, 153, 0.32) !important;
+	color: #bff7dd !important;
+}
+
+.slashStudioPageActions strong.isWarn,
+.botOpsHeaderRight strong.isWarn,
+.botOpsStatusCard.isWarn strong {
+	background: rgba(248, 184, 78, 0.13) !important;
+	border-color: rgba(248, 184, 78, 0.32) !important;
+	color: #ffe0a6 !important;
+}
+
+.slashStudioPageActions strong.isError,
+.botOpsHeaderRight strong.isError,
+.botOpsStatusCard.isError strong {
+	background: rgba(255, 93, 115, 0.13) !important;
+	border-color: rgba(255, 93, 115, 0.32) !important;
+	color: #ffc6ce !important;
+}
+
+.slashStudioPageActions button,
+.slashStudioRail button,
+.slashCommandActions button,
+.botOpsHeaderRight button,
+.botOpsLogFilters button,
+.botOpsIssueStack button {
+	background: rgba(255, 255, 255, 0.055) !important;
+	border-color: rgba(255, 255, 255, 0.095) !important;
+	color: var(--bd-text) !important;
+}
+
+.slashStudioPageActions button:hover,
+.slashStudioRail button:hover,
+.slashStudioRail button.isActive,
+.slashCommandActions button:hover,
+.botOpsHeaderRight button:hover,
+.botOpsLogFilters button:hover,
+.botOpsIssueStack button:hover {
+	background: rgba(53, 242, 196, 0.10) !important;
+	border-color: rgba(53, 242, 196, 0.28) !important;
+	color: #eafffa !important;
+}
+
+.slashStudioRail button.isActive strong {
+	color: #d7fff5 !important;
+}
+
+.slashCommandActions .dangerButton,
+.slashCommandDeleteActions .dangerButton {
+	background: rgba(255, 93, 115, 0.12) !important;
+	border-color: rgba(255, 93, 115, 0.28) !important;
+	color: #ffc6ce !important;
+}
+
+.botOpsGridLine {
+	stroke: rgba(255, 255, 255, 0.15) !important;
+}
+
+.botOpsLine.isActivity {
+	stroke: var(--bd-accent) !important;
+}
+
+.botOpsLine.isGateway {
+	stroke: var(--bd-info) !important;
+}
+
+.botOpsArea.isActivity {
+	fill: var(--bd-accent) !important;
+}
+
+.botOpsArea.isGateway {
+	fill: var(--bd-info) !important;
+}
+
+.botOpsDonut::after {
+	background: var(--bd-bg-2) !important;
+	box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08) !important;
+}
+
+.botOpsChartTooltip {
+	background: rgba(7, 12, 18, 0.96) !important;
+	border: 1px solid rgba(255, 255, 255, 0.12) !important;
+	box-shadow: 0 18px 46px rgba(0, 0, 0, 0.38) !important;
+}
+
+.slashCommandJsonPanel textarea,
+.slashCommandJsonPanel pre,
+.slashCommandBuilder input,
+.slashCommandBuilder textarea,
+.slashCommandBuilder select,
+.slashStudioPage input,
+.slashStudioPage textarea,
+.slashStudioPage select {
+	background: rgba(255, 255, 255, 0.055) !important;
+	border-color: rgba(255, 255, 255, 0.105) !important;
+	color: var(--bd-text) !important;
+}
+
+.slashStudioPage input::placeholder,
+.slashStudioPage textarea::placeholder {
+	color: var(--bd-muted-2) !important;
+}
+
+/* Les previews Discord restent explicitement Discord, même dans Slash Studio. */
+.slashStudioPage .commandEmbedPreviewPane,
+.slashStudioPage .commandLogsEmbedCanvas,
+.slashStudioPage .commandEmbedPreview,
+.slashStudioPage .commandDiscordPreview,
+.slashStudioPage .commandDiscordEmbed {
+	background: var(--discord-bg-main) !important;
+	border-color: var(--discord-border) !important;
+	color: var(--discord-text) !important;
+}
+
+.slashStudioPage .commandEmbedPreview strong,
+.slashStudioPage .commandEmbedPreview p,
+.slashStudioPage .commandEmbedPreview span,
+.slashStudioPage .commandDiscordPreview strong,
+.slashStudioPage .commandDiscordPreview p,
+.slashStudioPage .commandDiscordPreview span,
+.slashStudioPage .commandDiscordEmbed strong,
+.slashStudioPage .commandDiscordEmbed p,
+.slashStudioPage .commandDiscordEmbed span {
+	color: var(--discord-text) !important;
+}
+
+/* Overlays secondaires liés à Slash Studio: toujours au-dessus de la page studio. */
+.slashCommandJsonOverlay,
+.slashCommandsPanelOverlay {
+	z-index: 2147482700 !important;
+	background: rgba(3, 7, 11, 0.72) !important;
+	backdrop-filter: blur(18px) saturate(1.06) !important;
+	color: var(--bd-text) !important;
+}
+
+.slashCommandJsonPanel,
+.slashCommandDeleteCard,
+.slashCommandsPanelCard {
+	background:
+		radial-gradient(circle at 10% 0%, rgba(53, 242, 196, 0.09), transparent 32%),
+		radial-gradient(circle at 88% 0%, rgba(139, 124, 255, 0.08), transparent 34%),
+		rgba(10, 16, 23, 0.98) !important;
+	border-color: rgba(255, 255, 255, 0.115) !important;
+	box-shadow: 0 34px 100px rgba(0, 0, 0, 0.62), inset 0 1px 0 rgba(255, 255, 255, 0.04) !important;
+	color: var(--bd-text) !important;
+}
+
+.slashCommandJsonPanel pre {
+	background: rgba(3, 7, 11, 0.72) !important;
+	border-color: rgba(255, 255, 255, 0.105) !important;
+	color: #dffbf4 !important;
+}
+
+.permissionPanelClose,
+.slashCommandsPanelHeader > button {
+	background: rgba(255, 255, 255, 0.06) !important;
+	border-color: rgba(255, 255, 255, 0.11) !important;
+	color: var(--bd-text) !important;
+}
+
+.permissionPanelClose:hover,
+.slashCommandsPanelHeader > button:hover {
+	background: rgba(53, 242, 196, 0.10) !important;
+	border-color: rgba(53, 242, 196, 0.28) !important;
+	color: #eafffa !important;
+}
+
+/* Native select dropdowns must stay readable in the Control Room DA.
+   Chromium/Electron can render <option> rows with the OS default white popup;
+   explicit option colors prevent white-on-white lists in server automation modals. */
+select,
+.serverSettingsPanel select,
+.botSettingsModal select,
+.embedComposerModal select,
+.botModal select,
+.automationChannelField select,
+.serverSettingsField select,
+.settingsField select,
+.slashCommandBuilder select,
+.slashCommandFormGrid select,
+.slashCommandOptionBuilder select,
+.commandStudioConfigGrid select,
+.commandEssentialGrid select,
+.commandFlowFields select,
+.commandComposerQuickEdit select,
+.commandComposerQuietSettings select {
+  color-scheme: dark !important;
+  background-color: var(--bd-bg-2) !important;
+  color: var(--bd-text) !important;
+  caret-color: var(--bd-accent) !important;
+}
+
+select option,
+select optgroup,
+.serverSettingsPanel select option,
+.serverSettingsPanel select optgroup,
+.botSettingsModal select option,
+.botSettingsModal select optgroup,
+.embedComposerModal select option,
+.embedComposerModal select optgroup,
+.botModal select option,
+.botModal select optgroup,
+.automationChannelField select option,
+.automationChannelField select optgroup,
+.serverSettingsField select option,
+.serverSettingsField select optgroup,
+.settingsField select option,
+.settingsField select optgroup,
+.slashCommandBuilder select option,
+.slashCommandBuilder select optgroup,
+.slashCommandFormGrid select option,
+.slashCommandFormGrid select optgroup,
+.slashCommandOptionBuilder select option,
+.slashCommandOptionBuilder select optgroup,
+.commandStudioConfigGrid select option,
+.commandStudioConfigGrid select optgroup,
+.commandEssentialGrid select option,
+.commandEssentialGrid select optgroup,
+.commandFlowFields select option,
+.commandFlowFields select optgroup,
+.commandComposerQuickEdit select option,
+.commandComposerQuickEdit select optgroup,
+.commandComposerQuietSettings select option,
+.commandComposerQuietSettings select optgroup {
+  background-color: #0d141d !important;
+  color: #edf7f8 !important;
+}
+
+select option:checked,
+select option:hover,
+.serverSettingsPanel select option:checked,
+.serverSettingsPanel select option:hover,
+.botSettingsModal select option:checked,
+.botSettingsModal select option:hover,
+.embedComposerModal select option:checked,
+.embedComposerModal select option:hover,
+.botModal select option:checked,
+.botModal select option:hover,
+.automationChannelField select option:checked,
+.automationChannelField select option:hover,
+.serverSettingsField select option:checked,
+.serverSettingsField select option:hover,
+.settingsField select option:checked,
+.settingsField select option:hover,
+.slashCommandBuilder select option:checked,
+.slashCommandBuilder select option:hover,
+.slashCommandFormGrid select option:checked,
+.slashCommandFormGrid select option:hover,
+.slashCommandOptionBuilder select option:checked,
+.slashCommandOptionBuilder select option:hover,
+.commandStudioConfigGrid select option:checked,
+.commandStudioConfigGrid select option:hover,
+.commandEssentialGrid select option:checked,
+.commandEssentialGrid select option:hover,
+.commandFlowFields select option:checked,
+.commandFlowFields select option:hover,
+.commandComposerQuickEdit select option:checked,
+.commandComposerQuickEdit select option:hover,
+.commandComposerQuietSettings select option:checked,
+.commandComposerQuietSettings select option:hover {
+  background-color: #123326 !important;
+  color: #f4fffb !important;
+}
+
+select:disabled,
+select option:disabled,
+select optgroup:disabled {
+  background-color: rgba(13, 20, 29, 0.72) !important;
+  color: var(--bd-muted-2) !important;
+}
+
+/* Discord embeds already sent: keep the real vertical color rail visible.
+   The Control Room surface reset uses strong borders, so the embed accent rail
+   must be restored after all global DA overrides. */
+.embedCard.richEmbedCard,
+.embedStack .richEmbedCard,
+.messageRow .richEmbedCard {
+	border-top: 1px solid var(--bd-border) !important;
+	border-right: 1px solid var(--bd-border) !important;
+	border-bottom: 1px solid var(--bd-border) !important;
+	border-left: 4px solid var(--embed-accent-color, var(--discord-blurple, #5865f2)) !important;
+	border-radius: 4px !important;
+}
+
+.embedCard.richEmbedCard::before,
+.embedStack .richEmbedCard::before,
+.messageRow .richEmbedCard::before {
+	content: none !important;
+}
+
+/* Bot Observatory: only status badges should look like pills.
+   Regular <strong> text inside cards, charts, logs and incident rows must not
+   inherit badge backgrounds from the global Control Room guardrails. */
+.botOpsPage :where(strong):not(.isOk):not(.isWarn):not(.isError):not(.isIdle),
+.botOpsStatusCard :where(strong),
+.botOpsPanel :where(strong),
+.botOpsIssueStack :where(strong),
+.botOpsLogRow :where(strong),
+.botOpsDonut :where(strong),
+.botOpsLegend :where(strong),
+.botOpsChartReadout :where(strong),
+.botOpsChartTooltip :where(strong) {
+	background: transparent !important;
+	border: 0 !important;
+	box-shadow: none !important;
+}
+
+.botOpsStatusCard.isOk strong,
+.botOpsStatusCard.isInfo strong,
+.botOpsStatusCard.isWarn strong,
+.botOpsStatusCard.isError strong {
+	background: transparent !important;
+	border: 0 !important;
+	box-shadow: none !important;
+	color: var(--bd-text) !important;
+}
+
+.botOpsPage .botOpsHeaderRight strong {
+	display: inline-flex !important;
+	align-items: center !important;
+	justify-content: center !important;
+	min-width: 74px !important;
+	padding: 9px 12px !important;
+	border-radius: 999px !important;
+	background: rgba(255, 255, 255, 0.052) !important;
+	border: 1px solid rgba(255, 255, 255, 0.09) !important;
+	box-shadow: none !important;
+	color: var(--bd-text-soft) !important;
+}
+
+.botOpsPage .botOpsHeaderRight strong.isOk {
+	background: rgba(52, 211, 153, 0.13) !important;
+	border-color: rgba(52, 211, 153, 0.34) !important;
+	color: #bff7dd !important;
+}
+
+/* ---- apps/web/src/app/styles/theme-control-room-parts/part-04.css ---- */
+.botOpsPage .botOpsHeaderRight strong.isWarn {
+	background: rgba(248, 184, 78, 0.13) !important;
+	border-color: rgba(248, 184, 78, 0.34) !important;
+	color: #ffe0a6 !important;
+}
+
+.botOpsPage .botOpsHeaderRight strong.isError {
+	background: rgba(255, 93, 115, 0.12) !important;
+	border-color: rgba(255, 93, 115, 0.32) !important;
+	color: #ffc6ce !important;
+}
+
+/* Role Automation: server automation list/editor */
+.serverRoleAutomationCard {
+	gap: 14px !important;
+}
+
+.serverRoleAutomationToolbar {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	flex-wrap: wrap;
+	background: transparent !important;
+}
+
+.serverRoleAutomationToolbar .secondary,
+.serverRoleAutomationToolbar .iconButton {
+	min-height: 38px;
+}
+
+.serverRoleAutomationToolbar svg,
+.serverRoleAutomationRow svg {
+	width: 17px;
+	height: 17px;
+	fill: none;
+	stroke: currentColor;
+	stroke-width: 1.8;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+}
+
+.serverRoleAutomationList {
+	display: grid;
+	gap: 9px;
+	background: transparent !important;
+}
+
+.serverRoleAutomationRow {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) auto auto auto;
+	align-items: center;
+	gap: 10px;
+	padding: 11px 12px;
+	border: 1px solid var(--bd-border);
+	border-radius: 14px;
+	background: rgba(255, 255, 255, 0.032) !important;
+}
+
+.serverRoleAutomationRow > div {
+	display: grid;
+	gap: 3px;
+	min-width: 0;
+	background: transparent !important;
+}
+
+.serverRoleAutomationRow strong {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	color: var(--bd-text);
+	background: transparent !important;
+	border: 0 !important;
+	box-shadow: none !important;
+}
+
+.serverRoleAutomationRow span {
+	min-width: 0;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	color: var(--bd-muted);
+}
+
+.serverRoleAutomationEmpty {
+	padding: 14px;
+	border: 1px dashed rgba(255, 255, 255, 0.14);
+	border-radius: 14px;
+	background: rgba(255, 255, 255, 0.026) !important;
+	color: var(--bd-muted);
+}
+
+.dangerIconButton {
+	color: #ffc6ce !important;
+	border-color: rgba(255, 93, 115, 0.28) !important;
+	background: rgba(255, 93, 115, 0.10) !important;
+}
+
+.dangerIconButton:hover:not(:disabled) {
+	background: rgba(255, 93, 115, 0.18) !important;
+	border-color: rgba(255, 93, 115, 0.42) !important;
+}
+
+.roleAutomationModal,
+.roleAutomationModalBody,
+.roleAutomationToggles {
+	background: transparent !important;
+}
+
+.roleAutomationModalBody {
+	display: grid;
+	gap: 16px;
+}
+
+.roleAutomationToggles {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+	gap: 10px;
+}
+
+.roleAutomationToggles label {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	padding: 11px 12px;
+	border: 1px solid var(--bd-border);
+	border-radius: 13px;
+	background: rgba(255, 255, 255, 0.032) !important;
+	color: var(--bd-text-soft);
+}
+
+.roleAutomationToggles input[type="checkbox"] {
+	width: 16px;
+	height: 16px;
+	accent-color: var(--bd-accent);
+}
+
+.roleAutomationToggles span {
+	font-size: 0.88rem;
+	line-height: 1.35;
+}
+
+.commandAutoroleSetup {
+	display: grid;
+	gap: 10px;
+	background: rgba(255, 255, 255, 0.032) !important;
+}
+
+.commandAutoroleSetup .commandWelcomeSetupPreview {
+	background: transparent !important;
+}
+
+@media (max-width: 760px) {
+	.serverRoleAutomationRow {
+		grid-template-columns: 1fr auto auto;
+	}
+	.serverRoleAutomationRow small {
+		grid-column: 1 / -1;
+		width: fit-content;
+	}
+}
+
+/* Discord native badges: keep real Discord badges out of the Control Room badge skin. */
+.discordSettingsBadge,
+.discordMutedBadge {
+	display: inline-flex !important;
+	flex: 0 0 auto !important;
+	align-items: center !important;
+	justify-content: center !important;
+	min-width: 34px !important;
+	height: 24px !important;
+	min-height: 24px !important;
+	padding: 0 8px !important;
+	border-radius: 5px !important;
+	font-size: 12px !important;
+	font-style: normal !important;
+	font-weight: 900 !important;
+	line-height: 1 !important;
+	letter-spacing: 0.01em !important;
+	white-space: nowrap !important;
+	box-shadow: none !important;
+}
+
+.discordSettingsBadge {
+	background: #23a55a !important;
+	border: 0 !important;
+	color: #fff !important;
+}
+
+.discordMutedBadge {
+	background: #3f4147 !important;
+	border: 0 !important;
+	color: #dbdee1 !important;
+}
+
+.appBadge,
+.messageMeta .appBadge,
+.messageReplyPreview .appBadge,
+.pinPanelItem .appBadge,
+.homeMemberCard .appBadge,
+.userPanel .appBadge,
+.memberProfilePanel .appBadge,
+.applicationCommandBadge {
+	display: inline-flex !important;
+	flex: 0 0 auto !important;
+	align-items: center !important;
+	justify-content: center !important;
+	height: 15px !important;
+	min-width: auto !important;
+	padding: 0 4px !important;
+	border: 0 !important;
+	border-radius: 3px !important;
+	background: #5865f2 !important;
+	color: #fff !important;
+	font-size: 10px !important;
+	font-weight: 800 !important;
+	line-height: 1 !important;
+	letter-spacing: 0 !important;
+	text-transform: uppercase !important;
+	white-space: nowrap !important;
+	box-shadow: none !important;
+}
+
+.applicationCommandBadge {
+	min-width: 22px !important;
+	height: 16px !important;
+	padding: 0 5px !important;
+	border-radius: 4px !important;
+	font-weight: 900 !important;
+	letter-spacing: 0.01em !important;
+}
+
+
+/* Server settings spacing: keep the automation title away from the panel edge. */
+.serverSettingsOverlay .serverSettingsFormSurface.serverAutomationPanel,
+.botModal .serverSettingsFormSurface.serverAutomationPanel {
+	padding: 18px !important;
+	gap: 16px !important;
+}
+
+.serverSettingsOverlay .serverAutomationPanel > .discordSettingsBlockHeader,
+.botModal .serverAutomationPanel > .discordSettingsBlockHeader {
+	padding: 2px 2px 4px !important;
+	margin-bottom: 2px !important;
+}
+
+.serverSettingsOverlay .serverAutomationPanel > .discordSettingsBlockHeader h3,
+.botModal .serverAutomationPanel > .discordSettingsBlockHeader h3 {
+	line-height: 1.25 !important;
+}
+
+.serverSettingsOverlay .serverAutomationPanel > .discordSettingsBlockHeader p,
+.botModal .serverAutomationPanel > .discordSettingsBlockHeader p {
+	margin-top: 4px !important;
+}
+
+/* Server automation section spacing: the title belongs inside the surface, not against its border. */
+.serverSettingsFormSurface.serverAutomationPanel,
+.serverSettingsOverlay .serverSettingsFormSurface.serverAutomationPanel,
+.botModal .serverSettingsFormSurface.serverAutomationPanel,
+.serverAutomationModal .serverSettingsFormSurface.serverAutomationPanel {
+	padding: 28px 22px 22px !important;
+	gap: 18px !important;
+}
+
+.serverSettingsFormSurface.serverAutomationPanel > .discordSettingsBlockHeader,
+.serverSettingsOverlay .serverAutomationPanel > .discordSettingsBlockHeader,
+.botModal .serverAutomationPanel > .discordSettingsBlockHeader,
+.serverAutomationModal .serverAutomationPanel > .discordSettingsBlockHeader {
+	padding: 0 2px 10px !important;
+	margin: 0 !important;
+}
+
+.serverSettingsFormSurface.serverAutomationPanel > .discordSettingsBlockHeader h3,
+.serverSettingsOverlay .serverAutomationPanel > .discordSettingsBlockHeader h3,
+.botModal .serverAutomationPanel > .discordSettingsBlockHeader h3,
+.serverAutomationModal .serverAutomationPanel > .discordSettingsBlockHeader h3 {
+	margin: 0 0 8px !important;
+	line-height: 1.28 !important;
+}
+
+.serverSettingsFormSurface.serverAutomationPanel > .discordSettingsBlockHeader p,
+.serverSettingsOverlay .serverAutomationPanel > .discordSettingsBlockHeader p,
+.botModal .serverAutomationPanel > .discordSettingsBlockHeader p,
+.serverAutomationModal .serverAutomationPanel > .discordSettingsBlockHeader p {
+	margin: 0 !important;
+}
+
+.serverSettingsFormSurface.serverAutomationPanel > .serverAutomationGrid,
+.serverSettingsOverlay .serverAutomationPanel > .serverAutomationGrid,
+.botModal .serverAutomationPanel > .serverAutomationGrid,
+.serverAutomationModal .serverAutomationPanel > .serverAutomationGrid {
+	margin-top: 2px !important;
+}
+
+/* Discord embed editor live preview sizing and accent rail. */
+.commandLogsVisualEmbed > .commandEmbedPreviewPane,
+.serverAutomationModal .commandLogsVisualEmbed > .commandEmbedPreviewPane,
+.slashStudioPage .commandLogsVisualEmbed > .commandEmbedPreviewPane {
+	width: min(100%, 560px) !important;
+	max-width: 560px !important;
+	padding: 12px 14px !important;
+	border: 0 !important;
+	border-radius: 8px !important;
+	background: var(--discord-bg-main) !important;
+	box-shadow: none !important;
+	justify-self: start !important;
+	overflow: visible !important;
+}
+
+.commandLogsVisualEmbed > .commandLogsEmbedCanvas,
+.commandLogsVisualEmbed .commandEmbedPreview,
+.serverAutomationModal .commandLogsVisualEmbed > .commandLogsEmbedCanvas,
+.serverAutomationModal .commandLogsVisualEmbed .commandEmbedPreview,
+.slashStudioPage .commandLogsVisualEmbed > .commandLogsEmbedCanvas,
+.slashStudioPage .commandLogsVisualEmbed .commandEmbedPreview {
+	width: min(100%, 520px) !important;
+	max-width: 520px !important;
+	padding: 12px !important;
+	border: 0 !important;
+	border-left: 4px solid var(--command-embed-accent, #5865f2) !important;
+	border-radius: 4px !important;
+	background: var(--discord-bg-card) !important;
+	color: var(--discord-text) !important;
+	box-shadow: none !important;
+	transition: border-left-color 140ms ease, background-color 140ms ease, box-shadow 140ms ease !important;
+}
+
+.commandLogsVisualEmbed .commandEmbedPreview strong,
+.commandLogsVisualEmbed .commandEmbedPreview p,
+.commandLogsVisualEmbed .commandEmbedPreview dt,
+.commandLogsVisualEmbed .commandEmbedPreview dd,
+.commandLogsVisualEmbed .commandEmbedPreview footer,
+.commandLogsVisualEmbed .commandLogsEmbedCanvas input,
+.commandLogsVisualEmbed .commandLogsEmbedCanvas textarea {
+	color: var(--discord-text) !important;
+}
+
+.commandLogsVisualEmbed .commandLogsEmbedControls input[type="color"] {
+	border-color: color-mix(in srgb, var(--command-embed-accent, #5865f2) 58%, rgba(255, 255, 255, 0.16)) !important;
+	box-shadow: 0 0 0 2px color-mix(in srgb, var(--command-embed-accent, #5865f2) 18%, transparent) !important;
+}
+
+
+/* Topbar Discord-style icons stay simple: no badge fill, no gradient on the SVG itself. */
+.searchGlyph,
+.pinTopbarGlyph,
+.slashCommandGlyph {
+	background: transparent !important;
+	background-image: none !important;
+	box-shadow: none !important;
+	filter: none !important;
+	color: currentColor !important;
+	fill: none !important;
+	stroke: currentColor !important;
+}
+
+.searchTopbarButton,
+.pinTopbarButton,
+.slashCommandTopbarButton {
+	background: rgba(255, 255, 255, 0.052) !important;
+	border: 1px solid rgba(255, 255, 255, 0.09) !important;
+	color: var(--bd-text-soft) !important;
+}
+
+.searchTopbarButton:hover,
+.pinTopbarButton:hover,
+.slashCommandTopbarButton:hover,
+.searchTopbarButton.isActive,
+.pinTopbarButton.isActive,
+.slashCommandTopbarButton.isActive {
+	background: rgba(255, 255, 255, 0.085) !important;
+	border-color: rgba(255, 255, 255, 0.14) !important;
+	color: var(--bd-text) !important;
+}
+
+.slashCommandTopbarButton.isActive,
+.slashCommandTopbarButton:hover {
+	background-image: none !important;
+}
+
+
+/* Server settings topbar icon: plain Discord-like white glyph, no colored chip. */
+.serverSettingsButton {
+	background: transparent !important;
+	border-color: transparent !important;
+	box-shadow: none !important;
+	color: #fff !important;
+}
+
+.serverSettingsButton svg {
+	fill: currentColor !important;
+	stroke: none !important;
+}
+
+.serverSettingsButton:hover,
+.serverSettingsButton:focus-visible {
+	background: transparent !important;
+	border-color: transparent !important;
+	box-shadow: none !important;
+	color: #fff !important;
+	transform: translateY(-1px);
+	opacity: 0.92;
+}
+
+.serverSettingsButton:active {
+	transform: translateY(0);
+	opacity: 0.78;
+}

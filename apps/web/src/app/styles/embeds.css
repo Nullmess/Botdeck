@@ -1,0 +1,2076 @@
+/* Consolidated from embeds-parts/*.css. Keep domain styles in this file. */
+
+/* ---- apps/web/src/app/styles/embeds-parts/part-01.css ---- */
+/* Embeds Discord: éditeur + aperçu. Contraintes visuelles proches Discord. */
+
+
+.memberProfileNameLine,
+.memberProfileUsernameLine {
+	display: inline-flex;
+	align-items: center;
+	gap: 7px;
+	min-width: 0;
+	max-width: 100%;
+}
+
+.memberProfileNameLine>span:not(.appBadge):not(.applicationCommandBadge),
+.memberProfileUsernameLine>span:not(.appBadge):not(.applicationCommandBadge) {
+	min-width: 0;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.memberProfilePanel .appBadge {
+	transform: translateY(-1px);
+}
+
+.applicationCommandBadge {
+	display: inline-flex;
+	flex: 0 0 auto;
+	align-items: center;
+	justify-content: center;
+	height: 16px;
+	min-width: 28px;
+	padding: 0 5px;
+	border-radius: 4px;
+	background: #23a55a;
+	color: #fff;
+	font-size: 10px;
+	font-weight: 900;
+	line-height: 1;
+	letter-spacing: 0.02em;
+	text-transform: uppercase;
+	white-space: nowrap;
+	box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.18);
+	transform: translateY(-1px);
+}
+
+/* Avatars Discord: cadre préservé. */
+.memberProfileAvatar.memberProfileAvatarEnhanced {
+	overflow: visible;
+}
+
+.memberProfileAvatar.memberProfileAvatarEnhanced>img.memberProfileAvatarDecoration {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	z-index: 2;
+	width: 130px;
+	height: 130px;
+	max-width: none;
+	max-height: none;
+	border: 0;
+	border-radius: 0;
+	object-fit: contain;
+	pointer-events: none;
+	transform: translate(-50%, -50%);
+	transform-origin: center;
+}
+
+.memberProfileAvatar.memberProfileAvatarEnhanced>img:not(.memberProfileAvatarDecoration) {
+	position: relative;
+	z-index: 1;
+	width: 100%;
+	height: 100%;
+	border-radius: 999px;
+	object-fit: cover;
+}
+
+/* Config bot: ajustements. */
+.botSettingsDashboardModal {
+	grid-template-rows: auto minmax(0, 1fr);
+	width: min(1120px, calc(100vw - 32px));
+	height: min(900px, calc(100vh - 32px));
+	border-radius: 20px;
+	background:
+		radial-gradient(circle at 10% -10%, rgba(88, 101, 242, 0.24), transparent 34%),
+		radial-gradient(circle at 100% 0%, rgba(35, 165, 90, 0.16), transparent 30%),
+		#1e1f22;
+}
+
+.botDashboardHeader {
+	padding: 20px 24px;
+	background: rgba(17, 18, 20, 0.54);
+	backdrop-filter: blur(16px);
+}
+
+.botDashboardHeader h2 {
+	margin-top: 4px;
+	font-size: 1.42rem;
+}
+
+.botDashboardHeader span {
+	display: block;
+	margin-top: 6px;
+	color: var(--muted);
+	font-size: 13px;
+}
+
+.botDashboardScroll {
+	gap: 18px;
+	padding: 18px 22px 118px;
+	background: transparent;
+}
+
+.botDashboardHero {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) minmax(280px, 0.56fr);
+	gap: 16px;
+	padding: 18px;
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	border-radius: 18px;
+	background:
+		linear-gradient(135deg, rgba(88, 101, 242, 0.28), rgba(35, 165, 90, 0.1)),
+		rgba(49, 51, 56, 0.68);
+	box-shadow: 0 18px 50px rgba(0, 0, 0, 0.24);
+}
+
+.botDashboardHeroMain {
+	display: grid;
+	align-content: center;
+	gap: 8px;
+	min-width: 0;
+}
+
+.dashboardStatusPill {
+	width: fit-content;
+	padding: 6px 10px;
+	border: 1px solid rgba(255, 255, 255, 0.12);
+	border-radius: 999px;
+	background: rgba(17, 18, 20, 0.34);
+	color: rgba(255, 255, 255, 0.82);
+	font-size: 11px;
+	font-weight: 900;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+}
+
+.botDashboardHeroMain h3 {
+	font-size: clamp(1.35rem, 2vw, 2.05rem);
+	line-height: 1.05;
+}
+
+.botDashboardHeroMain p {
+	margin: 0;
+	color: rgba(255, 255, 255, 0.72);
+}
+
+.botDashboardHeroStats {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 10px;
+}
+
+.botDashboardHeroStats div {
+	display: grid;
+	align-content: center;
+	gap: 4px;
+	min-width: 0;
+	padding: 12px;
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	border-radius: 14px;
+	background: rgba(17, 18, 20, 0.32);
+}
+
+.botDashboardHeroStats strong {
+	overflow: hidden;
+	color: #fff;
+	font-size: 1rem;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.botDashboardHeroStats span {
+	color: var(--muted);
+	font-size: 11px;
+	font-weight: 800;
+}
+
+.botDashboardGrid {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) minmax(280px, 0.38fr);
+	gap: 18px;
+	align-items: start;
+}
+
+.botDashboardMainColumn,
+.botDashboardSideColumn,
+.dashboardCard,
+.dashboardMiniSection {
+	display: grid;
+	align-content: start;
+	gap: 14px;
+	min-width: 0;
+}
+
+.dashboardCard {
+	padding: 16px;
+	border: 1px solid rgba(255, 255, 255, 0.09);
+	border-radius: 18px;
+	background: rgba(49, 51, 56, 0.72);
+	box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
+}
+
+.dashboardCardHeader,
+.dashboardLabelRow {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	gap: 14px;
+}
+
+.dashboardCardHeader h3,
+.dashboardTruthCard h3 {
+	font-size: 1rem;
+}
+
+.dashboardCardHeader p,
+.dashboardLabelRow small {
+	margin: 5px 0 0;
+	color: var(--muted);
+	font-size: 12px;
+	line-height: 1.35;
+}
+
+.dashboardSwitch {
+	display: inline-flex;
+	align-items: center;
+	gap: 9px;
+	padding: 8px 10px;
+	border: 1px solid rgba(255, 255, 255, 0.09);
+	border-radius: 999px;
+	background: rgba(17, 18, 20, 0.28);
+	color: var(--text);
+	font-size: 12px;
+	font-weight: 900;
+	white-space: nowrap;
+}
+
+.dashboardSwitch input,
+.dashboardPreferenceRow input {
+	appearance: none;
+	position: relative;
+	width: 38px;
+	height: 22px;
+	border: 1px solid rgba(255, 255, 255, 0.14);
+	border-radius: 999px;
+	background: #1e1f22;
+	flex: 0 0 auto;
+}
+
+.dashboardSwitch input::before,
+.dashboardPreferenceRow input::before {
+	content: "";
+	position: absolute;
+	top: 3px;
+	left: 3px;
+	width: 14px;
+	height: 14px;
+	border-radius: 999px;
+	background: var(--muted);
+	transition: transform 160ms ease, background 160ms ease;
+}
+
+.dashboardSwitch input:checked,
+.dashboardPreferenceRow input:checked {
+	background: var(--accent);
+}
+
+.dashboardSwitch input:checked::before,
+.dashboardPreferenceRow input:checked::before {
+	transform: translateX(16px);
+	background: #fff;
+}
+
+.dashboardPresetRail {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(132px, 1fr));
+	gap: 8px;
+}
+
+.dashboardPresetRail button {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	min-height: 44px;
+	padding: 0 12px;
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	border-radius: 12px;
+	background: rgba(255, 255, 255, 0.045);
+	color: var(--text);
+	font-weight: 900;
+}
+
+.dashboardPresetRail button:hover,
+.dashboardPreferenceRow:hover {
+	background: rgba(255, 255, 255, 0.08);
+}
+
+.dashboardActivityTypes,
+.dashboardStreamSources {
+	grid-template-columns: repeat(auto-fit, minmax(112px, 1fr));
+}
+
+.dashboardFormGrid {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 12px;
+}
+
+.dashboardStreamBox {
+	display: grid;
+	gap: 12px;
+	padding: 14px;
+	border: 1px solid rgba(88, 101, 242, 0.22);
+	border-radius: 16px;
+	background: rgba(88, 101, 242, 0.08);
+}
+
+.dashboardPreferenceRow {
+	display: grid;
+	grid-template-columns: auto minmax(0, 1fr);
+	align-items: center;
+	gap: 12px;
+	padding: 12px;
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	border-radius: 14px;
+	background: rgba(255, 255, 255, 0.04);
+}
+
+.dashboardPreferenceRow span {
+	display: grid;
+	gap: 3px;
+}
+
+.dashboardPreferenceRow strong {
+	color: var(--text);
+}
+
+.dashboardPreferenceRow small {
+	color: var(--muted);
+	font-size: 12px;
+}
+
+.botDashboardSideColumn {
+	position: sticky;
+	top: 0;
+}
+
+.dashboardPreviewCard {
+	justify-items: start;
+	background:
+		linear-gradient(180deg, rgba(35, 165, 90, 0.12), transparent 40%),
+		rgba(49, 51, 56, 0.78);
+}
+
+.dashboardPreviewAvatar {
+	display: grid;
+	place-items: center;
+	width: 74px;
+	height: 74px;
+	border-radius: 24px;
+	background: linear-gradient(135deg, rgba(88, 101, 242, 0.95), rgba(35, 165, 90, 0.85));
+	font-size: 34px;
+	box-shadow: 0 18px 36px rgba(0, 0, 0, 0.32);
+}
+
+.dashboardPreviewCard strong {
+	font-size: 1rem;
+}
+
+.dashboardPreviewCard p {
+	margin: 0;
+	color: var(--text);
+	font-weight: 900;
+}
+
+.dashboardPreviewCard small,
+.dashboardPreviewCard em {
+	color: var(--muted);
+	font-size: 12px;
+	font-style: normal;
+	overflow-wrap: anywhere;
+}
+
+.dashboardTruthCard ul {
+	display: grid;
+	gap: 10px;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.dashboardTruthCard li {
+	position: relative;
+	padding-left: 18px;
+	color: var(--muted);
+	font-size: 12px;
+	line-height: 1.4;
+}
+
+.dashboardTruthCard li::before {
+	content: "";
+	position: absolute;
+	left: 0;
+	top: 0.55em;
+	width: 7px;
+	height: 7px;
+	border-radius: 999px;
+	background: var(--success);
+}
+
+@media (max-width: 860px) {
+
+	.botDashboardHero,
+	.botDashboardGrid {
+		grid-template-columns: 1fr;
+	}
+
+	.botDashboardHeroStats,
+	.dashboardFormGrid {
+		grid-template-columns: 1fr;
+	}
+
+	.botDashboardSideColumn {
+		position: static;
+	}
+}
+
+/* ---- apps/web/src/app/styles/embeds-parts/part-02.css ---- */
+@media (max-width: 620px) {
+	.botSettingsDashboardModal {
+		width: calc(100vw - 20px);
+		height: calc(100vh - 20px);
+		border-radius: 16px;
+	}
+
+	.botDashboardHeader,
+	.botDashboardScroll {
+		padding-left: 14px;
+		padding-right: 14px;
+	}
+
+	.dashboardCardHeader,
+	.dashboardLabelRow {
+		display: grid;
+	}
+
+	.dashboardSwitch {
+		justify-content: space-between;
+		width: 100%;
+	}
+}
+
+/* Config bot: lecture rapide. */
+.botSettingsDiscordModal {
+	grid-template-rows: auto minmax(0, 1fr);
+	width: min(1080px, calc(100vw - 32px));
+	height: min(880px, calc(100vh - 32px));
+	border-radius: 16px;
+	background: #313338;
+	box-shadow: 0 24px 80px rgba(0, 0, 0, 0.46);
+}
+
+.botDiscordHeader {
+	padding: 22px 28px 18px;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+	background: #313338;
+}
+
+.botDiscordHeader h2 {
+	margin: 0;
+	color: #f2f3f5;
+	font-size: 1.4rem;
+	font-weight: 700;
+}
+
+.botDiscordHeader span {
+	display: block;
+	max-width: 740px;
+	margin-top: 6px;
+	color: #b5bac1;
+	font-size: 13px;
+	line-height: 1.45;
+}
+
+.botDiscordScroll {
+	display: grid;
+	align-content: start;
+	gap: 14px;
+	overflow-y: auto;
+	padding: 22px;
+	background: transparent;
+}
+
+.discordSettingsBlock {
+	width: 100%;
+	max-width: 760px;
+	margin: 0 auto 14px;
+}
+
+.discordSettingsBlockHeader {
+	margin-bottom: 12px;
+}
+
+.discordSettingsBlockHeader h3 {
+	margin: 0;
+	color: #f2f3f5;
+	font-size: 1.22rem;
+	font-weight: 650;
+}
+
+.discordSettingsBlockHeader p {
+	margin: 6px 0 0;
+	color: #b5bac1;
+	font-size: 13px;
+	line-height: 1.45;
+}
+
+.discordSettingsPanel {
+	overflow: hidden;
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	border-radius: 18px;
+	background: rgba(255, 255, 255, 0.045);
+}
+
+.discordSettingsRow {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 18px;
+	min-height: 62px;
+	padding: 14px 16px;
+	border-top: 1px solid rgba(78, 80, 88, 0.58);
+}
+
+.discordSettingsRow:first-child {
+	border-top: 0;
+}
+
+.discordSettingsRowTop {
+	align-items: flex-start;
+}
+
+.discordSettingsRow div {
+	display: grid;
+	gap: 4px;
+	min-width: 0;
+}
+
+.discordSettingsRow strong {
+	color: #f2f3f5;
+	font-size: 15px;
+	font-weight: 650;
+}
+
+.discordSettingsRow span {
+	color: #b5bac1;
+	font-size: 12.5px;
+	line-height: 1.38;
+}
+
+.discordCompactRow {
+	align-items: center;
+}
+
+.discordCompactRow .discordMutedBadge {
+	width: fit-content;
+	margin-top: 2px;
+}
+
+.discordSettingsFormWrap {
+	overflow: hidden;
+	display: grid;
+	grid-template-rows: 0fr;
+	opacity: 0;
+	transform: translateY(-8px);
+	visibility: hidden;
+	pointer-events: none;
+	transition:
+		grid-template-rows 240ms ease,
+		opacity 180ms ease,
+		transform 220ms ease,
+		visibility 0s linear 240ms,
+		border-color 180ms ease;
+	border-top: 1px solid rgba(78, 80, 88, 0);
+}
+
+.discordSettingsFormWrap.isOpen {
+	grid-template-rows: 1fr;
+	opacity: 1;
+	transform: translateY(0);
+	visibility: visible;
+	pointer-events: auto;
+	transition:
+		grid-template-rows 260ms ease,
+		opacity 200ms ease,
+		transform 240ms ease,
+		visibility 0s linear,
+		border-color 180ms ease;
+	border-top-color: rgba(78, 80, 88, 0.58);
+}
+
+.discordSettingsForm {
+	min-height: 0;
+	display: grid;
+	gap: 16px;
+	padding: 16px;
+}
+
+.discordFormGrid {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 12px;
+}
+
+.discordActivityTypes,
+.discordStreamSources {
+	grid-template-columns: repeat(auto-fit, minmax(112px, 1fr));
+}
+
+.discordStreamSettings {
+	display: grid;
+	gap: 12px;
+	padding: 14px;
+	border: 1px solid rgba(88, 101, 242, 0.22);
+	border-radius: 10px;
+	background: rgba(88, 101, 242, 0.07);
+}
+
+
+.discordToggle {
+	width: auto;
+	min-width: 40px;
+	height: 22px;
+	padding: 0;
+	border: 0;
+	background: transparent;
+	cursor: pointer;
+	flex: 0 0 auto;
+	display: inline-grid;
+	grid-template-columns: auto;
+	align-items: center;
+	justify-content: end;
+}
+
+.discordToggle .serverRolePermissionToggle {
+	margin: 0;
+}
+
+.discordToggle:focus-visible {
+	outline: none;
+}
+
+.discordToggle:focus-visible .serverRolePermissionToggle {
+	box-shadow: 0 0 0 3px rgba(88, 101, 242, 0.25);
+}
+
+.discordCheckboxRow input {
+	appearance: none;
+	position: relative;
+	width: 40px;
+	height: 22px;
+	margin: 0;
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	border-radius: 999px;
+	background: rgba(255, 255, 255, 0.12);
+	cursor: pointer;
+	flex: 0 0 auto;
+	transition: background 0.16s ease, border-color 0.16s ease;
+}
+
+.discordCheckboxRow input::before {
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: 3px;
+	width: 16px;
+	height: 16px;
+	border-radius: 999px;
+	background: rgba(255, 255, 255, 0.72);
+	transform: translateY(-50%);
+	transition: transform 0.16s ease, background 0.16s ease;
+}
+
+.discordCheckboxRow input:checked {
+	background: rgba(88, 101, 242, 0.62);
+	border-color: rgba(139, 151, 255, 0.54);
+}
+
+.discordCheckboxRow input:checked::before {
+	background: #fff;
+	transform: translate(17px, -50%);
+}
+
+.discordSettingsBadge {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 34px;
+	height: 24px;
+	padding: 0 8px;
+	border-radius: 5px;
+	background: #23a55a;
+	color: #fff;
+	font-size: 13px;
+	font-style: normal;
+	font-weight: 950;
+	letter-spacing: 0.02em;
+}
+
+.discordMutedBadge {
+	display: inline-flex;
+	align-items: center;
+	min-height: 24px;
+	padding: 0 8px;
+	border-radius: 999px;
+	background: #3f4147;
+	color: #dbdee1;
+	font-size: 11px;
+	font-weight: 800;
+	white-space: nowrap;
+}
+
+.discordCheckboxRow {
+	cursor: pointer;
+}
+
+.discordCheckboxRow:hover {
+	background: rgba(255, 255, 255, 0.035);
+}
+
+@media (max-width: 760px) {
+	.botSettingsDiscordModal {
+		width: calc(100vw - 20px);
+		height: calc(100vh - 20px);
+	}
+
+	.botDiscordHeader,
+	.botDiscordScroll {
+		padding-left: 16px;
+		padding-right: 16px;
+	}
+
+	.discordSettingsBlock {
+		max-width: none;
+	}
+
+	.discordFormGrid {
+		grid-template-columns: 1fr;
+	}
+
+	.discordSettingsRow,
+	.discordSettingsRowTop {
+		align-items: stretch;
+		flex-direction: column;
+	}
+
+	.discordMutedBadge,
+	.discordSettingsBadge {
+		width: fit-content;
+	}
+
+	.discordToggle {
+		width: 40px;
+	}
+}
+
+/* Profil: avatar présence, identité fiche. */
+.userPanel {
+	position: relative;
+	grid-template-columns: auto minmax(0, 1fr) auto;
+}
+
+.userAvatarButton {
+	display: grid;
+	place-items: center;
+	width: 44px;
+	height: 44px;
+	padding: 4px;
+	border: 0;
+	border-radius: 12px;
+	background: transparent;
+	color: var(--text);
+	cursor: pointer;
+}
+
+.userAvatarButton:hover,
+.userAvatarButton:focus-visible {
+	background: rgba(255, 255, 255, 0.08);
+	outline: none;
+}
+
+.userIdentity {
+	grid-template-columns: minmax(0, 1fr);
+	min-height: 44px;
+	cursor: pointer;
+}
+
+.userPanel .presenceMenu {
+	left: 10px;
+	right: auto;
+	width: min(260px, calc(100vw - 32px));
+}
+
+/* Statut avatar façon Discord. */
+.memberProfileCustomStatusBubble {
+	position: absolute;
+	z-index: 6;
+	left: 144px;
+	right: 34px;
+	top: 194px;
+	margin: 0;
+}
+
+.memberProfileCustomStatusBubble.isEditableDiscord {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) auto;
+	align-items: center;
+	gap: 8px;
+	max-width: none;
+	min-height: 46px;
+	padding: 7px 8px;
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	border-radius: 18px;
+	background: #313338;
+	box-shadow: 0 10px 28px rgba(0, 0, 0, 0.26);
+}
+
+.memberProfileCustomStatusBubble.isEditableDiscord::before {
+	content: "";
+	position: absolute;
+	left: -10px;
+	top: 15px;
+	width: 18px;
+	height: 18px;
+	background: #313338;
+	clip-path: polygon(0 50%, 100% 0, 100% 100%);
+}
+
+
+.customStatusTextWrap {
+	position: relative;
+	z-index: 1;
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) auto;
+	align-items: center;
+	gap: 8px;
+	min-width: 0;
+	height: 36px;
+	padding: 0 10px;
+	border-radius: 10px;
+	background: #1e1f22;
+}
+
+/* ---- apps/web/src/app/styles/embeds-parts/part-03.css ---- */
+.customStatusTextInput {
+	min-width: 0;
+	height: 100%;
+	border: 0;
+	background: transparent;
+	color: #f2f3f5;
+	font-size: 14px;
+	font-weight: 500;
+}
+
+.customStatusTextInput::placeholder {
+	color: #b5bac1;
+	font-style: italic;
+}
+
+.customStatusTextInput:focus {
+	outline: none;
+}
+
+.customStatusTextWrap span {
+	font-size: 11px;
+	font-weight: 800;
+	color: #949ba4;
+}
+
+.customStatusClearButton {
+	position: relative;
+	z-index: 1;
+	display: grid;
+	place-items: center;
+	width: 28px;
+	height: 28px;
+	border: 0;
+	border-radius: 999px;
+	background: transparent;
+	color: #b5bac1;
+	font-size: 18px;
+	font-weight: 900;
+	cursor: pointer;
+}
+
+.customStatusClearButton:hover,
+.customStatusClearButton:focus-visible {
+	background: rgba(255, 255, 255, 0.08);
+	color: #fff;
+	outline: none;
+}
+
+.memberProfileCustomStatusBubble.isReadOnly {
+	display: inline-flex;
+	align-items: center;
+	max-width: none;
+	min-height: 42px;
+	padding: 10px 14px;
+	border-radius: 18px;
+	background: #313338;
+	box-shadow: 0 10px 28px rgba(0, 0, 0, 0.22);
+}
+
+.memberProfileCustomStatusBubble.isReadOnly::before {
+	content: "";
+	position: absolute;
+	left: -9px;
+	top: 13px;
+	width: 18px;
+	height: 18px;
+	background: #313338;
+	clip-path: polygon(0 50%, 100% 0, 100% 100%);
+}
+
+.memberProfileCustomStatusText {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	font-size: 14px;
+	font-weight: 600;
+	color: #dbdee1;
+}
+
+.memberProfileSaveBar {
+	position: sticky;
+	left: auto;
+	bottom: 12px;
+	z-index: 50;
+	width: min(560px, calc(100% - 36px));
+	margin: 18px auto 0;
+	transform: translateY(calc(100% + 32px));
+}
+
+.memberProfileSaveBar.isVisible {
+	transform: translateY(0);
+	opacity: 1;
+	pointer-events: auto;
+}
+
+@media (max-width: 720px) {
+	.memberProfileCustomStatusBubble {
+		position: relative;
+		left: auto;
+		right: auto;
+		top: auto;
+		margin: 8px 18px 0 118px;
+	}
+
+	.memberProfileCustomStatusBubble.isReadOnly {
+		max-width: calc(100% - 136px);
+	}
+}
+
+@media (max-width: 520px) {
+	.memberProfileCustomStatusBubble {
+		margin-left: 18px;
+		margin-right: 18px;
+	}
+
+	.memberProfileCustomStatusBubble.isReadOnly {
+		max-width: calc(100% - 36px);
+	}
+}
+
+.commandControlGrid {
+	display: grid;
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+	gap: 10px;
+}
+
+.commandControlCard,
+.commandDiagnosticPanel,
+.commandPermissionStrip {
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	background: rgba(255, 255, 255, 0.04);
+	border-radius: 14px;
+}
+
+.commandControlCard {
+	display: grid;
+	gap: 6px;
+	padding: 13px;
+	min-height: 116px;
+}
+
+.commandControlCard span,
+.commandDiagnosticItem span,
+.commandPermissionStrip strong {
+	color: var(--muted);
+	font-size: 11px;
+	font-weight: 900;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+}
+
+.commandControlCard strong {
+	font-size: 28px;
+	font-weight: 950;
+	line-height: 1;
+}
+
+.commandControlCard p,
+.commandDiagnosticItem p {
+	margin: 0;
+	color: var(--muted);
+	font-size: 12px;
+	line-height: 1.4;
+}
+
+.commandDiagnosticPanel {
+	display: grid;
+	gap: 12px;
+	padding: 14px;
+}
+
+.commandDiagnosticHeader {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	gap: 14px;
+}
+
+.commandDiagnosticHeader h3 {
+	margin: 0;
+	font-size: 17px;
+	letter-spacing: -0.02em;
+}
+
+.commandDiagnosticHeader>span {
+	width: max-content;
+	max-width: 260px;
+	padding: 6px 9px;
+	border-radius: 999px;
+	background: rgba(88, 101, 242, 0.12);
+	color: rgba(223, 226, 255, 0.95);
+	font-size: 11px;
+	font-weight: 900;
+}
+
+.commandDiagnosticGrid {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 10px;
+}
+
+.commandDiagnosticItem {
+	display: grid;
+	gap: 5px;
+	padding: 12px;
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	border-radius: 12px;
+	background: rgba(0, 0, 0, 0.16);
+}
+
+.commandDiagnosticItem strong {
+	font-size: 18px;
+	font-weight: 950;
+}
+
+.commandDiagnosticItem.is-good strong {
+	color: rgba(150, 255, 205, 0.96);
+}
+
+.commandDiagnosticItem.is-warn strong {
+	color: rgba(255, 210, 132, 0.96);
+}
+
+.commandDiagnosticItem.is-neutral strong {
+	color: rgba(218, 222, 255, 0.96);
+}
+
+.commandPermissionChecklist,
+.commandPermissionStrip {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 8px;
+}
+
+.commandPermissionChecklist span,
+.commandPermissionStrip span {
+	display: grid;
+	gap: 3px;
+	padding: 9px;
+	border-radius: 10px;
+	background: rgba(255, 255, 255, 0.045);
+	color: var(--text);
+	font-size: 12px;
+	font-weight: 750;
+}
+
+.commandPermissionStrip {
+	margin-top: 10px;
+	padding: 8px;
+}
+
+@media (max-width: 980px) {
+
+	.commandControlGrid,
+	.commandDiagnosticGrid,
+	.commandPermissionChecklist,
+	.commandPermissionStrip {
+		grid-template-columns: 1fr;
+	}
+
+	.commandDiagnosticHeader {
+		flex-direction: column;
+	}
+}
+
+.commandModalDesigner {
+	gap: 16px;
+}
+
+.commandModalSetupGrid {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 12px;
+}
+
+.commandModalResponseHeader {
+	display: flex;
+	align-items: flex-end;
+	justify-content: space-between;
+	gap: 12px;
+	padding: 12px 14px;
+	border: 1px solid rgba(255, 255, 255, 0.075);
+	border-radius: 16px;
+	background: rgba(255, 255, 255, 0.035);
+}
+
+.commandModalResponseHeader strong {
+	display: block;
+	font-size: 14px;
+	font-weight: 950;
+}
+
+.commandModalResponseHeader small,
+.commandModalResponseHeader span {
+	color: var(--muted);
+	font-size: 12px;
+	font-weight: 850;
+}
+
+.commandModalResponseHeader code {
+	color: #dbdee1;
+	font-size: 12px;
+}
+
+.commandModalResponseGrid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+	gap: 12px;
+}
+
+.commandModalInlineList {
+	display: grid;
+	gap: 14px;
+}
+
+.commandModalInlineCard {
+	display: grid;
+	gap: 12px;
+	padding: 16px;
+	border: 1px solid rgba(255, 255, 255, 0.085);
+	border-radius: 20px;
+	background: rgba(255, 255, 255, 0.045);
+}
+
+.commandModalInlineCard>header {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	gap: 12px;
+}
+
+.commandModalInlineCard>header div {
+	display: grid;
+	gap: 3px;
+}
+
+.commandModalInlineCard>header span {
+	color: var(--muted);
+	font-size: 11px;
+	font-weight: 950;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+}
+
+.commandModalInlineCard>header strong {
+	font-size: 15px;
+	font-weight: 950;
+}
+
+.commandModalInlineCard .dangerButton,
+.commandModalAddChoices button {
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	border-radius: 999px;
+	background: rgba(255, 255, 255, 0.06);
+	color: var(--text);
+	padding: 8px 12px;
+	font: inherit;
+	font-size: 12px;
+	font-weight: 950;
+	cursor: pointer;
+}
+
+.commandModalInlineCard .dangerButton {
+	border-color: rgba(255, 104, 116, 0.28);
+	background: rgba(255, 104, 116, 0.12);
+	color: #ffb4ba;
+}
+
+.commandModalAddChoices {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 8px;
+	margin-top: 4px;
+}
+
+.commandModalAddChoices button:hover {
+	border-color: rgba(88, 101, 242, 0.6);
+	background: rgba(88, 101, 242, 0.18);
+}
+
+.commandModalResponseCard,
+.commandModalAddCard {
+	min-height: 132px;
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	border-radius: 18px;
+	background: rgba(255, 255, 255, 0.045);
+	color: var(--text);
+	padding: 14px;
+	text-align: left;
+}
+
+.commandModalResponseCard {
+	display: grid;
+	align-content: start;
+	gap: 8px;
+	font: inherit;
+	cursor: pointer;
+}
+
+.commandModalResponseCard:hover {
+	border-color: rgba(88, 101, 242, 0.55);
+	background: rgba(88, 101, 242, 0.12);
+}
+
+.commandModalResponseCard span {
+	width: max-content;
+	border-radius: 999px;
+	background: rgba(88, 101, 242, 0.18);
+	color: #cdd2ff;
+	padding: 4px 8px;
+	font-size: 11px;
+	font-weight: 950;
+	text-transform: uppercase;
+}
+
+.commandModalResponseCard strong {
+	font-size: 15px;
+	font-weight: 950;
+}
+
+/* ---- apps/web/src/app/styles/embeds-parts/part-04.css ---- */
+.commandModalResponseCard small {
+	color: var(--muted);
+	font-size: 12px;
+	font-weight: 800;
+	line-height: 1.35;
+	display: -webkit-box;
+	-webkit-line-clamp: 3;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+}
+
+.commandModalAddCard {
+	display: grid;
+	place-items: center;
+	gap: 8px;
+	border-style: dashed;
+	background: rgba(0, 0, 0, 0.12);
+	text-align: center;
+	font: inherit;
+}
+
+.commandModalAddCard:hover {
+	border-color: rgba(88, 101, 242, 0.58);
+	background: rgba(88, 101, 242, 0.12);
+}
+
+.commandModalAddCard>strong {
+	display: grid;
+	place-items: center;
+	width: 46px;
+	height: 46px;
+	border-radius: 18px;
+	background: rgba(88, 101, 242, 0.18);
+	color: #fff;
+	font-size: 32px;
+	line-height: 1;
+}
+
+.commandModalAddCard>span {
+	font-size: 13px;
+	font-weight: 950;
+}
+
+.commandModalAddCard>small {
+	color: var(--muted);
+	font-size: 11px;
+	font-weight: 850;
+}
+
+.commandModalResponseTypeSwitch button,
+.commandModalResponseEditor header button,
+.commandModalResponseCreateModal header button,
+.commandModalResponseEditor footer button {
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	border-radius: 999px;
+	background: rgba(255, 255, 255, 0.06);
+	color: var(--text);
+	padding: 8px 12px;
+	font: inherit;
+	font-size: 12px;
+	font-weight: 950;
+	cursor: pointer;
+}
+
+.commandModalResponseTypeSwitch button.isSelected,
+.commandModalResponseEditor footer button:last-child {
+	border-color: rgba(88, 101, 242, 0.6);
+	background: #5865f2;
+	color: #fff;
+}
+
+.commandModalResponseEditorBackdrop {
+	position: fixed;
+	inset: 0;
+	z-index: 120;
+	display: grid;
+	place-items: center;
+	padding: 24px;
+	background: rgba(0, 0, 0, 0.62);
+	backdrop-filter: blur(10px);
+}
+
+
+.commandModalResponseCreateModal {
+	display: grid;
+	gap: 16px;
+	width: min(560px, 100%);
+	padding: 18px;
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	border-radius: 22px;
+	background: #1e1f22;
+	box-shadow: 0 28px 90px rgba(0, 0, 0, 0.45);
+}
+
+.commandModalResponseCreateModal header {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	gap: 14px;
+}
+
+.commandModalResponseCreateModal h3 {
+	margin: 0;
+	font-size: 20px;
+}
+
+.commandModalResponseCreateModal header span {
+	display: block;
+	margin-top: 4px;
+	color: var(--muted);
+	font-size: 13px;
+	font-weight: 750;
+}
+
+.commandModalCreateChoices {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 12px;
+}
+
+.commandModalCreateChoices button {
+	display: grid;
+	align-content: start;
+	gap: 9px;
+	min-height: 150px;
+	padding: 16px;
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	border-radius: 18px;
+	background: rgba(255, 255, 255, 0.045);
+	color: var(--text);
+	text-align: left;
+	font: inherit;
+	cursor: pointer;
+}
+
+.commandModalCreateChoices button:hover {
+	border-color: rgba(88, 101, 242, 0.58);
+	background: rgba(88, 101, 242, 0.12);
+}
+
+.commandModalCreateChoices strong {
+	display: grid;
+	place-items: center;
+	width: 44px;
+	height: 44px;
+	border-radius: 16px;
+	background: rgba(88, 101, 242, 0.2);
+	font-size: 18px;
+	font-weight: 950;
+}
+
+.commandModalCreateChoices span {
+	font-size: 15px;
+	font-weight: 950;
+}
+
+.commandModalCreateChoices small {
+	color: var(--muted);
+	font-size: 12px;
+	font-weight: 800;
+	line-height: 1.4;
+}
+
+.commandModalCreateChoices code {
+	color: #dbdee1;
+}
+
+.commandModalResponseEditor {
+	display: grid;
+	grid-template-rows: auto auto minmax(0, 1fr) auto;
+	gap: 14px;
+	width: min(860px, 100%);
+	max-height: min(760px, 92vh);
+	overflow: auto;
+	padding: 18px;
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	border-radius: 22px;
+	background: #1e1f22;
+	box-shadow: 0 28px 90px rgba(0, 0, 0, 0.45);
+}
+
+.commandModalResponseEditor header,
+.commandModalResponseEditor footer {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+}
+
+.commandModalResponseEditor h3 {
+	margin: 0;
+	font-size: 20px;
+}
+
+.commandModalResponseTypeSwitch {
+	display: flex;
+	gap: 8px;
+	padding: 8px;
+	border: 1px solid rgba(255, 255, 255, 0.075);
+	border-radius: 999px;
+	background: rgba(0, 0, 0, 0.18);
+	width: max-content;
+}
+
+.commandModalEmbedEditor {
+	display: grid;
+	gap: 12px;
+	padding: 14px;
+	border: 1px solid rgba(255, 255, 255, 0.075);
+	border-radius: 18px;
+	background: rgba(255, 255, 255, 0.035);
+}
+
+.commandModalResponseEditor .dangerButton {
+	border-color: rgba(255, 104, 116, 0.28);
+	background: rgba(255, 104, 116, 0.12);
+	color: #ffb4ba;
+}
+
+@media (max-width: 760px) {
+	.commandModalSetupGrid {
+		grid-template-columns: 1fr;
+	}
+
+	.commandModalResponseEditorBackdrop {
+		padding: 12px;
+	}
+
+	.commandModalCreateChoices {
+		grid-template-columns: 1fr;
+	}
+}
+
+/* Command Studio: actions allégées. */
+.slashCommandActions.isCommandCardActions {
+	margin-top: 16px;
+	padding-top: 10px;
+	border-top: 1px solid rgba(255, 255, 255, 0.06);
+	justify-content: flex-end;
+}
+
+.slashCommandActions.isCommandCardActions .iconOnlyButton {
+	width: 34px;
+	height: 34px;
+	padding: 0;
+	border-radius: 12px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.slashCommandActions.isCommandCardActions .iconOnlyButton svg {
+	width: 17px;
+	height: 17px;
+	fill: currentColor;
+	pointer-events: none;
+}
+
+.commandStudioContextPill {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	margin-top: 10px;
+	width: fit-content;
+	padding: 7px 11px;
+	border: 1px solid rgba(255, 255, 255, 0.11);
+	border-radius: 999px;
+	background: rgba(255, 255, 255, 0.06);
+	color: var(--text);
+	font-size: 12px;
+	font-weight: 850;
+	letter-spacing: 0.01em;
+}
+
+.commandStudioContextPill::before {
+	content: "/";
+	display: inline-grid;
+	place-items: center;
+	width: 18px;
+	height: 18px;
+	border-radius: 999px;
+	background: rgba(88, 101, 242, 0.2);
+	color: #fff;
+	font-weight: 950;
+}
+
+.commandStudioContextPill.isHome::before {
+	background: rgba(39, 214, 163, 0.2);
+}
+
+.commandStudioContextPill.isMember::before {
+	content: "@";
+	background: rgba(255, 190, 106, 0.18);
+}
+
+.botHealthTopbarButton {
+	display: grid;
+	place-items: center;
+	position: relative;
+	background:
+		radial-gradient(circle at 35% 20%, rgba(68, 255, 192, 0.22), transparent 42%),
+		rgba(255, 255, 255, 0.055);
+}
+
+.botHealthTopbarButton.isActive,
+.botHealthTopbarButton:hover {
+	background:
+		radial-gradient(circle at 35% 20%, rgba(68, 255, 192, 0.32), transparent 45%),
+		rgba(35, 165, 90, 0.2);
+}
+
+.botHealthGlyph {
+	width: 23px;
+	height: 23px;
+	fill: none;
+	stroke: currentColor;
+	stroke-width: 1.9;
+	stroke-linejoin: round;
+	stroke-linecap: round;
+	filter: drop-shadow(0 0 9px rgba(68, 255, 192, 0.35));
+}
+
+.botHealthGlyph path:last-child {
+	fill: currentColor;
+	stroke: none;
+}
+
+.botDashboardOverlay {
+	position: fixed;
+	inset: 0;
+	z-index: 88;
+	display: grid;
+	place-items: center;
+	padding: 22px;
+	background:
+		radial-gradient(circle at 20% 15%, rgba(35, 165, 90, 0.18), transparent 35%),
+		radial-gradient(circle at 80% 20%, rgba(88, 101, 242, 0.2), transparent 38%),
+		rgba(3, 5, 12, 0.66);
+	backdrop-filter: blur(18px) saturate(1.15);
+	animation: botDashboardOverlayIn 210ms ease both;
+}
+
+.botDashboardShell {
+	width: min(1480px, calc(100vw - 34px));
+	height: min(920px, calc(100vh - 34px));
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+	border: 1px solid rgba(255, 255, 255, 0.12);
+	border-radius: 32px;
+	background:
+		linear-gradient(135deg, rgba(22, 26, 40, 0.96), rgba(10, 12, 20, 0.94)),
+		radial-gradient(circle at 5% 0%, rgba(35, 165, 90, 0.22), transparent 32%),
+		radial-gradient(circle at 95% 0%, rgba(88, 101, 242, 0.22), transparent 38%);
+	box-shadow:
+		0 46px 130px rgba(0, 0, 0, 0.62),
+		inset 0 0 0 1px rgba(255, 255, 255, 0.035);
+	color: var(--text);
+	animation: botDashboardShellIn 300ms cubic-bezier(.16, 1, .3, 1) both;
+}
+
+.botDashboardHeader {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 20px;
+	padding: 24px 26px 18px;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+	background:
+		linear-gradient(90deg, rgba(255, 255, 255, 0.04), transparent),
+		rgba(255, 255, 255, 0.018);
+}
+
+.botDashboardTitleBlock {
+	display: flex;
+	align-items: center;
+	gap: 16px;
+	min-width: 0;
+}
+
+.botDashboardTitleBlock h2 {
+	margin: 0;
+	font-size: clamp(1.55rem, 2.6vw, 2.25rem);
+	letter-spacing: -0.04em;
+}
+
+.botDashboardTitleBlock p {
+	margin: 4px 0 0;
+	color: var(--muted);
+}
+
+.botDashboardPulse {
+	width: 58px;
+	height: 58px;
+	display: grid;
+	place-items: center;
+	border-radius: 20px;
+	background:
+		radial-gradient(circle at center, rgba(68, 255, 192, 0.22), transparent 52%),
+		rgba(35, 165, 90, 0.13);
+	box-shadow: inset 0 0 0 1px rgba(68, 255, 192, 0.24), 0 0 30px rgba(35, 165, 90, 0.24);
+}
+
+.botDashboardPulse span {
+	width: 26px;
+	height: 26px;
+	border-radius: 50%;
+	background: #23a55a;
+	box-shadow: 0 0 0 0 rgba(68, 255, 192, 0.55);
+	animation: botDashboardPulse 1.7s ease-out infinite;
+}
+
+.botDashboardHeaderActions {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+}
+
+.botDashboardHealthPill {
+	padding: 10px 14px;
+	border-radius: 999px;
+	font-weight: 900;
+	font-size: 0.82rem;
+	letter-spacing: 0.02em;
+	text-transform: uppercase;
+	border: 1px solid rgba(255, 255, 255, 0.12);
+	background: rgba(255, 255, 255, 0.06);
+}
+
+/* ---- apps/web/src/app/styles/embeds-parts/part-05.css ---- */
+.botDashboardHealthPill.isHealthy {
+	color: #59f2a2;
+	background: rgba(35, 165, 90, 0.14);
+	border-color: rgba(89, 242, 162, 0.24);
+}
+
+.botDashboardHealthPill.isWarning {
+	color: #ffd166;
+	background: rgba(255, 209, 102, 0.12);
+	border-color: rgba(255, 209, 102, 0.24);
+}
+
+.botDashboardHealthPill.isCritical {
+	color: #ff8b8b;
+	background: rgba(237, 66, 69, 0.14);
+	border-color: rgba(237, 66, 69, 0.24);
+}
+
+.botDashboardScroll {
+	overflow: auto;
+	padding: 22px 24px 28px;
+}
+
+.botDashboardHeroGrid {
+	display: grid;
+	grid-template-columns: repeat(6, minmax(0, 1fr));
+	gap: 14px;
+	margin-bottom: 16px;
+}
+
+.botDashboardHeroCard,
+.botDashboardPanel,
+.botDashboardLogConsole {
+	position: relative;
+	overflow: hidden;
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	border-radius: 24px;
+	background:
+		linear-gradient(180deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.026)),
+		rgba(17, 20, 31, 0.82);
+	box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.025), 0 16px 34px rgba(0, 0, 0, 0.22);
+}
+
+.botDashboardHeroCard {
+	min-height: 132px;
+	padding: 18px;
+	animation: botDashboardCardIn 360ms cubic-bezier(.16, 1, .3, 1) both;
+}
+
+.botDashboardHeroCard::after,
+.botDashboardPanel::after {
+	content: "";
+	position: absolute;
+	inset: -40% -40% auto auto;
+	width: 140px;
+	height: 140px;
+	border-radius: 50%;
+	background: rgba(88, 101, 242, 0.12);
+	filter: blur(10px);
+	pointer-events: none;
+}
+
+.botDashboardHeroCard.isConnection::after {
+	background: rgba(35, 165, 90, 0.16);
+}
+
+.botDashboardHeroCard span,
+.botDashboardPanelHeader span {
+	display: block;
+	color: var(--muted);
+	font-size: 0.74rem;
+	font-weight: 900;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+}
+
+.botDashboardHeroCard strong {
+	display: block;
+	margin-top: 12px;
+	font-size: clamp(1.45rem, 2.2vw, 2.05rem);
+	letter-spacing: -0.05em;
+}
+
+.botDashboardHeroCard p {
+	margin: 10px 0 0;
+	color: var(--muted);
+	font-size: 0.86rem;
+	line-height: 1.35;
+}
+
+.botDashboardMatrix {
+	display: grid;
+	grid-template-columns: 1.55fr 0.9fr 0.9fr;
+	gap: 16px;
+	margin-bottom: 16px;
+}
+
+.botDashboardMatrix.isLower {
+	grid-template-columns: 1.35fr 0.82fr 0.82fr;
+}
+
+.botDashboardPanel,
+.botDashboardLogConsole {
+	padding: 18px;
+	min-height: 320px;
+	animation: botDashboardCardIn 420ms cubic-bezier(.16, 1, .3, 1) both;
+}
+
+.botDashboardPanel.isWide {
+	min-height: 320px;
+}
+
+.botDashboardPanelHeader {
+	position: relative;
+	z-index: 1;
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	gap: 14px;
+	margin-bottom: 16px;
+}
+
+.botDashboardPanelHeader h3 {
+	margin: 4px 0 0;
+	font-size: 1.1rem;
+	letter-spacing: -0.02em;
+}
+
+.botDashboardPanelHeader strong {
+	padding: 6px 10px;
+	border-radius: 999px;
+	background: rgba(255, 255, 255, 0.075);
+	font-size: 0.8rem;
+	white-space: nowrap;
+}
+
+.botDashboardBarChart {
+	height: 220px;
+	display: grid;
+	grid-template-columns: repeat(12, minmax(0, 1fr));
+	align-items: end;
+	gap: 10px;
+	padding: 8px 2px 0;
+}
+
+.botDashboardBarColumn {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-end;
+	gap: 9px;
+}
+
+.botDashboardBarColumn span {
+	width: 100%;
+	min-height: 8px;
+	border-radius: 999px 999px 8px 8px;
+	background: linear-gradient(180deg, #59f2a2, #5865f2);
+	box-shadow: 0 0 18px rgba(88, 101, 242, 0.3);
+	animation: botDashboardBarGrow 620ms cubic-bezier(.16, 1, .3, 1) both;
+}
+
+.botDashboardBarColumn small {
+	color: var(--muted);
+	font-size: 0.69rem;
+}
+
+.botDashboardLineChart {
+	width: 100%;
+	height: 190px;
+	overflow: visible;
+}
+
+.botDashboardGridLine {
+	stroke: rgba(255, 255, 255, 0.08);
+	stroke-width: 0.7;
+}
+
+.botDashboardLineArea {
+	fill: rgba(88, 101, 242, 0.15);
+}
+
+.botDashboardLinePath {
+	fill: none;
+	stroke: #59f2a2;
+	stroke-width: 2.4;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+	filter: drop-shadow(0 0 7px rgba(89, 242, 162, 0.45));
+	stroke-dasharray: 160;
+	stroke-dashoffset: 160;
+	animation: botDashboardLineDraw 900ms ease forwards;
+}
+
+.botDashboardTinyStats {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	margin-top: 10px;
+}
+
+.botDashboardTinyStats span {
+	padding: 7px 10px;
+	border-radius: 999px;
+	background: rgba(255, 255, 255, 0.06);
+	color: var(--muted);
+	font-size: 0.76rem;
+	font-weight: 800;
+}
+
+.botDashboardHorizontalBars {
+	display: grid;
+	gap: 14px;
+	margin-top: 22px;
+}
+
+.botDashboardHorizontalBars div {
+	display: grid;
+	grid-template-columns: 82px 1fr 30px;
+	align-items: center;
+	gap: 10px;
+}
+
+.botDashboardHorizontalBars label,
+.botDashboardHorizontalBars b {
+	font-size: 0.78rem;
+	color: var(--muted);
+}
+
+.botDashboardHorizontalBars span,
+.botDashboardGuildRow>span {
+	height: 10px;
+	border-radius: 999px;
+	background: rgba(255, 255, 255, 0.07);
+	overflow: hidden;
+}
+
+.botDashboardHorizontalBars i,
+.botDashboardGuildRow i {
+	display: block;
+	height: 100%;
+	border-radius: inherit;
+	background: linear-gradient(90deg, #5865f2, #59f2a2);
+	animation: botDashboardWidthGrow 620ms ease both;
+}
+
+.botDashboardGuildTable {
+	display: grid;
+	gap: 10px;
+}
+
+.botDashboardGuildRow {
+	display: grid;
+	grid-template-columns: minmax(160px, 1.1fr) minmax(140px, 1fr) 54px 78px;
+	align-items: center;
+	gap: 12px;
+	padding: 10px 12px;
+	border: 1px solid rgba(255, 255, 255, 0.07);
+	border-radius: 16px;
+	background: rgba(255, 255, 255, 0.035);
+}
+
+.botDashboardGuildRow strong,
+.botDashboardPresenceCard strong {
+	display: block;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.botDashboardGuildRow small {
+	display: block;
+	margin-top: 3px;
+	color: var(--muted);
+	font-size: 0.76rem;
+}
+
+.botDashboardGuildRow b {
+	font-size: 0.85rem;
+}
+
+.botDashboardGuildRow em {
+	padding: 5px 8px;
+	border-radius: 999px;
+	font-style: normal;
+	font-size: 0.72rem;
+	font-weight: 900;
+	text-align: center;
+}
+
+.botDashboardGuildRow em.isOk {
+	color: #59f2a2;
+	background: rgba(35, 165, 90, 0.14);
+}
+
+.botDashboardGuildRow em.isWarn {
+	color: #ffd166;
+	background: rgba(255, 209, 102, 0.12);
+}
+
+.botDashboardAlerts {
+	display: grid;
+	gap: 10px;
+}
+
+.botDashboardAlerts div {
+	display: flex;
+	gap: 10px;
+	align-items: flex-start;
+	padding: 11px;
+	border-radius: 16px;
+	background: rgba(255, 209, 102, 0.09);
+	border: 1px solid rgba(255, 209, 102, 0.16);
+}
+
+.botDashboardAlerts div.isQuiet {
+	background: rgba(35, 165, 90, 0.11);
+	border-color: rgba(89, 242, 162, 0.18);
+}
+
+.botDashboardAlerts span {
+	width: 22px;
+	height: 22px;
+	display: grid;
+	place-items: center;
+	border-radius: 50%;
+	background: rgba(255, 255, 255, 0.12);
+	font-weight: 950;
+}
+
+.botDashboardAlerts p {
+	margin: 0;
+	color: var(--text);
+	font-size: 0.84rem;
+	line-height: 1.35;
+}
+
+.botDashboardPresenceCard {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	padding: 14px;
+	border-radius: 18px;
+	background: rgba(0, 0, 0, 0.18);
+	border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.botDashboardAvatar {
+	width: 54px;
+	height: 54px;
+	border-radius: 18px;
+	overflow: hidden;
+	display: grid;
+	place-items: center;
+	background: linear-gradient(135deg, #5865f2, #23a55a);
+	font-weight: 950;
+}

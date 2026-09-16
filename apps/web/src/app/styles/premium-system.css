@@ -1,0 +1,1101 @@
+/* Consolidated from premium-system-parts/*.css. Keep domain styles in this file. */
+
+/* ---- apps/web/src/app/styles/premium-system-parts/part-01.css ---- */
+/*
+ * BotDeck Premium System
+ * Couche de normalisation finale : surfaces, boutons, badges, formulaires,
+ * modals et previews Discord isolées.
+ */
+
+/* Base */
+html,
+body {
+	background: var(--bd-bg-0) !important;
+	color: var(--bd-text) !important;
+}
+
+body {
+	background:
+		linear-gradient(rgba(255, 255, 255, 0.016) 1px, transparent 1px),
+		linear-gradient(90deg, rgba(255, 255, 255, 0.012) 1px, transparent 1px),
+		radial-gradient(circle at 16% 10%, rgba(53, 242, 196, 0.08), transparent 32%),
+		radial-gradient(circle at 86% 6%, rgba(139, 124, 255, 0.075), transparent 34%),
+		linear-gradient(180deg, var(--bd-bg-1), var(--bd-bg-0) 54%, #030609) !important;
+	background-size: 48px 48px, 48px 48px, auto, auto, auto !important;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+}
+
+::selection {
+	background: rgba(53, 242, 196, 0.28);
+	color: var(--bd-text);
+}
+
+:focus-visible {
+	outline: 2px solid rgba(53, 242, 196, 0.72) !important;
+	outline-offset: 3px !important;
+}
+
+/* Scrollbars */
+* {
+	scrollbar-color: rgba(145, 162, 173, 0.42) transparent;
+	scrollbar-width: thin;
+}
+
+*::-webkit-scrollbar {
+	width: 10px;
+	height: 10px;
+}
+
+*::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+	background: rgba(145, 162, 173, 0.24);
+	border: 3px solid transparent;
+	border-radius: var(--bd-radius-pill);
+	background-clip: padding-box;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+	background: rgba(145, 162, 173, 0.42);
+	background-clip: padding-box;
+}
+
+/* Shells */
+.clientShell,
+.discordShell,
+.launchShell,
+.botPickerShell,
+.slashStudioPage,
+.botOpsPage,
+.botDashboardOverlay,
+.serverSettingsOverlay {
+	color: var(--bd-text) !important;
+	background:
+		radial-gradient(circle at 16% 12%, rgba(53, 242, 196, 0.09), transparent 30%),
+		radial-gradient(circle at 88% 10%, rgba(139, 124, 255, 0.085), transparent 34%),
+		linear-gradient(180deg, var(--bd-bg-1), var(--bd-bg-0)) !important;
+}
+
+/* Surface system */
+:where(
+	.botdeckHomeHero,
+	.botdeckHomeCard,
+	.homeMemberCard,
+	.serverInfoHero,
+	.serverInfoPanel,
+	.serverSettingsPanel,
+	.serverSettingsCard,
+	.serverSettingsFormSurface,
+	.serverAutomationCard,
+	.serverAutomationPanel,
+	.serverAutomationModal,
+	.settingsSection,
+	.settingsCard,
+	.botModal,
+	.profileModal,
+	.profileModalCard,
+	.externalLinkModal,
+	.memberProfileCard,
+	.memberProfileSection,
+	.botDashboardHero,
+	.botDashboardHeroCard,
+	.botDashboardPanel,
+	.botDashboardPresenceCard,
+	.botOpsPanel,
+	.botOpsStatusCard,
+	.botOpsStatCard,
+	.botOpsIssueCard,
+	.botOpsEventsPanel,
+	.botOpsGuildPanel,
+	.botOpsIncidentsPanel,
+	.botOpsCommandsPanel,
+	.botOpsDebuggerPanel,
+	.botOpsAlertsPanel,
+	.commandStudioPane,
+	.commandWorkflowCanvas,
+	.commandComposerCard,
+	.commandComposerCreatorCard,
+	.commandComposerConfidenceCard,
+	.commandComposerHero,
+	.commandComposerMain,
+	.commandControlCard,
+	.commandDiagnosticPanel,
+	.commandModalInlineCard,
+	.commandModalAddCard,
+	.commandModalResponseCard,
+	.commandFlowShell,
+	.commandFlowCard,
+	.commandConfirmCard,
+	.slashCommandCard,
+	.slashCommandOptionCard,
+	.slashCommandComparePanel,
+	.slashCommandDiffCard,
+	.slashCommandJsonPanel,
+	.slashCommandsPanelCard,
+	.permissionPanelCard,
+	.forumPostCard,
+	.forumChannelHero,
+	.forumCreatePanel,
+	.presenceDesignerHero,
+	.presencePreviewCard,
+	.discordSearchPanel,
+	.discordSearchResultCard,
+	.discordSearchChannelGroup,
+	.searchPanel,
+	.attachmentCard,
+	.voiceMoveList,
+	.reactionPicker,
+	.botTokenModal,
+	.botForm
+) {
+	background:
+		linear-gradient(145deg, rgba(255, 255, 255, 0.032), transparent 48%),
+		linear-gradient(180deg, rgba(17, 29, 41, 0.82), rgba(9, 15, 21, 0.82)) !important;
+	border: 1px solid var(--bd-border-soft) !important;
+	border-radius: var(--bd-radius-lg) !important;
+	box-shadow: var(--bd-shadow-md), var(--bd-inner-line) !important;
+	color: var(--bd-text) !important;
+}
+
+/* Hero and modal radii */
+:where(
+	.botdeckHomeHero,
+	.serverInfoHero,
+	.botDashboardHero,
+	.commandComposerHero,
+	.presenceDesignerHero,
+	.forumChannelHero,
+	.botModal,
+	.profileModal,
+	.externalLinkModal,
+	.botTokenModal,
+	.serverAutomationModal
+) {
+	border-radius: var(--bd-radius-xl) !important;
+}
+
+/* Child surfaces should not create dirty color stacking */
+:where(
+	.botModalHeader,
+	.settingsHeader,
+	.serverSettingsHeader,
+	.serverAutomationModalHeader,
+	.discordSettingsBlockHeader,
+	.serverAutomationEmbedControls,
+	.serverAutomationSettingControls,
+	.commandLogsEmbedControls,
+	.commandLogsEmbedMediaInputs,
+	.commandEmbedPageTabs,
+	.commandFlowNote,
+	.commandWelcomeVariables,
+	.commandVariableList,
+	.commandVariableGroup,
+	.serverLogEventEditor,
+	.serverLogEventTabs,
+	.serverRoleAutomationToolbar,
+	.serverRoleAutomationList,
+	.commandModalFields,
+	.commandModalFieldControls,
+	.commandModalActions,
+	.commandComposerTemplateShelf,
+	.commandComposerTemplateGrid,
+	.commandStudioPaneHeader
+) {
+	background: transparent !important;
+	box-shadow: none !important;
+}
+
+/* Sections inside modals/cards */
+:where(
+	.serverAutomationCard,
+	.serverSettingsCard,
+	.settingsCard,
+	.commandFlowCard,
+	.commandComposerCard,
+	.slashCommandCard,
+	.botOpsStatusCard,
+	.botOpsStatCard,
+	.discordSearchResultCard,
+	.memberProfileSection
+) {
+	border-color: var(--bd-border-soft) !important;
+}
+
+/* Typography */
+:where(h1, h2, h3, h4, h5, h6) {
+	color: var(--bd-text) !important;
+	letter-spacing: -0.018em;
+}
+
+:where(p, small, label, span) {
+	border-color: var(--bd-border-soft);
+}
+
+:where(p, small, .muted, .helpText, .serverSettingsHelp, .commandFlowDescription) {
+	color: var(--bd-muted) !important;
+}
+
+:where(strong) {
+	color: var(--bd-text-soft);
+	font-weight: 700;
+	background: transparent;
+}
+
+/* Forms */
+:where(input, textarea, select) {
+	background: rgba(255, 255, 255, 0.052) !important;
+	border: 1px solid var(--bd-border-soft) !important;
+	border-radius: var(--bd-radius-md) !important;
+	color: var(--bd-text) !important;
+	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.025) !important;
+	transition:
+		border-color 150ms ease,
+		background 150ms ease,
+		box-shadow 150ms ease,
+		transform 150ms ease;
+}
+
+:where(input, textarea, select):hover {
+	background: rgba(255, 255, 255, 0.066) !important;
+	border-color: var(--bd-border) !important;
+}
+
+:where(input, textarea, select):focus {
+	background: rgba(255, 255, 255, 0.078) !important;
+	border-color: var(--bd-accent-border) !important;
+	box-shadow:
+		0 0 0 3px rgba(53, 242, 196, 0.10),
+		inset 0 1px 0 rgba(255, 255, 255, 0.03) !important;
+}
+
+:where(input, textarea, select)::placeholder {
+	color: rgba(145, 162, 173, 0.74) !important;
+}
+
+:where(select option, select optgroup) {
+	background: #0d151e !important;
+	color: var(--bd-text) !important;
+}
+
+:where(select option:checked) {
+	background: rgba(53, 242, 196, 0.22) !important;
+	color: var(--bd-text) !important;
+}
+
+:where(select option:disabled) {
+	color: var(--bd-muted-2) !important;
+}
+
+/* Buttons */
+:where(button, .primary, .secondary, .danger, .ghostButton, .iconButton) {
+	border-radius: var(--bd-radius-md);
+	transition:
+		background 150ms ease,
+		border-color 150ms ease,
+		color 150ms ease,
+		transform 150ms ease,
+		box-shadow 150ms ease;
+}
+
+:where(button:not(:disabled)):active {
+	transform: translateY(1px);
+}
+
+:where(.primary, button.primary, .settingsSaveButton) {
+	background:
+		linear-gradient(135deg, rgba(53, 242, 196, 0.96), rgba(110, 231, 216, 0.92)) !important;
+	border: 1px solid rgba(175, 255, 237, 0.42) !important;
+	color: #03100d !important;
+	box-shadow: 0 12px 28px rgba(53, 242, 196, 0.16) !important;
+}
+
+:where(.primary, button.primary, .settingsSaveButton):hover:not(:disabled) {
+	box-shadow: 0 16px 36px rgba(53, 242, 196, 0.22) !important;
+	filter: saturate(1.04);
+}
+
+:where(.secondary, button.secondary, .settingsCancelButton) {
+	background: rgba(255, 255, 255, 0.052) !important;
+	border: 1px solid var(--bd-border-soft) !important;
+	color: var(--bd-text-soft) !important;
+	box-shadow: none !important;
+}
+
+:where(.secondary, button.secondary, .settingsCancelButton):hover:not(:disabled) {
+	background: rgba(255, 255, 255, 0.078) !important;
+	border-color: var(--bd-border) !important;
+	color: var(--bd-text) !important;
+}
+
+:where(.danger, button.danger) {
+	background: var(--bd-danger-soft) !important;
+	border: 1px solid rgba(255, 93, 115, 0.28) !important;
+	color: #ffd3d9 !important;
+}
+
+:where(.iconButton, .toolbarIconButton, .channelActionButton, .composerToolbarButton, .automationTestButton, .automationEditButton) {
+	background: transparent !important;
+	border: 1px solid transparent !important;
+	color: var(--bd-text-soft) !important;
+	box-shadow: none !important;
+}
+
+:where(.iconButton, .toolbarIconButton, .channelActionButton, .composerToolbarButton, .automationTestButton, .automationEditButton):hover:not(:disabled),
+:where(.iconButton.active, .toolbarIconButton.active, .channelActionButton.active, .composerToolbarButton.active) {
+	background: rgba(255, 255, 255, 0.065) !important;
+	border-color: var(--bd-border-soft) !important;
+	color: var(--bd-text) !important;
+}
+
+:where(button:disabled, .iconButton:disabled, .secondary:disabled, .primary:disabled) {
+	cursor: not-allowed !important;
+	opacity: 0.48 !important;
+	transform: none !important;
+}
+
+/* SVG consistency */
+:where(button svg, .iconButton svg, .toolbarIconButton svg, .channelActionButton svg, .controlSvg, .channelTypeIconGlyph) {
+	fill: none;
+	stroke: currentColor;
+	stroke-width: 1.9;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+}
+
+.channelTypeIconGlyph path[fill="currentColor"] {
+	fill: currentColor;
+	stroke: none;
+}
+
+/* Badges */
+:where(.discordSettingsBadge, .discordMutedBadge, .statusBadge, .serverAutomationStatus, .appBadge) {
+	border-radius: var(--bd-radius-pill) !important;
+	font-weight: 800 !important;
+	letter-spacing: 0.02em !important;
+	line-height: 1 !important;
+}
+
+/* Discord-specific badges keep Discord feel */
+.appBadge,
+.discordAppBadge,
+.discordSlashBadge {
+	background: #5865f2 !important;
+	color: #fff !important;
+	border: 0 !important;
+	box-shadow: none !important;
+}
+
+/* Save bars */
+.settingsSaveBar,
+.serverSettingsSaveNotice {
+	background:
+		linear-gradient(135deg, rgba(53, 242, 196, 0.12), rgba(139, 124, 255, 0.08)),
+		rgba(13, 20, 29, 0.94) !important;
+	border: 1px solid var(--bd-border) !important;
+	border-radius: var(--bd-radius-lg) !important;
+	box-shadow: var(--bd-shadow-md), var(--bd-inner-line) !important;
+}
+
+/* Server automation layout */
+.serverSettingsFormSurface.serverAutomationPanel {
+	padding: var(--bd-space-6) !important;
+}
+
+.serverSettingsFormSurface.serverAutomationPanel > .discordSettingsBlockHeader {
+	margin: 0 0 var(--bd-space-5) !important;
+	padding: 0 !important;
+}
+
+.serverSettingsFormSurface.serverAutomationPanel > .discordSettingsBlockHeader h3 {
+	margin: 0 0 var(--bd-space-2) !important;
+}
+
+.serverAutomationGrid {
+	gap: var(--bd-space-4) !important;
+}
+
+.serverAutomationSettingControls,
+.serverRoleAutomationToolbar {
+	align-items: center !important;
+	gap: var(--bd-space-3) !important;
+}
+
+/* Variable badges */
+.commandVariableBadge,
+.commandWelcomeVariables code,
+.commandFlowNote code {
+	background: rgba(53, 242, 196, 0.095) !important;
+	border: 1px solid rgba(53, 242, 196, 0.18) !important;
+	color: #bfffee !important;
+	border-radius: var(--bd-radius-sm) !important;
+}
+
+/* Discord previews are intentionally Discord, not Control Room */
+:where(
+	.commandEmbedPreviewPane,
+	.commandEmbedPreview,
+	.commandLogsEmbedCanvas,
+	.discordMessagePreview,
+	.discordPreviewPane,
+	.discordPreviewMessage,
+	.richEmbedCard
+) {
+	background: var(--discord-bg-main) !important;
+	color: var(--discord-text) !important;
+	border-color: var(--discord-border) !important;
+	box-shadow: none !important;
+}
+
+.commandEmbedPreview,
+.commandLogsEmbedCanvas,
+.richEmbedCard {
+	background: var(--discord-bg-card) !important;
+	border-radius: 4px !important;
+	border-top: 0 !important;
+	border-right: 0 !important;
+	border-bottom: 0 !important;
+	border-left: 4px solid var(--command-embed-accent, var(--discord-blurple)) !important;
+}
+
+.commandEmbedPreviewPane {
+	max-width: 560px !important;
+	width: min(100%, 560px) !important;
+	border-radius: 8px !important;
+	padding: 16px !important;
+}
+
+/* Preserve Discord text colors in previews */
+:where(.commandEmbedPreview, .commandLogsEmbedCanvas, .discordMessagePreview, .richEmbedCard) :where(h1, h2, h3, h4, p, span, small, strong) {
+	color: inherit;
+}
+
+/* Topbar icons stay plain, not colored chips */
+.chatTopbar :where(.iconButton, .toolbarIconButton, .channelActionButton, .serverSettingsButton) {
+	background: transparent !important;
+	border-color: transparent !important;
+	box-shadow: none !important;
+}
+
+.chatTopbar :where(.iconButton, .toolbarIconButton, .channelActionButton, .serverSettingsButton):hover,
+.chatTopbar :where(.iconButton.active, .toolbarIconButton.active, .channelActionButton.active, .serverSettingsButton.active) {
+	background: rgba(255, 255, 255, 0.07) !important;
+	border-color: rgba(255, 255, 255, 0.09) !important;
+}
+
+/* Empty states */
+:where(.serverRoleAutomationEmpty, .emptyState, .noResults, .discordSearchEmpty) {
+	background: rgba(255, 255, 255, 0.028) !important;
+	border: 1px dashed rgba(255, 255, 255, 0.10) !important;
+	border-radius: var(--bd-radius-lg) !important;
+	color: var(--bd-muted) !important;
+}
+
+/* Responsive polish */
+@media (max-width: 820px) {
+	:where(.serverSettingsFormSurface.serverAutomationPanel, .serverAutomationCard, .botModal, .profileModal) {
+		border-radius: var(--bd-radius-lg) !important;
+	}
+
+	.commandEmbedPreviewPane {
+		max-width: 100% !important;
+	}
+}
+
+
+/* Bot Observatory diagnostic center */
+.botOpsDiagnosticHero {
+	display: grid;
+	gap: var(--bd-space-5);
+}
+
+.botOpsDiagnosticHero .botOpsPanelHead p {
+	margin: 6px 0 0;
+	max-width: 760px;
+	color: var(--bd-muted);
+	font-size: var(--bd-font-size-sm);
+}
+
+/* ---- apps/web/src/app/styles/premium-system-parts/part-02.css ---- */
+.botOpsDiagnosticCounters {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--bd-space-2);
+}
+
+.botOpsDiagnosticCounters span {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	padding: 7px 10px;
+	border-radius: var(--bd-radius-pill);
+	border: 1px solid var(--bd-border-soft);
+	background: rgba(255, 255, 255, 0.04);
+	color: var(--bd-text-soft);
+	font-size: var(--bd-font-size-xs);
+	font-weight: 800;
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+}
+
+.botOpsDiagnosticCounters .isOk,
+.botOpsDiagnosticCard.isOk,
+.botOpsReadinessItem.isOk,
+.botOpsActionItem.isOk,
+.botOpsAutomationAuditRow.isOk {
+	border-color: rgba(52, 211, 153, 0.24) !important;
+}
+
+.botOpsDiagnosticCounters .isWarn,
+.botOpsDiagnosticCard.isWarn,
+.botOpsReadinessItem.isWarn,
+.botOpsActionItem.isWarn,
+.botOpsAutomationAuditRow.isWarn {
+	border-color: rgba(248, 184, 78, 0.30) !important;
+}
+
+.botOpsDiagnosticCounters .isError,
+.botOpsDiagnosticCard.isError,
+.botOpsReadinessItem.isError,
+.botOpsActionItem.isError,
+.botOpsAutomationAuditRow.isError {
+	border-color: rgba(255, 93, 115, 0.30) !important;
+}
+
+.botOpsDiagnosticCounters .isIdle,
+.botOpsDiagnosticCard.isIdle,
+.botOpsReadinessItem.isIdle,
+.botOpsAutomationAuditRow.isIdle {
+	border-color: rgba(145, 162, 173, 0.18) !important;
+	opacity: 0.78;
+}
+
+.botOpsDiagnosticGrid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+	gap: var(--bd-space-3);
+}
+
+.botOpsDiagnosticCard,
+.botOpsReadinessItem,
+.botOpsActionItem,
+.botOpsAutomationAuditRow {
+	background: rgba(255, 255, 255, 0.035) !important;
+	border: 1px solid var(--bd-border-soft) !important;
+	border-radius: var(--bd-radius-lg) !important;
+	box-shadow: var(--bd-inner-line);
+}
+
+.botOpsDiagnosticCard {
+	display: grid;
+	gap: 9px;
+	padding: 14px;
+}
+
+.botOpsDiagnosticCard > div {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+}
+
+.botOpsDiagnosticCard span,
+.botOpsReadinessItem span,
+.botOpsAutomationAuditRow span {
+	color: var(--bd-muted);
+	font-size: var(--bd-font-size-xs);
+	font-weight: 800;
+	text-transform: uppercase;
+	letter-spacing: 0.045em;
+}
+
+.botOpsDiagnosticCard strong,
+.botOpsReadinessItem strong,
+.botOpsAutomationAuditRow strong {
+	color: var(--bd-text);
+	background: transparent !important;
+}
+
+.botOpsDiagnosticCard p,
+.botOpsActionItem p,
+.botOpsAutomationAuditRow p {
+	margin: 0;
+	color: var(--bd-text-soft);
+	font-size: var(--bd-font-size-sm);
+	line-height: 1.45;
+}
+
+.botOpsDiagnosticCard small,
+.botOpsActionItem small,
+.botOpsAutomationAuditRow small {
+	color: var(--bd-muted);
+	font-size: var(--bd-font-size-xs);
+	line-height: 1.35;
+}
+
+.botOpsReadinessGrid {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: var(--bd-space-4);
+}
+
+.botOpsReadinessPanel {
+	display: grid;
+	gap: var(--bd-space-4);
+}
+
+.botOpsReadinessList,
+.botOpsActionList,
+.botOpsAutomationAuditTable {
+	display: grid;
+	gap: var(--bd-space-3);
+}
+
+.botOpsReadinessItem {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: var(--bd-space-3);
+	padding: 11px 12px;
+}
+
+.botOpsDiagnosticFocus {
+	grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr) !important;
+}
+
+.botOpsActionItem {
+	display: grid;
+	gap: 6px;
+	padding: 13px 14px;
+}
+
+.botOpsAutomationAuditRow {
+	display: grid;
+	grid-template-columns: minmax(120px, 0.8fr) minmax(70px, 0.4fr) minmax(150px, 1fr) minmax(130px, 0.8fr);
+	align-items: center;
+	gap: var(--bd-space-3);
+	padding: 12px 14px;
+}
+
+.botOpsAutomationAuditRow p,
+.botOpsAutomationAuditRow small {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.botOpsPanelHead > strong.isOk {
+	color: #bfffe8 !important;
+	background: var(--bd-success-soft) !important;
+	border: 1px solid rgba(52, 211, 153, 0.26) !important;
+	border-radius: var(--bd-radius-pill) !important;
+	padding: 8px 11px;
+}
+
+.botOpsPanelHead > strong.isWarn {
+	color: #ffe1a3 !important;
+	background: var(--bd-warning-soft) !important;
+	border: 1px solid rgba(248, 184, 78, 0.30) !important;
+	border-radius: var(--bd-radius-pill) !important;
+	padding: 8px 11px;
+}
+
+.botOpsPanelHead > strong.isError {
+	color: #ffd1d8 !important;
+	background: var(--bd-danger-soft) !important;
+	border: 1px solid rgba(255, 93, 115, 0.30) !important;
+	border-radius: var(--bd-radius-pill) !important;
+	padding: 8px 11px;
+}
+
+@media (max-width: 1100px) {
+	.botOpsReadinessGrid,
+	.botOpsDiagnosticFocus {
+		grid-template-columns: 1fr !important;
+	}
+
+	.botOpsAutomationAuditRow {
+		grid-template-columns: 1fr;
+		align-items: start;
+	}
+
+	.botOpsAutomationAuditRow p,
+	.botOpsAutomationAuditRow small {
+		white-space: normal;
+	}
+}
+
+
+/* Efficient Bot Observatory: compact, issue-first diagnostic */
+.botOpsDiagnosticHeroSlim {
+	gap: var(--bd-space-4) !important;
+}
+
+.botOpsDiagnosticHeroSlim .botOpsPanelHead p {
+	margin: 6px 0 0;
+	max-width: 680px;
+	color: var(--bd-muted);
+	font-size: var(--bd-font-size-sm);
+}
+
+.botOpsActionListSlim {
+	grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.botOpsActionListSlim .botOpsActionItem {
+	min-height: 0;
+}
+
+/* Permission Inspector contextual tabs */
+.permissionInspectorCard {
+	width: min(920px, 100%) !important;
+}
+
+.permissionInspectorTabs {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: var(--bd-space-2);
+	margin: 0 0 var(--bd-space-4);
+	padding: 6px;
+	border: 1px solid var(--bd-border-soft);
+	border-radius: var(--bd-radius-lg);
+	background: rgba(255, 255, 255, 0.035);
+}
+
+.permissionInspectorTabs button {
+	min-height: 38px;
+	border: 1px solid transparent !important;
+	border-radius: var(--bd-radius-md) !important;
+	background: transparent !important;
+	color: var(--bd-muted) !important;
+	font-weight: 850;
+	cursor: pointer;
+}
+
+.permissionInspectorTabs button:hover:not(:disabled),
+.permissionInspectorTabs button.isActive {
+	background: rgba(255, 255, 255, 0.075) !important;
+	border-color: var(--bd-border-soft) !important;
+	color: var(--bd-text) !important;
+}
+
+.permissionInspectorTabs button:disabled {
+	cursor: not-allowed;
+	opacity: 0.42;
+}
+
+.permissionInspectorSelector {
+	margin: 0 0 var(--bd-space-4);
+	padding: 12px;
+	border: 1px solid var(--bd-border-soft);
+	border-radius: var(--bd-radius-lg);
+	background: rgba(255, 255, 255, 0.035);
+}
+
+.permissionInspectorSelector label {
+	display: grid;
+	gap: 8px;
+}
+
+.permissionInspectorSelector span {
+	color: var(--bd-muted);
+	font-size: var(--bd-font-size-xs);
+	font-weight: 850;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+}
+
+.permissionInspectorSelectorHead {
+	display: grid;
+	gap: 4px;
+	margin-bottom: 10px;
+}
+
+.permissionInspectorSelectorHead small,
+.permissionInspectorRoleEmpty {
+	margin: 0;
+	color: var(--bd-muted-2);
+	font-size: var(--bd-font-size-xs);
+}
+
+.permissionInspectorRoleList {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+}
+
+.permissionInspectorRoleList button {
+	min-height: 32px;
+	border: 1px solid var(--bd-border-soft) !important;
+	border-radius: 999px !important;
+	background: rgba(255, 255, 255, 0.045) !important;
+	color: var(--bd-muted) !important;
+	font-size: var(--bd-font-size-xs);
+	font-weight: 800;
+	cursor: pointer;
+}
+
+.permissionInspectorRoleList button:hover,
+.permissionInspectorRoleList button.isSelected {
+	background: rgba(255, 255, 255, 0.09) !important;
+	color: var(--bd-text) !important;
+}
+
+.permissionInspectorRoleList button.isBaseRole {
+	cursor: default;
+	opacity: 0.9;
+}
+
+.permissionInspectorSummary {
+	grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+}
+
+.permissionPanelSummaryItem.isUnknown {
+	border-color: rgba(145, 162, 173, 0.22);
+	background: rgba(145, 162, 173, 0.075);
+}
+
+.permissionPanelItem.isUnknown .permissionPanelItemIcon {
+	color: rgba(220, 230, 236, 0.9);
+	background: rgba(145, 162, 173, 0.14);
+	box-shadow: inset 0 0 0 1px rgba(145, 162, 173, 0.18);
+}
+
+.permissionPanelItem small {
+	display: block;
+	margin-top: 6px;
+	color: var(--bd-muted-2);
+	font-size: 11px;
+	line-height: 1.35;
+}
+
+.permissionInspectorDetails {
+	display: grid;
+	gap: var(--bd-space-3);
+}
+
+.permissionInspectorDetails article {
+	padding: 16px;
+	border: 1px solid var(--bd-border-soft);
+	border-radius: var(--bd-radius-lg);
+	background: rgba(255, 255, 255, 0.04);
+}
+
+.permissionInspectorDetails strong {
+	display: block;
+	margin-bottom: 6px;
+	color: var(--bd-text);
+}
+
+.permissionInspectorDetails p {
+	margin: 0;
+	color: var(--bd-muted);
+	font-size: var(--bd-font-size-sm);
+	line-height: 1.5;
+}
+
+@media (max-width: 720px) {
+	.permissionInspectorTabs,
+	.permissionInspectorSummary,
+	.permissionPanelGrid {
+		grid-template-columns: 1fr !important;
+	}
+}
+
+/* UI polish: softer buttons and logo-aware active brand state. */
+:root {
+	--bd-action-primary-bg: linear-gradient(135deg, rgba(53, 242, 196, 0.16), rgba(139, 124, 255, 0.11)), rgba(255, 255, 255, 0.052);
+	--bd-action-primary-bg-hover: linear-gradient(135deg, rgba(53, 242, 196, 0.22), rgba(139, 124, 255, 0.15)), rgba(255, 255, 255, 0.07);
+	--bd-action-secondary-bg: rgba(255, 255, 255, 0.038);
+	--bd-action-secondary-bg-hover: rgba(255, 255, 255, 0.07);
+	--bd-action-border: rgba(255, 255, 255, 0.105);
+	--bd-action-border-active: rgba(53, 242, 196, 0.28);
+}
+
+.primaryButton,
+.sendButton,
+.composerSendButton,
+.settingsSaveButton,
+.commandComposerCreateButton,
+.commandComposerPrimaryButton,
+.commandComposerGenerateButton,
+.commandDeployBar button:last-child,
+.modalActions .sendButton,
+.externalLinkActions .sendButton,
+.botSettingsModal .sendButton,
+.embedComposerModal .sendButton,
+.serverAutomationModalFooter button.primary,
+.recentMessagesButton {
+	border: 1px solid var(--bd-action-border-active) !important;
+	background: var(--bd-action-primary-bg) !important;
+	color: var(--bd-text) !important;
+	box-shadow:
+		inset 0 1px 0 rgba(255, 255, 255, 0.055),
+		0 10px 26px rgba(0, 0, 0, 0.2) !important;
+	text-shadow: none !important;
+}
+
+.primaryButton:hover:not(:disabled),
+.sendButton:hover:not(:disabled),
+.composerSendButton:hover:not(:disabled),
+.settingsSaveButton:hover:not(:disabled),
+.commandComposerCreateButton:hover:not(:disabled),
+.commandComposerPrimaryButton:hover:not(:disabled),
+.commandComposerGenerateButton:hover:not(:disabled),
+.commandDeployBar button:last-child:hover:not(:disabled),
+.modalActions .sendButton:hover:not(:disabled),
+.externalLinkActions .sendButton:hover:not(:disabled),
+.botSettingsModal .sendButton:hover:not(:disabled),
+.embedComposerModal .sendButton:hover:not(:disabled),
+.serverAutomationModalFooter button.primary:hover:not(:disabled),
+.recentMessagesButton:hover:not(:disabled) {
+	background: var(--bd-action-primary-bg-hover) !important;
+	border-color: rgba(53, 242, 196, 0.38) !important;
+	color: #f5fffc !important;
+	box-shadow:
+		inset 0 1px 0 rgba(255, 255, 255, 0.07),
+		0 12px 30px rgba(0, 0, 0, 0.24) !important;
+	filter: none !important;
+}
+
+.secondaryButton,
+.sendButton.secondaryButton,
+.modalActions .secondaryButton,
+.modalActions .sendButton.secondaryButton,
+.externalLinkActions .secondaryButton,
+.externalLinkActions .sendButton.secondaryButton,
+.slashCommandDeleteActions .secondaryButton,
+.botSettingsModal .secondaryButton,
+.botSettingsModal .sendButton.secondaryButton,
+.embedComposerModal .secondaryButton,
+.embedComposerModal .sendButton.secondaryButton {
+	border: 1px solid var(--bd-action-border) !important;
+	background: var(--bd-action-secondary-bg) !important;
+	color: var(--bd-text-soft) !important;
+	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.038) !important;
+}
+
+.secondaryButton:hover:not(:disabled),
+.sendButton.secondaryButton:hover:not(:disabled),
+.modalActions .secondaryButton:hover:not(:disabled),
+.modalActions .sendButton.secondaryButton:hover:not(:disabled),
+.externalLinkActions .secondaryButton:hover:not(:disabled),
+.externalLinkActions .sendButton.secondaryButton:hover:not(:disabled),
+.slashCommandDeleteActions .secondaryButton:hover:not(:disabled),
+.botSettingsModal .secondaryButton:hover:not(:disabled),
+.botSettingsModal .sendButton.secondaryButton:hover:not(:disabled),
+.embedComposerModal .secondaryButton:hover:not(:disabled),
+.embedComposerModal .sendButton.secondaryButton:hover:not(:disabled) {
+	background: var(--bd-action-secondary-bg-hover) !important;
+	border-color: rgba(255, 255, 255, 0.16) !important;
+	color: var(--bd-text) !important;
+	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05) !important;
+}
+
+.primaryButton:disabled,
+.secondaryButton:disabled,
+.sendButton:disabled,
+.composerSendButton:disabled,
+.settingsSaveButton:disabled,
+.commandComposerCreateButton:disabled,
+.commandComposerPrimaryButton:disabled,
+.commandComposerGenerateButton:disabled {
+	background: rgba(255, 255, 255, 0.034) !important;
+	border-color: rgba(255, 255, 255, 0.08) !important;
+	color: rgba(200, 213, 220, 0.42) !important;
+	box-shadow: none !important;
+	filter: none !important;
+}
+
+.brandMark,
+.botdeckLogo {
+	background: transparent !important;
+}
+
+.brandMark {
+	border: 1px solid rgba(255, 255, 255, 0.075) !important;
+	background:
+		linear-gradient(145deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.026)),
+		rgba(8, 13, 19, 0.68) !important;
+	box-shadow:
+		inset 0 1px 0 rgba(255, 255, 255, 0.055),
+		0 10px 26px rgba(0, 0, 0, 0.22) !important;
+	overflow: hidden;
+}
+
+.brandMark .botdeckLogo {
+	width: 72% !important;
+	height: 72% !important;
+	border-radius: 14px !important;
+	filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.28));
+}
+
+/* ---- apps/web/src/app/styles/premium-system-parts/part-03.css ---- */
+.brandMark.isActive {
+	border-color: rgba(255, 255, 255, 0.16) !important;
+	background:
+		radial-gradient(circle at 50% 12%, rgba(255, 255, 255, 0.11), transparent 42%),
+		linear-gradient(145deg, rgba(255, 255, 255, 0.085), rgba(255, 255, 255, 0.034)),
+		rgba(8, 13, 19, 0.78) !important;
+	color: var(--bd-text) !important;
+	box-shadow:
+		inset 0 1px 0 rgba(255, 255, 255, 0.08),
+		0 16px 34px rgba(0, 0, 0, 0.28) !important;
+}
+
+.brandMark.isActive::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	border-radius: inherit;
+	pointer-events: none;
+	box-shadow: inset 0 0 0 1px rgba(53, 242, 196, 0.09);
+}
+
+/* UI polish: calmer right-click menu hover and clearer message text. */
+.messageContextMenu button:hover:not(:disabled):not(.danger),
+.messageContextMenu button:focus-visible:not(:disabled):not(.danger) {
+	background: rgba(255, 255, 255, 0.062) !important;
+	color: var(--bd-text) !important;
+	box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.055) !important;
+	filter: none !important;
+}
+
+.messageContextMenu button:hover:not(:disabled):not(.danger) span,
+.messageContextMenu button:focus-visible:not(:disabled):not(.danger) span {
+	color: rgba(200, 213, 220, 0.82) !important;
+}
+
+.messageContextMenu button.danger:hover:not(:disabled),
+.messageContextMenu button.danger:focus-visible:not(:disabled) {
+	background: rgba(248, 113, 113, 0.12) !important;
+	color: #ffd1d1 !important;
+	box-shadow: inset 0 0 0 1px rgba(248, 113, 113, 0.18) !important;
+	filter: none !important;
+}
+
+.messageContextMenu button.danger:hover:not(:disabled) span,
+.messageContextMenu button.danger:focus-visible:not(:disabled) span {
+	color: rgba(255, 209, 209, 0.78) !important;
+}
+
+.messageRow .messageContent,
+.messageRow .messageContent span,
+.messageRow .messageContent em,
+.messageRow .messageContent u,
+.messageRow .messageContent s,
+.messageBody > p {
+	color: rgba(248, 252, 253, 0.965) !important;
+}
+
+.messageRow .messageContent {
+	font-weight: 430;
+	text-shadow: 0 1px 0 rgba(0, 0, 0, 0.12);
+}
+
+.messageRow .messageContent strong {
+	color: #ffffff !important;
+	font-weight: 720;
+}

@@ -1,0 +1,651 @@
+/* Modèles serveur centralisés.
+   Les automatismes choisissent les salons, ce panneau gère les messages. */
+
+.serverTemplatesPanel {
+	display: grid;
+	gap: 18px;
+}
+
+.serverTemplateBlock,
+.serverTemplateEditorBlock,
+.serverTemplateVariablesBlock {
+	min-width: 0;
+}
+
+.serverTemplateSelector {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 12px;
+}
+
+.serverTemplateSelector button {
+	display: grid;
+	gap: 6px;
+	min-height: 86px;
+	padding: 15px 16px;
+	border: 1px solid rgba(255, 255, 255, 0.075);
+	border-radius: 16px;
+	background:
+		linear-gradient(145deg, rgba(255, 255, 255, 0.036), transparent 52%),
+		rgba(255, 255, 255, 0.032);
+	color: rgba(239, 249, 247, 0.9);
+	text-align: left;
+	cursor: pointer;
+}
+
+.serverTemplateSelector button:hover {
+	border-color: rgba(255, 255, 255, 0.13);
+	background: rgba(255, 255, 255, 0.055);
+}
+
+.serverTemplateSelector button.isActive {
+	border-color: rgba(45, 226, 179, 0.34);
+	background:
+		linear-gradient(145deg, rgba(45, 226, 179, 0.11), transparent 56%),
+		rgba(45, 226, 179, 0.06);
+	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.055);
+}
+
+.serverTemplateSelector strong {
+	font-size: 0.94rem;
+	font-weight: 780;
+}
+
+.serverTemplateSelector span {
+	font-size: 0.8rem;
+	line-height: 1.45;
+	color: rgba(202, 216, 222, 0.72);
+}
+
+.serverTemplateEditorPanel {
+	display: grid;
+	gap: 16px !important;
+	padding: 18px !important;
+}
+
+.serverTemplateEditorPanel textarea,
+.serverTemplateEditorPanel input,
+.serverTemplateEditorPanel select {
+	border-radius: 14px;
+	border-color: rgba(255, 255, 255, 0.105);
+	background: rgba(4, 10, 15, 0.62);
+}
+
+.serverTemplateEditorPanel textarea:focus,
+.serverTemplateEditorPanel input:focus,
+.serverTemplateEditorPanel select:focus {
+	border-color: rgba(45, 226, 179, 0.34);
+	box-shadow: 0 0 0 3px rgba(45, 226, 179, 0.08);
+	outline: none;
+}
+
+.serverTemplateLogEditor {
+	min-height: 440px;
+}
+
+.serverTemplateLogEditor .serverLogEventTabs {
+	max-height: 520px;
+	overflow: auto;
+	padding-right: 4px;
+}
+
+.serverTemplateVariablesBlock {
+	gap: 12px !important;
+}
+
+.serverTemplateSaveHint {
+	margin: 0;
+	font-size: 0.8rem;
+	line-height: 1.45;
+	color: rgba(202, 216, 222, 0.68);
+}
+
+@media (max-width: 960px) {
+	.serverTemplateSelector {
+		grid-template-columns: 1fr;
+	}
+
+	.serverTemplateLogEditor {
+		grid-template-columns: 1fr;
+	}
+}
+
+.serverTemplateSearch {
+	display: grid;
+	gap: 6px;
+	width: min(100%, 360px);
+	margin: 0 0 14px;
+}
+
+.serverTemplateSearch > span {
+	font-size: 0.7rem;
+	font-weight: 760;
+	letter-spacing: 0.02em;
+	color: rgba(205, 219, 224, 0.66);
+}
+
+.serverTemplateSearch input {
+	width: 100%;
+	min-height: 36px;
+	padding: 0 12px;
+	border: 1px solid rgba(255, 255, 255, 0.085);
+	border-radius: 11px;
+	background:
+		linear-gradient(180deg, rgba(255, 255, 255, 0.032), transparent 70%),
+		rgba(5, 11, 16, 0.58);
+	color: rgba(239, 249, 247, 0.92);
+	font-size: 0.82rem;
+	outline: none;
+}
+
+.serverTemplateSearch input::placeholder {
+	color: rgba(202, 216, 222, 0.42);
+}
+
+.serverTemplateSearch input:focus {
+	border-color: rgba(45, 226, 179, 0.28);
+	box-shadow: 0 0 0 3px rgba(45, 226, 179, 0.065);
+}
+
+.serverTemplateList {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(218px, 1fr));
+	gap: 12px;
+	max-height: 430px;
+	overflow: auto;
+	padding: 2px 6px 2px 2px;
+	overscroll-behavior: contain;
+}
+
+.serverTemplateList button {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: stretch;
+	gap: 14px;
+	min-height: 118px;
+	padding: 18px 16px 14px;
+	border: 1px solid rgba(255, 255, 255, 0.075);
+	border-radius: 16px;
+	background:
+		linear-gradient(145deg, rgba(255, 255, 255, 0.04), transparent 58%),
+		rgba(255, 255, 255, 0.028);
+	color: rgba(239, 249, 247, 0.91);
+	text-align: left;
+	cursor: pointer;
+	transition: border-color 140ms ease, background 140ms ease, transform 140ms ease, box-shadow 140ms ease;
+}
+
+.serverTemplateList button:hover {
+	transform: translateY(-1px);
+	border-color: rgba(255, 255, 255, 0.13);
+	background:
+		linear-gradient(145deg, rgba(255, 255, 255, 0.055), transparent 58%),
+		rgba(255, 255, 255, 0.04);
+}
+
+.serverTemplateList button.isActive {
+	border-color: rgba(45, 226, 179, 0.34);
+	background:
+		linear-gradient(145deg, rgba(45, 226, 179, 0.105), transparent 58%),
+		rgba(45, 226, 179, 0.045);
+	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.055), 0 12px 34px rgba(0, 0, 0, 0.16);
+}
+
+.serverTemplateTag {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	display: inline-flex;
+	align-items: center;
+	max-width: calc(100% - 20px);
+	min-height: 18px;
+	padding: 2px 7px;
+	border: 1px solid rgba(255, 255, 255, 0.075);
+	border-radius: 999px;
+	background: rgba(255, 255, 255, 0.045);
+	color: rgba(210, 224, 228, 0.72);
+	font-size: 0.61rem;
+	font-weight: 800;
+	letter-spacing: 0.025em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	pointer-events: none;
+}
+
+.serverTemplateCardMain {
+	display: grid;
+	gap: 7px;
+	min-width: 0;
+	padding-top: 16px;
+}
+
+.serverTemplateCardMain strong {
+	max-width: calc(100% - 62px);
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	font-size: 0.92rem;
+	line-height: 1.18;
+	font-weight: 800;
+}
+
+.serverTemplateCardMain span {
+	overflow: hidden;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	font-size: 0.77rem;
+	line-height: 1.45;
+	color: rgba(202, 216, 222, 0.68);
+}
+
+.serverTemplateInlineSwitch {
+	align-self: flex-end;
+	display: inline-flex;
+	align-items: center;
+	width: 38px;
+	height: 22px;
+	padding: 2px;
+	border: 1px solid rgba(255, 255, 255, 0.105);
+	border-radius: 999px;
+	background: rgba(255, 255, 255, 0.05);
+	transition: background 140ms ease, border-color 140ms ease;
+}
+
+.serverTemplateInlineSwitch > span {
+	display: block;
+	width: 16px;
+	height: 16px;
+	border-radius: 50%;
+	background: rgba(177, 190, 197, 0.78);
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+	transition: transform 140ms ease, background 140ms ease;
+}
+
+.serverTemplateInlineSwitch.isOn {
+	border-color: rgba(45, 226, 179, 0.3);
+	background: rgba(45, 226, 179, 0.13);
+}
+
+.serverTemplateInlineSwitch.isOn > span {
+	transform: translateX(16px);
+	background: rgba(167, 255, 228, 0.95);
+}
+
+.serverTemplateEmpty {
+	grid-column: 1 / -1;
+	margin: 0;
+	padding: 18px;
+	border: 1px dashed rgba(255, 255, 255, 0.1);
+	border-radius: 16px;
+	color: rgba(202, 216, 222, 0.66);
+	font-size: 0.82rem;
+	text-align: center;
+}
+
+@media (max-width: 960px) {
+	.serverTemplateSearch {
+		width: 100%;
+	}
+
+	.serverTemplateList {
+		grid-template-columns: 1fr;
+		max-height: 360px;
+	}
+}
+
+
+/* Ajustement compact des modèles serveur. */
+.serverTemplateListHeader {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 14px;
+	margin: 0 0 12px;
+}
+
+.serverTemplateListHeader .discordSettingsBlockHeader {
+	margin: 0;
+	min-width: 0;
+}
+
+.serverTemplateListHeader .discordSettingsBlockHeader h3 {
+	margin: 0;
+}
+
+.serverTemplateSearch {
+	width: min(100%, 300px);
+	margin: 0;
+}
+
+.serverTemplateSearch input {
+	min-height: 34px;
+	border-radius: 10px;
+}
+
+.serverTemplateList {
+	gap: 14px;
+	max-height: 420px;
+	padding: 2px 7px 2px 2px;
+}
+
+.serverTemplateList button {
+	min-height: 112px;
+	padding: 16px 15px 16px;
+}
+
+.serverTemplateList button.isLogTemplate {
+	padding-bottom: 42px;
+}
+
+.serverTemplateCardMain {
+	padding-top: 15px;
+}
+
+.serverTemplateInlineSwitch {
+	position: absolute;
+	right: 12px;
+	bottom: 12px;
+	align-self: auto;
+	z-index: 2;
+}
+
+.serverTemplateInlineSwitch:focus-visible {
+	outline: 2px solid rgba(45, 226, 179, 0.45);
+	outline-offset: 2px;
+}
+
+@media (max-width: 960px) {
+	.serverTemplateListHeader {
+		align-items: stretch;
+		flex-direction: column;
+		gap: 10px;
+	}
+
+	.serverTemplateSearch {
+		width: 100%;
+	}
+}
+
+/* Cartes modèles serveur : descriptions masquées, hover natif, deux rangées visibles. */
+.serverTemplateBlock {
+	min-height: 0;
+}
+
+.serverTemplateListHeader {
+	margin-bottom: 10px;
+}
+
+.serverTemplateList {
+	grid-template-columns: repeat(auto-fill, minmax(178px, 1fr));
+	gap: 10px;
+	max-height: 170px;
+	padding: 2px 7px 2px 2px;
+}
+
+.serverTemplateList button {
+	min-height: 80px;
+	padding: 15px 14px 13px;
+	gap: 8px;
+}
+
+.serverTemplateList button.isLogTemplate {
+	padding-bottom: 36px;
+}
+
+.serverTemplateCardMain {
+	gap: 0;
+	padding-top: 18px;
+}
+
+.serverTemplateCardMain strong {
+	max-width: calc(100% - 58px);
+	font-size: 0.9rem;
+	line-height: 1.2;
+}
+
+.serverTemplateCardMain > span:not(.serverTemplateTag) {
+	display: none !important;
+}
+
+.serverTemplateInlineSwitch {
+	right: 11px;
+	bottom: 10px;
+	width: 35px;
+	height: 20px;
+}
+
+.serverTemplateInlineSwitch > span {
+	width: 14px;
+	height: 14px;
+}
+
+.serverTemplateInlineSwitch.isOn > span {
+	transform: translateX(15px);
+}
+
+@media (max-width: 960px) {
+	.serverTemplateList {
+		grid-template-columns: repeat(auto-fill, minmax(165px, 1fr));
+		max-height: 170px;
+	}
+}
+
+/* Lisibilité des titres et grille compacte persistante. */
+.serverTemplateList {
+	max-height: 188px;
+}
+
+.serverTemplateList button {
+	min-height: 86px;
+}
+
+.serverTemplateCardMain {
+	padding-top: 20px;
+}
+
+.serverTemplateCardMain strong {
+	max-width: 100%;
+	overflow: visible;
+	text-overflow: clip;
+	white-space: normal;
+	display: block;
+	font-size: 0.9rem;
+	line-height: 1.25;
+	padding-right: 0;
+}
+
+.serverTemplateList button.isLogTemplate .serverTemplateCardMain strong {
+	padding-right: 42px;
+}
+
+.serverTemplateTag {
+	max-width: calc(100% - 24px);
+}
+
+/* Modèles serveur: surface alignée avec les panneaux bot/automatisation.
+   Le contenu ne doit jamais coller au bord de la surface. */
+.serverSettingsFormSurface.serverTemplatesPanel {
+	padding: 28px 22px 22px !important;
+	gap: 18px !important;
+}
+
+.serverSettingsFormSurface.serverTemplatesPanel > .discordSettingsBlockHeader {
+	padding: 0 2px 10px !important;
+	margin: 0 !important;
+}
+
+.serverSettingsFormSurface.serverTemplatesPanel > .discordSettingsBlockHeader h3 {
+	margin: 0 0 8px !important;
+	line-height: 1.28 !important;
+}
+
+.serverSettingsFormSurface.serverTemplatesPanel > .discordSettingsBlockHeader p {
+	margin: 0 !important;
+	max-width: 760px !important;
+	line-height: 1.55 !important;
+}
+
+.serverTemplatesPanel .discordSettingsBlock {
+	padding: 20px !important;
+	gap: 16px !important;
+	border-radius: 20px !important;
+}
+
+.serverTemplatesPanel .discordSettingsBlock > .discordSettingsBlockHeader {
+	padding: 0 2px 12px !important;
+	margin: 0 !important;
+}
+
+.serverTemplatesPanel .discordSettingsBlock > .discordSettingsBlockHeader h3 {
+	margin: 0 0 7px !important;
+	line-height: 1.26 !important;
+}
+
+.serverTemplatesPanel .discordSettingsBlock > .discordSettingsBlockHeader p {
+	margin: 0 !important;
+	line-height: 1.5 !important;
+}
+
+.serverTemplateListHeader {
+	align-items: center;
+	padding: 0 2px 12px;
+	margin: 0;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.serverTemplateListHeader .discordSettingsBlockHeader {
+	padding: 0 !important;
+	margin: 0 !important;
+}
+
+.serverTemplateSearch input {
+	min-height: 38px;
+	padding-inline: 13px;
+}
+
+.serverTemplateList {
+	padding: 2px 8px 2px 2px;
+}
+
+.serverTemplateEditorPanel {
+	padding: 20px !important;
+	gap: 18px !important;
+}
+
+.serverTemplateVariablesBlock {
+	padding: 18px 20px !important;
+}
+
+@media (max-width: 960px) {
+	.serverSettingsFormSurface.serverTemplatesPanel {
+		padding: 22px 18px 18px !important;
+	}
+
+	.serverTemplatesPanel .discordSettingsBlock {
+		padding: 16px !important;
+	}
+}
+
+.serverTemplateImportExport {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	flex-wrap: wrap;
+}
+
+.serverTemplateImportExport button,
+.serverTemplateEditorBlock .discordSettingsBlockHeader button {
+	min-height: 34px;
+	padding: 0 12px;
+	border-radius: 10px;
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	background: rgba(255, 255, 255, 0.045);
+	color: rgba(236, 246, 249, 0.9);
+	font-weight: 700;
+}
+
+.serverTemplateImportExport button:hover,
+.serverTemplateEditorBlock .discordSettingsBlockHeader button:hover {
+	border-color: rgba(45, 226, 179, 0.28);
+	background: rgba(45, 226, 179, 0.08);
+}
+
+.serverSettingsReadonlyFieldset {
+	min-inline-size: 0;
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+.serverSettingsReadOnlyNotice {
+	border-color: rgba(255, 198, 92, 0.25) !important;
+	background: rgba(255, 198, 92, 0.07) !important;
+}
+
+.serverTemplateInlineSwitch[aria-disabled="true"] {
+	cursor: not-allowed;
+	opacity: 0.55;
+}
+
+/* Actions rapides du modèle actif. */
+.serverTemplateEditorBlock {
+	position: relative;
+}
+
+.serverTemplateEditorBlock > .discordSettingsBlockHeader {
+	padding-right: 96px !important;
+}
+
+.serverTemplateEditorActions {
+	position: absolute;
+	top: 18px;
+	right: 20px;
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.serverTemplateEditorIconButton {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 36px;
+	height: 36px;
+	padding: 0 !important;
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	border-radius: 11px;
+	background: rgba(255, 255, 255, 0.045);
+	color: rgba(236, 246, 249, 0.9);
+	box-shadow: none;
+	cursor: pointer;
+	transition: border-color 140ms ease, background 140ms ease, color 140ms ease, transform 140ms ease;
+}
+
+.serverTemplateEditorIconButton:hover:not(:disabled) {
+	transform: translateY(-1px);
+	border-color: rgba(45, 226, 179, 0.28);
+	background: rgba(45, 226, 179, 0.08);
+	color: #fff;
+}
+
+.serverTemplateEditorIconButton svg {
+	width: 18px;
+	height: 18px;
+}
+
+@media (max-width: 640px) {
+	.serverTemplateEditorBlock > .discordSettingsBlockHeader {
+		padding-right: 0 !important;
+		padding-top: 46px !important;
+	}
+
+	.serverTemplateEditorActions {
+		top: 14px;
+		left: 18px;
+		right: auto;
+	}
+}

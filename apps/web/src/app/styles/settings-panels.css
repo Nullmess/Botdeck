@@ -1,0 +1,940 @@
+/* Surfaces communes des paramètres serveur/bot.
+   Objectif: un panneau lisible, aéré, sans styles spécifiques par onglet. */
+
+.serverSettingsContent .discordSettingsBlock {
+	gap: 14px !important;
+	padding: 18px !important;
+}
+
+.serverSettingsContent .discordSettingsBlockHeader {
+	gap: 7px !important;
+	padding: 0 2px 1px !important;
+}
+
+.serverSettingsContent .discordSettingsBlockHeader h3 {
+	font-size: 1.04rem !important;
+	line-height: 1.25 !important;
+}
+
+.serverSettingsContent .discordSettingsBlockHeader p {
+	max-width: 720px !important;
+	font-size: 0.86rem !important;
+	line-height: 1.55 !important;
+}
+
+.serverSettingsContent .discordSettingsPanel {
+	display: grid !important;
+	gap: 0 !important;
+	overflow: hidden !important;
+	border-radius: 18px !important;
+	border: 1px solid rgba(255, 255, 255, 0.075) !important;
+	background:
+		linear-gradient(145deg, rgba(255, 255, 255, 0.032), transparent 46%),
+		rgba(9, 16, 23, 0.56) !important;
+	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.035) !important;
+}
+
+.serverSettingsContent .discordSettingsPanel > .discordSettingsRow {
+	min-height: auto !important;
+	padding: 17px 18px !important;
+	gap: 22px !important;
+	border-top: 1px solid rgba(255, 255, 255, 0.065) !important;
+	background: transparent !important;
+	box-shadow: none !important;
+}
+
+.serverSettingsContent .discordSettingsPanel > .discordSettingsRow:first-child {
+	border-top: 0 !important;
+}
+
+.serverSettingsContent .discordSettingsRow > div {
+	gap: 6px !important;
+}
+
+.serverSettingsContent .discordSettingsRow strong {
+	font-size: 0.92rem !important;
+	line-height: 1.3 !important;
+	font-weight: 780 !important;
+	color: rgba(244, 252, 249, 0.96) !important;
+}
+
+.serverSettingsContent .discordSettingsRow span {
+	font-size: 0.82rem !important;
+	line-height: 1.55 !important;
+	color: rgba(202, 216, 222, 0.74) !important;
+}
+
+.serverSettingsContent .discordSettingsRow > :where(small, em, .discordSettingsBadge, .discordMutedBadge, .discordDangerBadge) {
+	flex: 0 0 auto !important;
+	margin-left: auto !important;
+}
+
+.serverSettingsContent .discordSettingsPanel:has(> :not(.discordSettingsRow)) {
+	gap: 14px !important;
+	padding: 16px !important;
+}
+
+.serverSettingsContent .discordSettingsPanel:has(> :not(.discordSettingsRow)) > .discordSettingsRow {
+	padding: 15px 0 0 !important;
+	border-top-color: rgba(255, 255, 255, 0.07) !important;
+}
+
+.serverSettingsContent .discordSettingsPanel:has(> :not(.discordSettingsRow)) > .discordSettingsRow:first-child {
+	padding-top: 0 !important;
+	border-top: 0 !important;
+}
+
+.serverSettingsContent .discordSettingsPanel > :where(.dashboardLabelRow, .settingsField) {
+	min-width: 0 !important;
+}
+
+.serverSettingsContent .discordSettingsPanel > .dashboardLabelRow {
+	align-items: flex-start !important;
+	gap: 16px !important;
+	padding: 0 0 2px !important;
+}
+
+.serverSettingsContent .discordSettingsPanel > .dashboardLabelRow .settingsBlockTitle,
+.serverSettingsContent .discordSettingsPanel > .dashboardLabelRow > span:first-child {
+	font-size: 0.92rem !important;
+	font-weight: 800 !important;
+	line-height: 1.3 !important;
+}
+
+.serverSettingsContent .discordSettingsPanel > .dashboardLabelRow small {
+	margin: 5px 0 0 !important;
+	font-size: 0.82rem !important;
+	line-height: 1.5 !important;
+	color: rgba(202, 216, 222, 0.72) !important;
+}
+
+.serverSettingsContent .discordSettingsPanel > .settingsSegmented {
+	width: 100% !important;
+}
+
+.serverSettingsContent .discordSettingsPanel .settingsField {
+	display: grid !important;
+	gap: 8px !important;
+}
+
+.serverSettingsContent .discordSettingsPanel .settingsField > span {
+	font-size: 0.82rem !important;
+	font-weight: 760 !important;
+	line-height: 1.3 !important;
+	color: rgba(239, 249, 246, 0.9) !important;
+}
+
+.serverSettingsContent .discordSettingsPanel .settingsField > small {
+	margin: 0 !important;
+	font-size: 0.78rem !important;
+	line-height: 1.45 !important;
+	color: rgba(202, 216, 222, 0.66) !important;
+}
+
+.serverSettingsContent .discordSettingsPanel .settingsField :where(input, select, textarea),
+.serverSettingsContent .discordSettingsPanel > textarea {
+	min-height: 42px !important;
+	border-radius: 12px !important;
+	border-color: rgba(255, 255, 255, 0.09) !important;
+	background: rgba(4, 10, 15, 0.42) !important;
+}
+
+.serverSettingsContent .discordSettingsPanel > textarea {
+	padding: 12px !important;
+}
+
+.serverSettingsContent .botInvitePermissionPanel {
+	padding: 16px !important;
+}
+
+.serverSettingsContent .botInvitePermissionToolbar {
+	padding: 0 0 14px !important;
+	border-top: 0 !important;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.07) !important;
+}
+
+.serverSettingsContent .botInvitePermissionList {
+	gap: 10px !important;
+	padding: 2px 4px 0 0 !important;
+}
+
+.serverSettingsContent .botInviteUrlPanel {
+	gap: 14px !important;
+}
+
+@media (max-width: 760px) {
+	.serverSettingsContent .discordSettingsPanel > .discordSettingsRow {
+		align-items: flex-start !important;
+		flex-direction: column !important;
+		gap: 12px !important;
+	}
+
+	.serverSettingsContent .discordSettingsRow > :where(small, em, .discordSettingsBadge, .discordMutedBadge, .discordDangerBadge) {
+		margin-left: 0 !important;
+	}
+}
+
+
+/* Onglets serveur verrouillés quand le bot est en lecture seule. */
+.serverSettingsNav button.isReadonlyLocked {
+	position: relative !important;
+	display: inline-flex !important;
+	align-items: center !important;
+	justify-content: flex-start !important;
+	min-height: 42px !important;
+	padding-right: 34px !important;
+	border-color: rgba(255, 205, 128, 0.24) !important;
+	background: rgba(255, 205, 128, 0.08) !important;
+	color: rgba(202, 216, 222, 0.74) !important;
+	cursor: not-allowed !important;
+	opacity: 0.82 !important;
+}
+
+.serverSettingsNav button.isReadonlyLocked:hover,
+.serverSettingsNav button.isReadonlyLocked.isActive {
+	border-color: rgba(255, 205, 128, 0.32) !important;
+	background: rgba(255, 205, 128, 0.1) !important;
+	color: rgba(244, 252, 249, 0.88) !important;
+}
+
+.serverSettingsNav button.isReadonlyLocked .topbarReadonlyBadge {
+	right: 8px !important;
+	bottom: 6px !important;
+}
+
+/* Annuaire des membres dans les paramètres serveur. */
+.serverSettingsFormSurface.serverMembersPanel {
+	padding: 28px 22px 22px !important;
+	gap: 18px !important;
+}
+
+.serverSettingsFormSurface.serverMembersPanel > .discordSettingsBlockHeader {
+	padding: 0 2px 10px !important;
+	margin: 0 !important;
+}
+
+.serverSettingsFormSurface.serverMembersPanel > .discordSettingsBlockHeader h3 {
+	margin: 0 0 8px !important;
+	line-height: 1.28 !important;
+}
+
+.serverSettingsFormSurface.serverMembersPanel > .discordSettingsBlockHeader p {
+	margin: 0 !important;
+	max-width: 760px !important;
+	line-height: 1.55 !important;
+}
+
+.serverMembersToolbar {
+	display: grid;
+	gap: 10px;
+	padding: 12px;
+	border: 1px solid rgba(255, 255, 255, 0.075);
+	border-radius: 18px;
+	background: rgba(7, 13, 20, 0.48);
+	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.035);
+}
+
+.serverMembersSearchHeader {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+	min-width: 0;
+}
+
+.serverMembersSearchHeader > span {
+	min-width: 0;
+}
+
+.serverMembersSearchHeader .uiBadge {
+	flex: 0 0 auto;
+}
+
+.serverMembersSearchField {
+	display: grid;
+	gap: 8px;
+}
+
+.serverMembersSearchField span {
+	font-size: 0.72rem;
+	font-weight: 900;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: rgba(202, 216, 222, 0.7);
+}
+
+.serverMembersSearchField input {
+	min-height: 42px;
+	border-radius: 14px;
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	background: rgba(4, 10, 15, 0.52);
+}
+
+.serverMembersListCard {
+	min-height: 0;
+	overflow: hidden;
+	border: 1px solid rgba(255, 255, 255, 0.075);
+	border-radius: 18px;
+	background: rgba(7, 13, 20, 0.68);
+	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.035);
+}
+
+.serverMembersTable {
+	display: grid;
+	min-width: 0;
+}
+
+.serverMembersTableHeader {
+	position: sticky;
+	top: 0;
+	z-index: 3;
+	background: rgba(8, 15, 22, 0.98);
+	backdrop-filter: blur(14px);
+	border-bottom: 1px solid rgba(255, 255, 255, 0.075);
+}
+
+.serverMembersTableScroller {
+	max-height: min(52vh, 560px);
+	overflow: auto;
+	overflow-x: hidden;
+	scrollbar-gutter: stable;
+	overscroll-behavior: contain;
+}
+
+.serverMembersTableRow {
+	display: grid;
+	grid-template-columns: minmax(160px, 0.85fr) minmax(130px, 0.48fr) minmax(260px, 1.55fr);
+	align-items: center;
+	min-width: 0;
+}
+
+.serverMembersTableHeaderRow {
+	min-height: 42px;
+}
+
+.serverMemberTableRow {
+	min-height: 64px;
+	border-top: 1px solid rgba(255, 255, 255, 0.055);
+}
+
+.serverMemberTableRow:first-child {
+	border-top: 0;
+}
+
+.serverMemberTableRow:hover {
+	background: rgba(255, 255, 255, 0.026);
+}
+
+.serverMembersTableHeadCell,
+.serverMembersTableCell {
+	min-width: 0;
+	padding: 10px 14px;
+}
+
+.serverMembersTableCell {
+	font-size: 0.84rem;
+	color: rgba(202, 216, 222, 0.74);
+}
+
+.serverMembersSortButton {
+	display: flex !important;
+	width: 100%;
+	align-items: center;
+	justify-content: space-between;
+	gap: 10px;
+	padding: 0 !important;
+	border: 0 !important;
+	background: transparent !important;
+	color: rgba(202, 216, 222, 0.74) !important;
+	font-size: 0.72rem;
+	font-weight: 900;
+	letter-spacing: 0.08em;
+	text-align: left;
+	text-transform: uppercase;
+	cursor: pointer;
+}
+
+.serverMembersSortButton:hover,
+.serverMembersTableHeadCell[aria-sort="ascending"] .serverMembersSortButton,
+.serverMembersTableHeadCell[aria-sort="descending"] .serverMembersSortButton {
+	color: rgba(244, 252, 249, 0.96) !important;
+}
+
+.serverMembersSortButton small {
+	font-size: 0.74rem;
+	line-height: 1;
+	color: rgba(118, 153, 255, 0.9);
+}
+
+.serverMemberPseudoCell {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.serverMemberPseudoCell strong {
+	min-width: 0;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	font-size: 0.9rem;
+	font-weight: 800;
+	color: rgba(244, 252, 249, 0.96);
+}
+
+.serverMemberJoinedValue {
+	display: block;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	font-size: 0.82rem;
+	color: rgba(202, 216, 222, 0.7);
+}
+
+.serverMemberRolesCell {
+	position: relative;
+}
+
+.serverMemberRolePills {
+	display: flex !important;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 6px;
+	min-width: 0;
+}
+
+.serverMemberRolePill,
+.serverMemberRolePicker button {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	max-width: 210px;
+	min-height: 26px;
+	padding: 3px 5px 3px 8px;
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	border-radius: 999px;
+	background: rgba(255, 255, 255, 0.045);
+	font-size: 0.74rem;
+	font-style: normal;
+	font-weight: 750;
+	color: rgba(239, 249, 246, 0.84);
+}
+
+.serverMemberRolePill>span:nth-child(2),
+.serverMemberRolePicker button>span:nth-child(2) {
+	min-width: 0;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.serverMemberRoleSwatch {
+	flex: 0 0 auto;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: var(--role-color, rgba(255, 255, 255, 0.16));
+	box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.045);
+}
+
+.serverMemberRoleRemove,
+.serverMemberRoleAdd {
+	display: inline-grid !important;
+	place-items: center;
+	width: 20px;
+	height: 20px;
+	min-width: 20px;
+	border: 1px solid rgba(255, 255, 255, 0.08) !important;
+	border-radius: 999px !important;
+	background: rgba(255, 255, 255, 0.05) !important;
+	color: rgba(244, 252, 249, 0.82) !important;
+	font-size: 0.84rem;
+	font-weight: 900;
+	line-height: 1;
+	cursor: pointer;
+}
+
+.serverMemberRoleRemove:hover:not(:disabled) {
+	border-color: rgba(248, 113, 113, 0.36) !important;
+	background: rgba(248, 113, 113, 0.12) !important;
+	color: #fff !important;
+}
+
+.serverMemberRoleAdd:hover:not(:disabled),
+.serverMemberRoleAdd[aria-expanded="true"] {
+	border-color: rgba(88, 101, 242, 0.42) !important;
+	background: rgba(88, 101, 242, 0.16) !important;
+	color: #fff !important;
+}
+
+.serverMemberRoleRemove:disabled,
+.serverMemberRoleAdd:disabled {
+	cursor: not-allowed;
+	opacity: 0.45;
+}
+
+.serverMemberRolePill.isManaged {
+	opacity: 0.72;
+}
+
+.serverMemberNoRoles {
+	font-size: 0.78rem;
+	color: rgba(202, 216, 222, 0.58);
+}
+
+.serverMemberRolePickerPortal {
+	position: fixed !important;
+	right: auto !important;
+	z-index: 1400;
+	display: grid !important;
+	align-items: stretch;
+	gap: 4px;
+	overflow: auto;
+	padding: 8px;
+	border: 1px solid rgba(88, 101, 242, 0.22);
+	border-radius: 14px;
+	background: rgba(6, 12, 19, 0.98);
+	box-shadow: 0 22px 56px rgba(0, 0, 0, 0.42), inset 0 1px 0 rgba(255, 255, 255, 0.045);
+	backdrop-filter: blur(18px);
+}
+
+.serverMemberRolePickerPortal button {
+	justify-content: flex-start;
+	width: 100%;
+	max-width: none;
+	min-height: 34px;
+	padding: 7px 9px;
+	border-radius: 10px;
+	background: transparent;
+	cursor: pointer;
+}
+
+.serverMemberRolePickerPortal button:hover {
+	border-color: rgba(88, 101, 242, 0.34);
+	background: rgba(88, 101, 242, 0.14);
+	color: #fff;
+}
+
+.serverMemberRolePickerPortal p {
+	margin: 0;
+	padding: 7px 9px;
+	font-size: 0.78rem;
+	color: rgba(202, 216, 222, 0.64);
+}
+
+.serverMembersEmpty {
+	margin: 0;
+	padding: 26px;
+	text-align: center;
+	color: rgba(202, 216, 222, 0.72);
+}
+
+.serverMembersPagination {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 10px;
+	padding-top: 2px;
+}
+
+.serverMembersPagination button,
+.serverMembersPageNumbers span {
+	min-width: 34px;
+	min-height: 34px;
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	border-radius: 12px;
+	background: rgba(255, 255, 255, 0.045);
+	color: rgba(239, 249, 246, 0.82);
+	font-weight: 800;
+}
+
+.serverMembersPagination button {
+	padding: 0 12px;
+	cursor: pointer;
+}
+
+.serverMembersPagination button:hover:not(:disabled),
+.serverMembersPagination button.isActive {
+	border-color: rgba(88, 101, 242, 0.34);
+	background: rgba(88, 101, 242, 0.16);
+	color: #fff;
+}
+
+.serverMembersPagination button:disabled {
+	cursor: not-allowed;
+	opacity: 0.45;
+}
+
+.serverMembersPageNumbers {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+	gap: 6px;
+}
+
+.serverMembersPageNumbers span {
+	display: grid;
+	place-items: center;
+	border-color: transparent;
+	background: transparent;
+	color: rgba(202, 216, 222, 0.62);
+}
+
+.serverMembersPageStatus {
+	margin: -4px 0 0;
+	text-align: center;
+	font-size: 0.78rem;
+	color: rgba(202, 216, 222, 0.64);
+}
+
+@media (max-width: 860px) {
+	.serverMembersSearchHeader,
+	.serverMembersPagination {
+		align-items: stretch !important;
+		flex-direction: column;
+	}
+
+	.serverMembersTableRow {
+		grid-template-columns: minmax(0, 1fr);
+		align-items: stretch;
+	}
+
+	.serverMembersTableHeader {
+		display: none;
+	}
+
+	.serverMembersTableCell {
+		display: grid;
+		gap: 4px;
+		padding: 9px 12px;
+	}
+
+	.serverMemberTableRow {
+		min-height: 0;
+		padding: 8px 0;
+	}
+
+}
+
+/* Invitations serveur dans les paramètres serveur. */
+.serverSettingsFormSurface.serverInvitesPanel {
+	padding: 28px 22px 22px !important;
+	gap: 18px !important;
+}
+
+.serverSettingsFormSurface.serverInvitesPanel > .discordSettingsBlockHeader {
+	padding: 0 2px 10px !important;
+	margin: 0 !important;
+}
+
+.serverSettingsFormSurface.serverInvitesPanel > .discordSettingsBlockHeader h3 {
+	margin: 0 0 8px !important;
+	line-height: 1.28 !important;
+}
+
+.serverSettingsFormSurface.serverInvitesPanel > .discordSettingsBlockHeader p {
+	margin: 0 !important;
+	max-width: 760px !important;
+	line-height: 1.55 !important;
+}
+
+.serverInvitesToolbar {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) auto;
+	align-items: end;
+	gap: 12px;
+	padding: 12px;
+	border: 1px solid rgba(255, 255, 255, 0.075);
+	border-radius: 18px;
+	background: rgba(7, 13, 20, 0.48);
+	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.035);
+}
+
+.serverInvitesSearchField {
+	display: grid;
+	gap: 8px;
+}
+
+.serverInvitesSearchField input {
+	min-height: 42px;
+	border-radius: 14px;
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	background: rgba(4, 10, 15, 0.52);
+}
+
+.serverInvitesListCard {
+	min-height: 0;
+	overflow: hidden;
+	border: 1px solid rgba(255, 255, 255, 0.075);
+	border-radius: 18px;
+	background: rgba(7, 13, 20, 0.68);
+	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.035);
+}
+
+.serverInvitesTable {
+	display: grid;
+	min-width: 0;
+}
+
+.serverInvitesTableHeader {
+	position: sticky;
+	top: 0;
+	z-index: 3;
+	background: rgba(8, 15, 22, 0.98);
+	backdrop-filter: blur(14px);
+	border-bottom: 1px solid rgba(255, 255, 255, 0.075);
+}
+
+.serverInvitesTableScroller {
+	max-height: min(52vh, 560px);
+	overflow: auto;
+	overflow-x: hidden;
+	scrollbar-gutter: stable;
+	overscroll-behavior: contain;
+}
+
+.serverInvitesTableRow {
+	display: grid;
+	grid-template-columns: minmax(140px, 0.8fr) minmax(130px, 0.65fr) minmax(130px, 0.65fr) minmax(96px, 0.42fr) minmax(118px, 0.5fr) minmax(180px, 0.72fr);
+	align-items: center;
+	min-width: 0;
+	border-top: 1px solid rgba(255, 255, 255, 0.055);
+}
+
+.serverInvitesTableHeaderRow {
+	min-height: 42px;
+	border-top: 0;
+}
+
+.serverInvitesTableScroller .serverInvitesTableRow:hover {
+	background: rgba(255, 255, 255, 0.026);
+}
+
+.serverInviteCodeCell {
+	display: grid;
+	gap: 3px;
+}
+
+.serverInviteCodeCell strong {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	font-size: 0.88rem;
+	font-weight: 850;
+	color: rgba(244, 252, 249, 0.96);
+}
+
+.serverInviteCodeCell span,
+.serverInvitesTableRow small {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	font-size: 0.72rem;
+	color: rgba(202, 216, 222, 0.56);
+}
+
+.serverInviteActions {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	gap: 6px;
+}
+
+.serverInviteActions .uiButton {
+	min-height: 30px;
+	padding: 0 9px;
+	border-radius: 10px;
+	font-size: 0.74rem;
+}
+
+.serverInviteCreateModal .actionConfirmBody {
+	gap: 14px;
+}
+
+.serverInviteCreateGrid {
+	display: grid;
+	gap: 12px;
+	padding-top: 4px;
+}
+
+.serverInviteCheckRow {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	min-height: 34px;
+	font-size: 0.84rem;
+	font-weight: 750;
+	color: rgba(239, 249, 246, 0.82);
+}
+
+.serverInviteCheckRow input {
+	width: 16px;
+	height: 16px;
+	accent-color: rgb(88, 101, 242);
+}
+
+@media (max-width: 980px) {
+	.serverInvitesToolbar {
+		grid-template-columns: minmax(0, 1fr);
+	}
+
+	.serverInvitesTableRow {
+		grid-template-columns: minmax(0, 1fr);
+		align-items: stretch;
+	}
+
+	.serverInvitesTableHeader {
+		display: none;
+	}
+
+	.serverInvitesTableScroller .serverInvitesTableRow {
+		padding: 8px 0;
+	}
+
+	.serverInviteActions {
+		justify-content: flex-start;
+	}
+}
+
+/* Ressources serveur : bannissements. */
+.serverSettingsFormSurface.serverResourcePanel {
+	padding: 28px 22px 22px !important;
+	gap: 18px !important;
+}
+
+.serverSettingsFormSurface.serverResourcePanel > .discordSettingsBlockHeader {
+	padding: 0 2px 10px !important;
+	margin: 0 !important;
+}
+
+.serverSettingsFormSurface.serverResourcePanel > .discordSettingsBlockHeader h3 {
+	margin: 0 0 8px !important;
+	line-height: 1.28 !important;
+}
+
+.serverSettingsFormSurface.serverResourcePanel > .discordSettingsBlockHeader p {
+	margin: 0 !important;
+	max-width: 760px !important;
+	line-height: 1.55 !important;
+}
+
+.serverFeatureLockedNotice {
+	margin: -6px 0 0;
+	padding: 10px 12px;
+	border: 1px solid rgba(251, 191, 36, 0.18);
+	border-radius: 14px;
+	background: rgba(251, 191, 36, 0.08);
+	color: rgba(253, 230, 138, 0.88);
+	font-size: 0.82rem;
+	font-weight: 750;
+}
+
+
+.serverResourceToolbarActions {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	gap: 10px;
+	flex-wrap: wrap;
+}
+
+.serverResourceTable {
+	display: grid;
+	min-width: 0;
+}
+
+.serverResourceTableHeader {
+	position: sticky;
+	top: 0;
+	z-index: 3;
+	background: rgba(8, 15, 22, 0.98);
+	backdrop-filter: blur(14px);
+	border-bottom: 1px solid rgba(255, 255, 255, 0.075);
+}
+
+.serverResourceTableHeader > div {
+	padding: 10px 14px;
+	color: rgba(202, 216, 222, 0.74);
+	font-size: 0.72rem;
+	font-weight: 900;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+}
+
+.serverResourceTableScroller {
+	max-height: min(52vh, 560px);
+	overflow: auto;
+	overflow-x: hidden;
+	scrollbar-gutter: stable;
+	overscroll-behavior: contain;
+}
+
+.serverResourceTableRow {
+	display: grid;
+	grid-template-columns: minmax(170px, 0.9fr) minmax(140px, 0.62fr) minmax(170px, 0.85fr) minmax(150px, 0.58fr);
+	align-items: center;
+	min-width: 0;
+	border-top: 1px solid rgba(255, 255, 255, 0.055);
+}
+
+.serverResourceTableHeader.serverResourceTableRow {
+	min-height: 42px;
+	border-top: 0;
+}
+
+.serverResourceTableScroller .serverResourceTableRow:hover {
+	background: rgba(255, 255, 255, 0.026);
+}
+
+.serverResourceNameCell {
+	display: grid;
+	grid-template-columns: auto minmax(0, 1fr);
+	align-items: center;
+	gap: 10px;
+}
+
+
+.serverResourceNameCell > span:last-child {
+	display: grid;
+	min-width: 0;
+	gap: 3px;
+}
+
+.serverResourceNameCell strong,
+.serverResourceNameCell span {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.serverResourceNameCell strong {
+	font-size: 0.88rem;
+	font-weight: 850;
+	color: rgba(244, 252, 249, 0.96);
+}
+
+.serverResourceNameCell span {
+	font-size: 0.72rem;
+	color: rgba(202, 216, 222, 0.56);
+}
+
+.serverSettingsNav button.isReadonlyLocked,
+.serverSettingsNav button[aria-disabled="true"] {
+	cursor: not-allowed;
+}
+
+@media (max-width: 980px) {
+	.serverResourceTableRow {
+		grid-template-columns: minmax(0, 1fr);
+		align-items: stretch;
+	}
+
+	.serverResourceTableHeader {
+		display: none;
+	}
+
+	.serverResourceTableScroller .serverResourceTableRow {
+		padding: 8px 0;
+	}
+}

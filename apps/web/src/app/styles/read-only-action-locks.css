@@ -1,0 +1,125 @@
+/* Système visuel unique pour toutes les actions verrouillées par la lecture seule. */
+:root {
+	--readonly-lock-size: 17px;
+	--readonly-lock-offset: -4px;
+	--readonly-lock-bg: rgba(14, 16, 24, 0.96);
+	--readonly-lock-border: rgba(255, 205, 128, 0.42);
+	--readonly-lock-text: rgba(255, 232, 190, 0.92);
+	--readonly-lock-panel: rgba(255, 205, 128, 0.075);
+	--readonly-lock-panel-border: rgba(255, 205, 128, 0.28);
+}
+
+button.isReadonlyLocked,
+.composerInput.isReadonlyLocked {
+	border-color: var(--readonly-lock-panel-border) !important;
+	background: var(--readonly-lock-panel) !important;
+	color: rgba(255, 232, 190, 0.78) !important;
+	cursor: not-allowed !important;
+	opacity: 0.86 !important;
+	box-shadow: inset 0 0 0 1px rgba(255, 205, 128, 0.12) !important;
+}
+
+button.isReadonlyLocked:hover,
+button.isReadonlyLocked:focus-visible,
+.composerInput.isReadonlyLocked:hover,
+.composerInput.isReadonlyLocked:focus-visible {
+	border-color: var(--readonly-lock-panel-border) !important;
+	background: var(--readonly-lock-panel) !important;
+	transform: none !important;
+	filter: none !important;
+}
+
+button.isReadonlyLocked {
+	position: relative !important;
+	overflow: visible !important;
+}
+
+button.isReadonlyLocked::after,
+.composerInputShell.isReadonlyLocked::after {
+	content: "🔒";
+	position: absolute;
+	right: var(--readonly-lock-offset);
+	bottom: var(--readonly-lock-offset);
+	z-index: 4;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: var(--readonly-lock-size);
+	height: var(--readonly-lock-size);
+	border-radius: 999px;
+	background: var(--readonly-lock-bg);
+	border: 1px solid var(--readonly-lock-border);
+	color: var(--readonly-lock-text);
+	font-size: 10px;
+	line-height: 1;
+	pointer-events: none;
+	box-shadow: 0 8px 18px rgba(0, 0, 0, 0.34);
+}
+
+/* Les boutons texte gardent de l'air pour que le badge ne recouvre pas le libellé. */
+.messageContextMenu button.isReadonlyLocked,
+.channelContextMenu button.isReadonlyLocked,
+.forumCreateActions button.isReadonlyLocked,
+.forumPostActions button.isReadonlyLocked,
+.memberActionGrid button.isReadonlyLocked,
+.memberRoleList button.isReadonlyLocked,
+.voiceMoveList button.isReadonlyLocked,
+.primaryButton.isReadonlyLocked,
+.secondaryButton.isReadonlyLocked,
+.danger.isReadonlyLocked,
+.isDanger.isReadonlyLocked {
+	padding-right: calc(var(--readonly-lock-size) + 12px) !important;
+}
+
+.composerInputShell {
+	position: relative;
+	min-width: 0;
+	flex: 1 1 auto;
+}
+
+.composerInputShell .composerInput {
+	width: 100%;
+}
+
+.composerInputShell.isReadonlyLocked .composerInput {
+	padding-right: 38px;
+}
+
+
+.memberRoleList button.isReadonlyLocked .roleSwatch {
+	filter: grayscale(0.55);
+	opacity: 0.72;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	button.isReadonlyLocked::after,
+	.composerInputShell.isReadonlyLocked::after {
+		transition: transform 160ms ease, opacity 160ms ease, border-color 160ms ease;
+	}
+}
+
+/* Un bouton danger verrouillé redevient neutre: le verrouillage prime sur la variante destructive. */
+button.danger.isReadonlyLocked,
+button.isDanger.isReadonlyLocked,
+.messageContextMenu button.danger.isReadonlyLocked,
+.channelContextMenu button.danger.isReadonlyLocked,
+.memberActionGrid button.danger.isReadonlyLocked,
+.forumPostActions button.isDanger.isReadonlyLocked {
+	background: var(--readonly-lock-panel) !important;
+	border-color: var(--readonly-lock-panel-border) !important;
+	color: rgba(255, 232, 190, 0.78) !important;
+	box-shadow: inset 0 0 0 1px rgba(255, 205, 128, 0.12) !important;
+}
+
+button.danger.isReadonlyLocked:hover,
+button.danger.isReadonlyLocked:focus-visible,
+button.isDanger.isReadonlyLocked:hover,
+button.isDanger.isReadonlyLocked:focus-visible,
+.messageContextMenu button.danger.isReadonlyLocked:hover,
+.messageContextMenu button.danger.isReadonlyLocked:focus-visible {
+	background: var(--readonly-lock-panel) !important;
+	border-color: var(--readonly-lock-panel-border) !important;
+	color: rgba(255, 232, 190, 0.78) !important;
+	transform: none !important;
+	filter: none !important;
+}

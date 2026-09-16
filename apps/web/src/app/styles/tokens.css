@@ -1,0 +1,243 @@
+/*
+ * BotDeck Design Tokens
+ * Source unique de couleurs, espacements, rayons et ombres.
+ * Discord reste isolé aux previews uniquement.
+ */
+
+:root {
+	color-scheme: dark;
+
+	/* App background */
+	--bd-bg-0: #05080c;
+	--bd-bg-1: #080d13;
+	--bd-bg-2: #0c131b;
+	--bd-bg-3: #101a24;
+	--bd-bg-4: #152232;
+
+	/* Surfaces */
+	--bd-surface-0: rgba(255, 255, 255, 0.026);
+	--bd-surface-1: rgba(255, 255, 255, 0.044);
+	--bd-surface-2: rgba(255, 255, 255, 0.064);
+	--bd-surface-3: rgba(255, 255, 255, 0.088);
+	--bd-surface-glass: rgba(12, 19, 27, 0.78);
+	--bd-surface-solid: #0d151e;
+	--bd-surface-raised: #111d29;
+
+	/* Borders */
+	--bd-border-soft: rgba(255, 255, 255, 0.072);
+	--bd-border: rgba(255, 255, 255, 0.105);
+	--bd-border-strong: rgba(255, 255, 255, 0.16);
+
+	/* Typography */
+	--bd-text: #eef8f8;
+	--bd-text-soft: #c8d5dc;
+	--bd-muted: #91a2ad;
+	--bd-muted-2: #667784;
+	--bd-disabled: #4d5b65;
+
+	/* Accents */
+	--bd-accent: #35f2c4;
+	--bd-accent-2: #8b7cff;
+	--bd-accent-3: #f8b84e;
+	--bd-accent-soft: rgba(53, 242, 196, 0.14);
+	--bd-accent-surface: rgba(53, 242, 196, 0.095);
+	--bd-accent-border: rgba(53, 242, 196, 0.34);
+	--bd-violet: #8b7cff;
+	--bd-violet-soft: rgba(139, 124, 255, 0.14);
+
+	/* States */
+	--bd-success: #34d399;
+	--bd-success-soft: rgba(52, 211, 153, 0.13);
+	--bd-warning: #f8b84e;
+	--bd-warning-soft: rgba(248, 184, 78, 0.14);
+	--bd-danger: #ff5d73;
+	--bd-danger-soft: rgba(255, 93, 115, 0.13);
+	--bd-info: #58a6ff;
+	--bd-info-soft: rgba(88, 166, 255, 0.13);
+
+	/* Radius */
+	--bd-radius-xs: 6px;
+	--bd-radius-sm: 8px;
+	--bd-radius-md: 12px;
+	--bd-radius-lg: 18px;
+	--bd-radius-xl: 24px;
+	--bd-radius-2xl: 30px;
+	--bd-radius-pill: 999px;
+
+	/* Spacing */
+	--bd-space-1: 4px;
+	--bd-space-2: 8px;
+	--bd-space-3: 12px;
+	--bd-space-4: 16px;
+	--bd-space-5: 20px;
+	--bd-space-6: 24px;
+	--bd-space-7: 32px;
+	--bd-space-8: 40px;
+
+	/* Shadows */
+	--bd-shadow-sm: 0 8px 24px rgba(0, 0, 0, 0.22);
+	--bd-shadow-md: 0 18px 52px rgba(0, 0, 0, 0.32);
+	--bd-shadow-lg: 0 30px 90px rgba(0, 0, 0, 0.48);
+	--bd-shadow-elevated: var(--bd-shadow-lg);
+	--bd-inner-line: inset 0 1px 0 rgba(255, 255, 255, 0.034);
+
+	/* Typography scale */
+	--bd-font-size-xs: 0.72rem;
+	--bd-font-size-sm: 0.82rem;
+	--bd-font-size-md: 0.94rem;
+	--bd-font-size-lg: 1.05rem;
+	--bd-font-size-xl: 1.3rem;
+	--bd-font-size-2xl: 1.75rem;
+
+	/* Compatibility with existing project variables */
+	--bg: var(--bd-bg-0);
+	--panel: var(--bd-bg-2);
+	--panel-strong: var(--bd-bg-1);
+	--surface: var(--bd-surface-solid);
+	--surface-soft: var(--bd-surface-1);
+	--panel-soft: var(--bd-surface-0);
+	--border: var(--bd-border);
+	--border-strong: var(--bd-border-strong);
+	--text: var(--bd-text);
+	--text-main: var(--bd-text);
+	--text-primary: var(--bd-text);
+	--text-secondary: var(--bd-text-soft);
+	--text-muted: var(--bd-muted);
+	--muted: var(--bd-muted);
+	--accent: var(--bd-accent);
+	--accent-2: var(--bd-accent-2);
+	--accent-3: var(--bd-accent-3);
+	--accent-glow: rgba(53, 242, 196, 0.22);
+	--success: var(--bd-success);
+	--warn: var(--bd-warning);
+	--error: var(--bd-danger);
+	--radius-lg: var(--bd-radius-lg);
+	--radius-md: var(--bd-radius-md);
+	--shadow-elevated: var(--bd-shadow-elevated);
+
+	/* Discord preview tokens only */
+	--discord-bg-main: #313338;
+	--discord-bg-card: #2b2d31;
+	--discord-bg-dark: #1e1f22;
+	--discord-bg-input: #383a40;
+	--discord-text: #f2f3f5;
+	--discord-muted: #b5bac1;
+	--discord-muted-2: #949ba4;
+	--discord-border: rgba(78, 80, 88, 0.58);
+	--discord-blurple: #5865f2;
+}
+
+/* Design System — Button bridge classes.
+   The legacy classes keep the visual rendering stable while TSX migrates to <Button>. */
+.uiButton {
+	font: inherit;
+}
+
+.uiButton.isLoading {
+	cursor: wait;
+}
+
+/* Design System: badge/tag/chip base hook. Legacy visual classes keep current rendering. */
+.uiBadge {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	white-space: nowrap;
+}
+
+.uiBadge--sm {
+	font-size: 0.72rem;
+}
+
+.uiBadge--md {
+	font-size: 0.78rem;
+}
+
+/* Design System — semantic component tokens. */
+:root {
+	/* Focus */
+	--bd-focus-ring: 0 0 0 3px rgba(53, 242, 196, 0.22);
+	--bd-focus-outline: 1px solid var(--bd-accent-border);
+
+	/* Controls */
+	--bd-control-height-sm: 32px;
+	--bd-control-height-md: 38px;
+	--bd-control-height-lg: 44px;
+	--bd-control-padding-x-sm: var(--bd-space-3);
+	--bd-control-padding-x-md: var(--bd-space-4);
+	--bd-control-padding-x-lg: var(--bd-space-5);
+	--bd-control-radius: var(--bd-radius-md);
+	--bd-control-border: var(--bd-border);
+	--bd-control-border-hover: var(--bd-border-strong);
+	--bd-control-bg: var(--bd-surface-1);
+	--bd-control-bg-hover: var(--bd-surface-2);
+	--bd-control-bg-active: var(--bd-accent-surface);
+
+	/* Panels */
+	--bd-panel-bg: linear-gradient(145deg, rgba(13, 20, 29, 0.92), rgba(8, 13, 19, 0.86));
+	--bd-panel-border: var(--bd-border);
+	--bd-panel-radius: var(--bd-radius-lg);
+	--bd-panel-padding: var(--bd-space-5);
+	--bd-card-bg: var(--bd-surface-1);
+	--bd-card-border: var(--bd-border-soft);
+	--bd-card-radius: var(--bd-radius-md);
+	--bd-card-padding: var(--bd-space-4);
+
+	/* Modals */
+	--bd-modal-backdrop: rgba(0, 0, 0, 0.62);
+	--bd-modal-bg: var(--bd-surface-solid);
+	--bd-modal-border: var(--bd-border-strong);
+	--bd-modal-radius: var(--bd-radius-xl);
+	--bd-modal-shadow: var(--bd-shadow-lg);
+
+	/* Motion and layers */
+	--bd-duration-fast: 120ms;
+	--bd-duration-normal: 180ms;
+	--bd-duration-slow: 260ms;
+	--bd-ease-standard: cubic-bezier(0.2, 0.8, 0.2, 1);
+	--bd-z-dropdown: 20;
+	--bd-z-sticky: 30;
+	--bd-z-overlay: 50;
+	--bd-z-modal: 80;
+	--bd-z-toast: 100;
+}
+
+.uiButton,
+.uiInput,
+.uiSelect,
+.uiTextarea,
+.uiBadge,
+.uiPanel,
+.uiCard,
+.uiSection {
+	transition-duration: var(--bd-duration-normal);
+	transition-timing-function: var(--bd-ease-standard);
+}
+
+.uiInput,
+.uiSelect,
+.uiTextarea {
+	border-color: var(--bd-control-border);
+	border-radius: var(--bd-control-radius);
+	background: var(--bd-control-bg);
+	color: var(--bd-text);
+}
+
+.uiInput:focus-visible,
+.uiSelect:focus-visible,
+.uiTextarea:focus-visible,
+.uiButton:focus-visible {
+	outline: var(--bd-focus-outline);
+	box-shadow: var(--bd-focus-ring);
+}
+
+.uiPanel {
+	border-color: var(--bd-panel-border);
+	border-radius: var(--bd-panel-radius);
+}
+
+.uiCard,
+.uiSection {
+	border-color: var(--bd-card-border);
+	border-radius: var(--bd-card-radius);
+}

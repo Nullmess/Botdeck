@@ -1,0 +1,24 @@
+/* Entrée CSS: imports par domaine. Ordre critique: base, tokens source de vérité, overrides finaux. */
+
+@import "./styles/tokens.css";
+@import "./styles/base.css";
+@import "./styles/launcher.css";
+@import "./styles/first-launch.css";
+@import "./styles/layout.css";
+@import "./styles/layout-system.css";
+@import "./styles/messages.css";
+@import "./styles/search.css";
+@import "./styles/slash-studio.css";
+@import "./styles/embeds.css";
+@import "./styles/overlays.css";
+@import "./styles/responsive.css";
+@import "./styles/modal-unified.css";
+@import "./styles/invite-builder.css";
+@import "./styles/theme-control-room.css";
+@import "./styles/premium-system.css";
+@import "./styles/settings-panels.css";
+@import "./styles/server-templates.css";
+
+@import "./styles/channel-recreate-modal.css";
+@import "./styles/external-link-modal.css";
+@import "./styles/read-only-action-locks.css";

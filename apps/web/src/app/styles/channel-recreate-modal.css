@@ -1,0 +1,209 @@
+/* Modal compact et efficace pour l'action destructive de réinitialisation de salon. */
+
+.channelRecreateModal {
+	width: min(560px, calc(100vw - 28px)) !important;
+	max-height: min(760px, calc(100vh - 28px)) !important;
+	padding: 0 !important;
+	display: flex;
+	flex-direction: column;
+	gap: 0;
+}
+
+.channelRecreateHeader {
+	padding: 20px 22px 16px !important;
+	align-items: center;
+	gap: 14px;
+}
+
+.channelRecreateTitleGroup {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	min-width: 0;
+}
+
+.channelRecreateTitleGroup h2 {
+	margin: 3px 0 0;
+	font-size: 1.24rem;
+	line-height: 1.15;
+	letter-spacing: -0.02em;
+	color: rgba(255, 255, 255, 0.94);
+}
+
+.channelRecreateTitleGroup .eyebrow {
+	margin: 0;
+	font-size: 0.7rem;
+	font-weight: 850;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+	color: rgba(255, 184, 107, 0.82);
+}
+
+.channelRecreateIcon {
+	display: grid;
+	place-items: center;
+	width: 38px;
+	height: 38px;
+	flex: 0 0 auto;
+	border-radius: 14px;
+	border: 1px solid rgba(255, 184, 107, 0.18);
+	background: rgba(255, 184, 107, 0.08);
+	color: rgba(255, 214, 158, 0.95);
+	font-size: 1.2rem;
+	font-weight: 850;
+}
+
+.channelRecreateBody {
+	padding: 18px 22px 0;
+	overflow-y: auto;
+	display: grid;
+	gap: 14px;
+}
+
+.channelRecreateBrief {
+	margin: 0;
+	color: rgba(218, 226, 237, 0.72);
+	font-size: 0.9rem;
+	line-height: 1.5;
+}
+
+.channelRecreateTargetBox {
+	display: grid;
+	grid-template-columns: 1.15fr 0.7fr 1fr;
+	gap: 1px;
+	overflow: hidden;
+	border: 1px solid rgba(255, 255, 255, 0.075);
+	border-radius: 16px;
+	background: rgba(255, 255, 255, 0.055);
+}
+
+.channelRecreateTargetBox > div {
+	display: grid;
+	gap: 5px;
+	min-width: 0;
+	padding: 12px 13px;
+	background: rgba(4, 8, 14, 0.32);
+}
+
+.channelRecreateTargetBox span,
+.channelRecreateField > span {
+	color: rgba(218, 226, 237, 0.58);
+	font-size: 0.68rem;
+	font-weight: 850;
+	letter-spacing: 0.095em;
+	text-transform: uppercase;
+}
+
+.channelRecreateTargetBox strong {
+	min-width: 0;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	color: rgba(255, 255, 255, 0.91);
+	font-size: 0.88rem;
+	line-height: 1.2;
+}
+
+.channelRecreateNotice {
+	display: flex;
+	align-items: flex-start;
+	gap: 10px;
+	padding: 11px 12px;
+	border: 1px solid rgba(255, 184, 107, 0.16);
+	border-radius: 14px;
+	background: rgba(255, 184, 107, 0.055);
+}
+
+.channelRecreateNotice > span {
+	flex: 0 0 auto;
+	color: rgba(255, 214, 158, 0.94);
+	font-weight: 900;
+	line-height: 1.25;
+}
+
+.channelRecreateNotice p {
+	margin: 0;
+	color: rgba(242, 230, 214, 0.72);
+	font-size: 0.83rem;
+	line-height: 1.45;
+}
+
+.channelRecreateField {
+	display: grid;
+	gap: 7px;
+}
+
+.channelRecreateField input {
+	width: 100%;
+	min-height: 42px;
+	padding: 0 12px;
+	border-radius: 12px;
+	border: 1px solid rgba(255, 255, 255, 0.095);
+	background: rgba(0, 0, 0, 0.22);
+	color: rgba(255, 255, 255, 0.92);
+	font: inherit;
+	font-size: 0.9rem;
+	outline: none;
+	transition: border-color 150ms ease, background 150ms ease, box-shadow 150ms ease;
+}
+
+.channelRecreateField input::placeholder {
+	color: rgba(218, 226, 237, 0.36);
+}
+
+.channelRecreateField input:focus {
+	border-color: rgba(255, 184, 107, 0.36);
+	background: rgba(0, 0, 0, 0.28);
+	box-shadow: 0 0 0 3px rgba(255, 184, 107, 0.08);
+}
+
+.channelRecreateConfirmBox {
+	display: grid;
+	gap: 8px;
+	padding: 13px;
+	border: 1px solid rgba(237, 66, 69, 0.18);
+	border-radius: 16px;
+	background: rgba(237, 66, 69, 0.055);
+}
+
+.channelRecreateConfirmBox small {
+	color: rgba(255, 205, 205, 0.66);
+	font-size: 0.78rem;
+	line-height: 1.35;
+}
+
+.channelRecreateActions {
+	margin-top: 0 !important;
+	padding: 16px 22px 20px;
+	border-top: 1px solid rgba(255, 255, 255, 0.075);
+	background: rgba(3, 6, 10, 0.24);
+}
+
+.channelRecreateActions .sendButton {
+	min-height: 42px;
+}
+
+.channelRecreateActions .dangerButton:disabled {
+	border-color: rgba(255, 255, 255, 0.075) !important;
+	background: rgba(255, 255, 255, 0.045) !important;
+	color: rgba(255, 255, 255, 0.35) !important;
+	cursor: not-allowed;
+	box-shadow: none !important;
+}
+
+@media (max-width: 640px) {
+	.channelRecreateModal {
+		width: min(100vw - 18px, 560px) !important;
+	}
+
+	.channelRecreateHeader,
+	.channelRecreateBody,
+	.channelRecreateActions {
+		padding-left: 18px !important;
+		padding-right: 18px !important;
+	}
+
+	.channelRecreateTargetBox {
+		grid-template-columns: 1fr;
+	}
+}

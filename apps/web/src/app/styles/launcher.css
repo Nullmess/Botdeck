@@ -1,0 +1,2812 @@
+/* Consolidated from launcher-parts/*.css. Keep domain styles in this file. */
+
+/* ---- apps/web/src/app/styles/launcher-parts/part-01.css ---- */
+/* Lanceur: bots, connexion, actions. Lecture avant sync. */
+
+
+@keyframes transitionCardIn {
+	from {
+		transform: translateY(14px) scale(0.96);
+		opacity: 0;
+	}
+
+	to {
+		transform: translateY(0) scale(1);
+		opacity: 1;
+	}
+}
+
+@keyframes transitionOverlayIn {
+	from {
+		opacity: 0;
+		backdrop-filter: blur(4px);
+	}
+
+	to {
+		opacity: 1;
+		backdrop-filter: blur(18px) saturate(1.08);
+	}
+}
+
+@keyframes progressSlide {
+	from {
+		transform: translateX(-18%);
+	}
+
+	to {
+		transform: translateX(78%);
+	}
+}
+
+.botForm {
+	display: grid;
+	gap: 12px;
+	margin-top: 20px;
+}
+
+.guildRail {
+	grid-area: guildRail;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	padding: 12px 10px;
+	background: var(--panel-strong);
+	border-right: 1px solid rgba(255, 255, 255, 0.04);
+	min-height: 0;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+
+.discordShell {
+	display: grid;
+	grid-template-columns: 72px 258px minmax(0, 1fr) 248px;
+	min-height: 100vh;
+	overflow: hidden;
+}
+
+.brandMark {
+	position: relative;
+	display: grid;
+	place-items: center;
+	width: 56px;
+	height: 56px;
+	margin-bottom: 8px;
+	padding: 0;
+	border: 0;
+	border-radius: 18px;
+	background: var(--accent);
+	color: #fff;
+	font-size: 1.05rem;
+	font-weight: 800;
+	letter-spacing: -0.02em;
+}
+
+.brandMark .botdeckLogo {
+	width: 78%;
+	height: 78%;
+}
+
+.navUnreadBadge {
+	position: absolute;
+	right: -4px;
+	bottom: -4px;
+	display: grid;
+	place-items: center;
+	min-width: 20px;
+	height: 20px;
+	padding: 0 6px;
+	border: 3px solid var(--panel-strong);
+	border-radius: 999px;
+	background: var(--accent-3);
+	color: #fff;
+	font-size: 10px;
+	font-weight: 900;
+	line-height: 1;
+}
+
+.navUnreadBadge.hasMention,
+.guildUnreadBadge.hasMention,
+.dmUnreadBadge.hasMention,
+.channelUnread.hasMention {
+	background: var(--accent-3);
+}
+
+.brandMark.isActive {
+	box-shadow:
+		0 14px 34px var(--accent-glow),
+		0 0 0 3px rgba(45, 226, 179, 0.18);
+}
+
+.guildSeparator {
+	width: 32px;
+	height: 2px;
+	margin: 0 auto 8px;
+	border-radius: 999px;
+	background: rgba(255, 255, 255, 0.12);
+}
+
+.guildButton {
+	position: relative;
+	display: grid;
+	place-items: center;
+	width: 56px;
+	height: 56px;
+	padding: 0;
+	border: 0;
+	border-radius: 22px;
+	color: var(--text);
+	background: #383a40;
+	overflow: hidden;
+	transition:
+		transform 160ms ease,
+		background 160ms ease,
+		border-color 160ms ease;
+}
+
+.guildUnreadBadge {
+	position: absolute;
+	right: -4px;
+	bottom: -4px;
+	display: grid;
+	place-items: center;
+	min-width: 20px;
+	height: 20px;
+	padding: 0 6px;
+	border: 3px solid var(--panel-strong);
+	border-radius: 999px;
+	background: var(--accent);
+	color: #fff;
+	font-size: 10px;
+	font-weight: 900;
+	line-height: 1;
+}
+
+.guildButton span {
+	display: inline-block;
+	font-weight: 700;
+}
+
+.guildButton .guildUnreadBadge {
+	display: grid;
+}
+
+.guildIcon {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+}
+
+.guildButton.isActive {
+	border-radius: 16px;
+	background: var(--accent);
+}
+
+.guildButton:hover,
+.channelButton:hover,
+.sendButton:hover {
+	transform: translateY(-1px);
+}
+
+.channelSidebar,
+.chatPane,
+.memberPane {
+	background: var(--panel);
+	min-width: 0;
+}
+
+.channelSidebar {
+	position: relative;
+	grid-area: channelSidebar;
+	border-right: 1px solid rgba(255, 255, 255, 0.04);
+	display: grid;
+	grid-template-rows: auto minmax(0, 1fr);
+	min-width: 0;
+	min-height: 0;
+	overflow: hidden;
+}
+
+.channelSidebarResizeHandle {
+	position: absolute;
+	top: 0;
+	right: -3px;
+	bottom: 0;
+	z-index: 15;
+	width: 7px;
+	padding: 0;
+	border: 0;
+	border-radius: 0;
+	background: transparent;
+	cursor: col-resize;
+}
+
+.channelSidebarResizeHandle::after {
+	content: "";
+	position: absolute;
+	top: 0;
+	right: 2px;
+	bottom: 0;
+	width: 1px;
+	background: transparent;
+	transition: background 140ms ease;
+}
+
+.channelSidebarResizeHandle:hover::after,
+body.isResizingChannelSidebar .channelSidebarResizeHandle::after {
+	background: rgba(88, 101, 242, 0.72);
+}
+
+body.isResizingChannelSidebar {
+	cursor: col-resize;
+	user-select: none;
+}
+
+.serverHeader,
+.chatTopbar,
+.panelCard,
+.composer {
+	border: 1px solid var(--border);
+	background: rgba(30, 31, 34, 0.75);
+}
+
+.serverHeader {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+	min-height: 72px;
+	padding: 12px 16px;
+	border-top: 0;
+	border-left: 0;
+	border-right: 0;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+	border-radius: 0;
+}
+
+.serverHeader h1 {
+	margin-top: 2px;
+	font-size: 1rem;
+	font-weight: 700;
+}
+
+.channelGroups {
+	display: grid;
+	align-content: start;
+	gap: 18px;
+	padding: 16px 12px;
+	min-height: 0;
+	overflow-y: auto;
+}
+
+.userPanel {
+	grid-area: userPanel;
+	position: relative;
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) auto;
+	align-items: center;
+	gap: 8px;
+	min-height: 72px;
+	padding: 10px;
+	background: #232428;
+	border-top: 1px solid rgba(255, 255, 255, 0.05);
+	border-right: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.userIdentity {
+	display: grid;
+	grid-template-columns: 38px minmax(0, 1fr);
+	align-items: center;
+	gap: 8px;
+	min-width: 0;
+	padding: 4px;
+	border: 0;
+	border-radius: 8px;
+	background: transparent;
+	color: var(--text);
+	text-align: left;
+}
+
+.userIdentity:hover,
+.userControlButton:hover,
+.presenceMenu button:hover {
+	background: rgba(255, 255, 255, 0.08);
+}
+
+.userAvatarWrap {
+	position: relative;
+	display: grid;
+	place-items: center;
+	width: 36px;
+	height: 36px;
+	border-radius: 999px;
+	overflow: visible;
+	background: var(--accent);
+	color: #fff;
+	font-weight: 800;
+}
+
+.userAvatarImage {
+	width: 100%;
+	height: 100%;
+	display: block;
+	object-fit: cover;
+	border-radius: inherit;
+}
+
+.presenceDot {
+	display: inline-block;
+	width: 10px;
+	height: 10px;
+	border-radius: 999px;
+	background: #80848e;
+}
+
+.userAvatarWrap .presenceDot {
+	position: absolute;
+	right: -1px;
+	bottom: -1px;
+	width: 13px;
+	height: 13px;
+	border: 3px solid #232428;
+}
+
+.presenceDot.online {
+	background: #23a55a;
+}
+
+.presenceDot.idle {
+	background: #f0b232;
+}
+
+.presenceDot.dnd {
+	background: #f23f43;
+}
+
+.presenceDot.offline {
+	background: #80848e;
+}
+
+.userText {
+	display: grid;
+	min-width: 0;
+}
+
+.userText strong,
+.userText small {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.userText strong {
+	font-size: 13px;
+	line-height: 1.2;
+}
+
+.userText small {
+	color: var(--muted);
+	font-size: 11px;
+}
+
+.userControls {
+	display: flex;
+	align-items: center;
+	gap: 2px;
+}
+
+.userControlButton {
+	display: grid;
+	place-items: center;
+	min-width: 30px;
+	height: 30px;
+	padding: 0 7px;
+	border: 0;
+	border-radius: 8px;
+	background: transparent;
+	color: var(--muted);
+	font-size: 10px;
+	font-weight: 800;
+}
+
+.userControlButton.isActive {
+	color: #ffb5b5;
+	background: rgba(242, 63, 67, 0.14);
+}
+
+.presenceMenu {
+	position: absolute;
+	left: 10px;
+	right: 10px;
+	bottom: calc(100% + 8px);
+	z-index: 30;
+	display: grid;
+	gap: 4px;
+	padding: 8px;
+	border-radius: 12px;
+	border: 1px solid var(--border);
+	background: rgba(17, 18, 20, 0.98);
+	box-shadow: 0 16px 42px rgba(0, 0, 0, 0.38);
+}
+
+/* ---- apps/web/src/app/styles/launcher-parts/part-02.css ---- */
+.presenceMenu button {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	width: 100%;
+	padding: 10px;
+	border: 0;
+	border-radius: 8px;
+	background: transparent;
+	color: var(--text);
+	text-align: left;
+}
+
+.presenceMenu button.isSelected {
+	background: rgba(88, 101, 242, 0.18);
+}
+
+.channelGroup {
+	display: grid;
+	gap: 10px;
+}
+
+.channelGroupLabel {
+	color: var(--muted);
+	font-size: 11px;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+}
+
+.eyebrow {
+	margin: 0 0 6px;
+	color: var(--muted);
+	font-size: 11px;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+}
+
+.subtle {
+	margin-top: 8px;
+	color: var(--muted);
+	line-height: 1.5;
+}
+
+.channelList {
+	display: grid;
+	gap: 8px;
+}
+
+.channelCategoryBlock {
+	display: grid;
+	gap: 6px;
+}
+
+.channelCategoryHeader {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	width: 100%;
+	min-height: 28px;
+	padding: 4px 6px;
+	border: 0;
+	background: transparent;
+	color: var(--muted);
+	font-size: 11px;
+	font-weight: 800;
+	text-align: left;
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+}
+
+.channelCategoryHeader:not(.isStatic):hover {
+	color: var(--text);
+}
+
+.channelCategoryHeader.isStatic {
+	padding-left: 18px;
+}
+
+.categoryChevron {
+	display: inline-grid;
+	place-items: center;
+	width: 12px;
+	height: 12px;
+	flex: 0 0 auto;
+	color: inherit;
+	font-size: 13px;
+	line-height: 1;
+	transition: transform 140ms ease;
+}
+
+.categoryChevron.isCollapsed {
+	transform: rotate(-90deg);
+}
+
+.channelLoadingSkeleton {
+	padding: 12px 10px;
+}
+
+.skeletonLine {
+	display: block;
+	height: 10px;
+	border-radius: 999px;
+	background: linear-gradient(90deg, rgba(255, 255, 255, 0.05), rgba(88, 101, 242, 0.16), rgba(255, 255, 255, 0.05));
+	background-size: 200% 100%;
+	animation: shimmer 1.6s linear infinite;
+}
+
+.skeletonLineWide {
+	width: 100%;
+}
+
+.skeletonLineMedium {
+	width: 72%;
+}
+
+.skeletonLineShort {
+	width: 48%;
+}
+
+.workspaceSkeleton {
+	display: grid;
+	gap: 16px;
+	width: 100%;
+	padding: 20px;
+	border-radius: 18px;
+	border: 1px solid rgba(255, 255, 255, 0.05);
+	background: rgba(255, 255, 255, 0.03);
+}
+
+.workspaceSkeletonHead {
+	display: grid;
+	gap: 10px;
+}
+
+.workspaceSkeletonCard {
+	display: grid;
+	gap: 12px;
+	padding: 16px;
+	border-radius: 16px;
+	background: rgba(255, 255, 255, 0.03);
+}
+
+.workspaceSkeletonMessages {
+	display: grid;
+	gap: 14px;
+}
+
+.workspaceSkeletonRow {
+	display: grid;
+	grid-template-columns: 40px minmax(0, 1fr);
+	gap: 12px;
+	align-items: start;
+}
+
+.skeletonAvatar {
+	width: 40px;
+	height: 40px;
+	border-radius: 14px;
+	background: linear-gradient(90deg, rgba(255, 255, 255, 0.05), rgba(88, 101, 242, 0.16), rgba(255, 255, 255, 0.05));
+	background-size: 200% 100%;
+	animation: shimmer 1.6s linear infinite;
+}
+
+.channelLoading {
+	padding: 10px 12px;
+	border-radius: 10px;
+	background: rgba(255, 255, 255, 0.03);
+	color: var(--muted);
+	font-size: 13px;
+	line-height: 1.4;
+}
+
+.channelButton {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 9px 10px;
+	border: 1px solid transparent;
+	border-radius: 8px;
+	background: transparent;
+	color: var(--text);
+	text-align: left;
+	transition:
+		transform 160ms ease,
+		border-color 160ms ease,
+		background 160ms ease;
+}
+
+.dmChannelButton {
+	display: grid;
+	grid-template-columns: 34px minmax(0, 1fr);
+	justify-content: stretch;
+	gap: 10px;
+	padding: 8px;
+}
+
+.dmChannelButton .channelName {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 8px;
+	align-self: center;
+	overflow: hidden;
+}
+
+.dmChannelName>span:first-child {
+	min-width: 0;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.dmCloseButton {
+	display: grid;
+	place-items: center;
+	width: 20px;
+	height: 20px;
+	flex: 0 0 auto;
+	border-radius: 999px;
+	color: var(--muted);
+	font-size: 15px;
+	line-height: 1;
+	opacity: 0;
+	transition:
+		opacity 140ms ease,
+		background 140ms ease,
+		color 140ms ease;
+}
+
+.dmChannelActions {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	flex: 0 0 auto;
+}
+
+.dmUnreadBadge {
+	display: grid;
+	place-items: center;
+	min-width: 18px;
+	height: 18px;
+	padding: 0 6px;
+	border-radius: 999px;
+	background: var(--accent-3);
+	color: #fff;
+	font-size: 10px;
+	font-weight: 900;
+	line-height: 1;
+}
+
+.dmChannelButton:hover .dmCloseButton,
+.dmChannelButton.isActive .dmCloseButton {
+	opacity: 1;
+}
+
+.dmCloseButton:hover {
+	background: rgba(255, 159, 110, 0.14);
+	color: #fff;
+}
+
+.dmChannelAvatar {
+	width: 34px;
+	height: 34px;
+	border-radius: 13px;
+}
+
+.channelSide {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	min-height: 20px;
+}
+
+.miniSpinner {
+	width: 14px;
+	height: 14px;
+	border-radius: 999px;
+	border: 2px solid rgba(255, 255, 255, 0.18);
+	border-top-color: var(--text);
+	animation: spin 700ms linear infinite;
+}
+
+.channelButton.isActive {
+	background: rgba(255, 255, 255, 0.08);
+	border-color: rgba(255, 255, 255, 0.04);
+}
+
+.voiceChannelBlock {
+	display: grid;
+	gap: 4px;
+}
+
+.voiceChannelBlock.isActive .voiceChannelButton {
+	background: rgba(255, 255, 255, 0.08);
+	border-color: rgba(255, 255, 255, 0.04);
+}
+
+.channelWithThreads {
+	display: grid;
+	gap: 3px;
+}
+
+.forumThreadChildren {
+	display: grid;
+	gap: 2px;
+	margin-left: 22px;
+	padding-left: 8px;
+	border-left: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.forumThreadChildButton {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	min-height: 30px;
+	padding: 6px 8px;
+	border: 1px solid transparent;
+	border-radius: 7px;
+	background: transparent;
+	color: var(--muted);
+	text-align: left;
+	transition:
+		color 160ms ease,
+		border-color 160ms ease,
+		background 160ms ease;
+}
+
+.forumThreadChildButton:hover,
+.forumThreadChildButton.isActive {
+	background: rgba(88, 101, 242, 0.16);
+	border-color: rgba(88, 101, 242, 0.2);
+	color: var(--text);
+}
+
+.forumThreadChildButton .channelTypeIcon {
+	width: 16px;
+	height: 16px;
+	flex-basis: 16px;
+}
+
+.voiceChannelButton {
+	gap: 8px;
+	width: 100%;
+}
+
+.voiceChannelSelect {
+	display: flex;
+	align-items: center;
+	flex: 1 1 auto;
+	min-width: 0;
+	padding: 0;
+	border: 0;
+	background: transparent;
+	color: inherit;
+	font: inherit;
+	line-height: inherit;
+	text-align: left;
+}
+
+.voiceMemberList {
+	display: grid;
+	gap: 2px;
+	padding-left: 18px;
+}
+
+.voiceMemberButton {
+	display: grid;
+	grid-template-columns: 10px minmax(0, 1fr) auto;
+	align-items: center;
+	gap: 7px;
+	min-height: 26px;
+	padding: 3px 8px;
+	border: 0;
+	border-radius: 6px;
+	background: transparent;
+	color: var(--muted);
+	text-align: left;
+	font-size: 12px;
+}
+
+.voiceMemberButton:hover {
+	background: rgba(255, 255, 255, 0.06);
+	color: var(--text);
+}
+
+.voiceMemberButton span:nth-child(2) {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.voiceMemberButton small {
+	color: #ffb5b5;
+	font-size: 10px;
+	font-weight: 800;
+	text-transform: uppercase;
+}
+
+.voiceMemberDot {
+	width: 8px;
+	height: 8px;
+	border-radius: 999px;
+	background: #23a55a;
+}
+
+.channelButton strong,
+.channelMeta {
+	color: var(--muted);
+	font-size: 12px;
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+}
+
+.channelName {
+	font-weight: 500;
+}
+
+/* ---- apps/web/src/app/styles/launcher-parts/part-03.css ---- */
+.channelNameWithType {
+	display: grid;
+	grid-template-columns: 18px minmax(0, 1fr);
+	column-gap: 8px;
+	align-items: center;
+}
+
+.channelNameWithType>.channelTypeIcon {
+	justify-self: center;
+}
+
+.globalMemberList {
+	max-height: 46vh;
+	overflow-y: auto;
+	padding-right: 2px;
+}
+
+.globalMemberButton {
+	display: grid;
+	grid-template-columns: 36px minmax(0, 1fr);
+	gap: 10px;
+	align-items: center;
+	width: 100%;
+	padding: 8px;
+	border: 1px solid transparent;
+	border-radius: 12px;
+	background: transparent;
+	color: var(--text);
+	text-align: left;
+	transition:
+		transform 160ms ease,
+		background 160ms ease,
+		border-color 160ms ease;
+}
+
+.globalMemberButton:hover {
+	transform: translateY(-1px);
+	background: rgba(255, 255, 255, 0.07);
+	border-color: rgba(45, 226, 179, 0.14);
+}
+
+.globalMemberAvatar {
+	position: relative;
+	display: grid;
+	place-items: center;
+	width: 36px;
+	height: 36px;
+	border-radius: 14px;
+	background: linear-gradient(135deg, var(--accent), var(--accent-2));
+	color: #fff;
+	font-size: 13px;
+	font-weight: 900;
+}
+
+.globalMemberAvatar img {
+	width: 100%;
+	height: 100%;
+	border-radius: inherit;
+	object-fit: cover;
+}
+
+.globalMemberAvatar .presenceDot {
+	position: absolute;
+	right: -2px;
+	bottom: -2px;
+	border: 3px solid var(--panel);
+}
+
+.globalMemberText {
+	display: grid;
+	min-width: 0;
+}
+
+.globalMemberText strong,
+.globalMemberText small {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.globalMemberText strong {
+	font-size: 13px;
+}
+
+.globalMemberText small {
+	color: var(--muted);
+	font-size: 11px;
+	text-transform: capitalize;
+}
+
+.channelUnread {
+	display: grid;
+	place-items: center;
+	min-width: 20px;
+	height: 20px;
+	padding: 0 6px;
+	border-radius: 999px;
+	background: var(--accent);
+	color: #fff;
+	font-size: 11px;
+	font-weight: 700;
+}
+
+.channelHint {
+	color: var(--muted);
+	font-size: 13px;
+	padding: 4px 8px;
+}
+
+.chatPane {
+	grid-area: chatPane;
+	position: relative;
+	display: grid;
+	grid-template-rows: auto 1fr auto;
+	min-width: 0;
+	min-height: 0;
+	overflow: hidden;
+}
+
+.chatTopbar {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 16px;
+	margin: 0;
+	min-height: 72px;
+	padding: 12px 18px;
+	border-left: 0;
+	border-right: 0;
+	border-top: 0;
+	border-radius: 0;
+}
+
+.chatTopbarLeft {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	min-width: 0;
+}
+
+.chatTopbarLeft h2 {
+	font-size: 1rem;
+	font-weight: 700;
+}
+
+.chatTopbarLeft p {
+	color: var(--muted);
+	font-size: 13px;
+	margin-top: 2px;
+}
+
+.chatChannelTag {
+	display: grid;
+	place-items: center;
+	width: 28px;
+	height: 28px;
+	color: var(--muted);
+	font-size: 1rem;
+	font-weight: 700;
+}
+
+.chatChannelTagIcon .channelTypeIcon {
+	width: 20px;
+	height: 20px;
+	flex-basis: 20px;
+	color: currentColor;
+	opacity: 1;
+}
+
+.chatChannelTagIcon .channelTypeIconGlyph {
+	width: 20px;
+	height: 20px;
+}
+
+.chatTopbarRight {
+	position: relative;
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.topbarIconButton {
+	width: 42px;
+	height: 42px;
+	border: 0;
+	border-radius: 999px;
+	background: rgba(255, 255, 255, 0.05);
+	color: var(--text);
+	font-size: 1.2rem;
+	transition:
+		transform 160ms ease,
+		background 160ms ease;
+}
+
+.topbarIconButton:hover {
+	transform: translateY(-1px);
+	background: rgba(255, 255, 255, 0.08);
+}
+
+.pinTopbarButton {
+	display: grid;
+	place-items: center;
+}
+
+.pinTopbarButton.isActive {
+	background: rgba(88, 101, 242, 0.22);
+}
+
+.searchTopbarButton {
+	display: grid;
+	place-items: center;
+	font-size: 22px;
+	font-weight: 800;
+}
+
+.searchTopbarButton.isActive {
+	background: rgba(88, 101, 242, 0.22);
+}
+
+.discordPinIcon {
+	display: block;
+	width: 22px;
+	height: 22px;
+	fill: currentColor;
+	stroke: none;
+}
+
+.topbarSvgIcon {
+	display: block;
+	width: 21px;
+	height: 21px;
+	fill: none;
+	stroke: currentColor;
+	stroke-width: 2.15;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+}
+
+.pinTopbarGlyph {
+	width: 22px;
+	height: 22px;
+	transform: rotate(-8deg);
+}
+
+.searchGlyph {
+	width: 22px;
+	height: 22px;
+}
+
+.botMenu {
+	position: absolute;
+	top: calc(100% + 10px);
+	right: 0;
+	z-index: 20;
+	display: grid;
+	min-width: 180px;
+	padding: 8px;
+	gap: 6px;
+	border-radius: 14px;
+	border: 1px solid var(--border);
+	background: rgba(17, 18, 20, 0.98);
+	box-shadow: 0 16px 42px rgba(0, 0, 0, 0.35);
+}
+
+.botMenu button {
+	border: 0;
+	border-radius: 10px;
+	padding: 10px 12px;
+	background: transparent;
+	color: var(--text);
+	text-align: left;
+}
+
+.botMenu button:hover {
+	background: rgba(255, 255, 255, 0.05);
+}
+
+.botMenu .danger {
+	color: #ffb5b5;
+}
+
+.messageList {
+	position: relative;
+	display: grid;
+	align-content: start;
+	gap: 8px;
+	padding: 16px 18px 20px;
+	min-height: 0;
+	overflow-y: auto;
+}
+
+.messageList.isDraggingFiles {
+	outline: 2px dashed rgba(88, 101, 242, 0.72);
+	outline-offset: -10px;
+	background: rgba(88, 101, 242, 0.08);
+}
+
+.recentMessagesButton {
+	position: absolute;
+	left: 50%;
+	bottom: 92px;
+	z-index: 12;
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	min-height: 34px;
+	max-width: min(320px, calc(100% - 36px));
+	padding: 0 14px;
+	border: 0;
+	border-radius: 999px;
+	background: #5865f2;
+	color: #fff;
+	font-size: 13px;
+	font-weight: 800;
+	box-shadow: 0 10px 26px rgba(0, 0, 0, 0.34);
+	opacity: 0;
+	transform: translate(-50%, 14px) scale(0.96);
+	animation: recentMessagesIn 180ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.recentMessagesButton:hover {
+	background: #4752c4;
+}
+
+.recentMessagesButton span {
+	display: grid;
+	place-items: center;
+	width: 18px;
+	height: 18px;
+	border-radius: 999px;
+	background: rgba(255, 255, 255, 0.18);
+	font-size: 13px;
+	line-height: 1;
+}
+
+@keyframes recentMessagesIn {
+	to {
+		opacity: 1;
+		transform: translate(-50%, 0) scale(1);
+	}
+}
+
+.messageSkeletonStack {
+	display: grid;
+	gap: 18px;
+	padding: 12px 0;
+}
+
+.botdeckHome {
+	display: grid;
+	gap: 18px;
+	width: 100%;
+}
+
+.botdeckHomeHero,
+.botdeckHomeCard {
+	border: 1px solid var(--border);
+	border-radius: 22px;
+	background: var(--surface);
+	backdrop-filter: blur(16px);
+}
+
+.botdeckHomeHero {
+	padding: 24px;
+}
+
+.botdeckHomeHero h3 {
+	font-size: clamp(1.4rem, 3vw, 2.4rem);
+	letter-spacing: -0.04em;
+}
+
+.botdeckHomeCard {
+	display: grid;
+	align-content: start;
+	gap: 14px;
+	padding: 16px;
+	min-height: 280px;
+}
+
+.botdeckHomeCardHeader {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 14px;
+}
+
+.botdeckHomeCardHeader span {
+	display: grid;
+	place-items: center;
+	min-width: 34px;
+	height: 28px;
+	padding: 0 10px;
+	border-radius: 999px;
+	background: rgba(45, 226, 179, 0.12);
+	color: #9ff4dd;
+	font-size: 12px;
+	font-weight: 800;
+}
+
+.homeSearch {
+	display: grid;
+	gap: 8px;
+}
+
+.homeSearch span {
+	color: var(--muted);
+	font-size: 11px;
+	font-weight: 800;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+}
+
+.homeSearch input {
+	width: 100%;
+	min-height: 44px;
+	padding: 0 14px;
+	border: 1px solid rgba(255, 255, 255, 0.055);
+	border-radius: 14px;
+	background: rgba(255, 255, 255, 0.055);
+	color: var(--text);
+}
+
+/* ---- apps/web/src/app/styles/launcher-parts/part-04.css ---- */
+.homeSearch input::placeholder {
+	color: var(--muted);
+}
+
+.homeSearch input:focus {
+	outline: none;
+	border-color: rgba(45, 226, 179, 0.52);
+	box-shadow: 0 0 0 4px rgba(45, 226, 179, 0.08);
+}
+
+.homeMemberGrid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+	gap: 10px;
+}
+
+.homeMemberCard {
+	border: 1px solid rgba(255, 255, 255, 0.055);
+	border-radius: 16px;
+	background: rgba(255, 255, 255, 0.035);
+	color: var(--text);
+	text-align: left;
+	transition:
+		transform 160ms ease,
+		background 160ms ease,
+		border-color 160ms ease;
+}
+
+.homeMemberCard {
+	display: grid;
+	grid-template-columns: 36px minmax(0, 1fr);
+	align-items: center;
+	gap: 10px;
+	padding: 10px;
+}
+
+.homeMemberCard:hover {
+	transform: translateY(-2px);
+	background: rgba(255, 255, 255, 0.07);
+	border-color: rgba(45, 226, 179, 0.2);
+}
+
+.homeMemberCard>span:last-child {
+	display: grid;
+	gap: 3px;
+	min-width: 0;
+}
+
+.homeMemberCard strong,
+.homeMemberCard small {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.homeMemberCard small {
+	color: var(--muted);
+	font-size: 12px;
+	text-transform: capitalize;
+}
+
+.homeEmpty {
+	color: var(--muted);
+	line-height: 1.5;
+}
+
+.statusPill {
+	padding: 8px 12px;
+	border-radius: 999px;
+	background: rgba(255, 255, 255, 0.06);
+	color: var(--text);
+	font-size: 13px;
+}
+
+.transportPill {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	padding: 8px 12px;
+	border-radius: 999px;
+	color: var(--text);
+	font-size: 12px;
+	border: 1px solid var(--border);
+	width: fit-content;
+}
+
+.transportPill.connected {
+	background: rgba(35, 165, 90, 0.24);
+	border-color: rgba(46, 204, 113, 0.24);
+}
+
+.transportPill.connecting,
+.transportPill.disconnected,
+.transportPill.error {
+	background: rgba(255, 255, 255, 0.03);
+}
+
+.emptyState {
+	padding: 20px;
+	border-radius: 12px;
+	border: 1px dashed rgba(255, 255, 255, 0.1);
+	background: rgba(255, 255, 255, 0.03);
+}
+
+.emptyStateLarge {
+	min-height: 100%;
+	display: grid;
+	align-content: center;
+	justify-items: start;
+	gap: 8px;
+}
+
+.emptyState p {
+	margin-top: 8px;
+	color: var(--muted);
+}
+
+.messageRow {
+	position: relative;
+	display: grid;
+	grid-template-columns: 44px minmax(0, 1fr);
+	gap: 12px;
+	padding: 8px 10px;
+	margin: 0 -10px;
+	border-radius: 8px;
+	transition: background 120ms ease;
+}
+
+.messageRow:hover {
+	background: rgba(255, 255, 255, 0.035);
+}
+
+.messageHoverToolbar {
+	position: absolute;
+	top: -14px;
+	right: 14px;
+	z-index: 45;
+	display: inline-flex;
+	align-items: center;
+	gap: 0;
+	overflow: visible;
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	border-radius: 8px;
+	background: #2f3139;
+	box-shadow: 0 8px 22px rgba(0, 0, 0, 0.34);
+	opacity: 0;
+	pointer-events: none;
+	transform: translateY(4px);
+	transition: opacity 120ms ease, transform 120ms ease;
+}
+
+.messageRow:hover .messageHoverToolbar,
+.messageRow:focus-within .messageHoverToolbar {
+	opacity: 1;
+	pointer-events: auto;
+	transform: translateY(0);
+}
+
+.messageToolbarButton {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 34px;
+	height: 32px;
+	border: 0;
+	border-left: 1px solid rgba(255, 255, 255, 0.04);
+	background: transparent;
+	color: #c9cdd6;
+	cursor: pointer;
+}
+
+.messageToolbarButton:first-child {
+	border-left: 0;
+}
+
+.messageToolbarButton:hover,
+.messageToolbarButton:focus-visible {
+	background: rgba(255, 255, 255, 0.075);
+	color: #fff;
+}
+
+.messageToolbarButton svg {
+	width: 18px;
+	height: 18px;
+	fill: none;
+	stroke: currentColor;
+	stroke-width: 2;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+}
+
+.messageToolbarButton.isEmoji {
+	font-size: 18px;
+}
+
+.messageRow.hasSelfMention {
+	background: rgba(250, 166, 26, 0.08);
+	box-shadow: inset 3px 0 0 #faa61a;
+}
+
+.messageRow.hasSelfMention:hover {
+	background: rgba(250, 166, 26, 0.12);
+}
+
+.messageRow.isJumpTarget,
+.systemMessageRow.isJumpTarget {
+	background: rgba(88, 101, 242, 0.18);
+	box-shadow: inset 3px 0 0 var(--accent);
+}
+
+.channelList.isDropAfter {
+	box-shadow: inset 0 -2px 0 rgba(124, 92, 255, 0.9);
+}
+
+.channelCategoryHeader[draggable="true"],
+.channelWithThreads[draggable="true"],
+.voiceChannelBlock[draggable="true"] {
+	cursor: grab;
+}
+
+.channelCategoryHeader[draggable="true"]:active,
+.channelWithThreads[draggable="true"]:active,
+.voiceChannelBlock[draggable="true"]:active {
+	cursor: grabbing;
+}
+
+.channelCategoryHeader.isDraggingChannel,
+.channelWithThreads.isDraggingChannel,
+.voiceChannelBlock.isDraggingChannel {
+	opacity: 0.48;
+}
+
+.channelCategoryHeader.isDropBefore,
+.channelWithThreads.isDropBefore,
+.voiceChannelBlock.isDropBefore {
+	box-shadow: inset 0 2px 0 rgba(124, 92, 255, 0.95);
+}
+
+.channelCategoryHeader.isDropAfter,
+.channelWithThreads.isDropAfter,
+.voiceChannelBlock.isDropAfter {
+	box-shadow: inset 0 -2px 0 rgba(124, 92, 255, 0.95);
+}
+
+.channelCategoryHeader.isDropInside {
+	color: var(--text);
+	background: rgba(124, 92, 255, 0.16);
+	border-radius: 10px;
+	box-shadow: inset 0 0 0 1px rgba(124, 92, 255, 0.45);
+}
+
+.serverHeaderTitle {
+	min-width: 0;
+}
+
+.serverHeaderTitle h1 {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.serverHeaderActions {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	flex: 0 0 auto;
+}
+
+.serverSettingsButton {
+	display: inline-grid;
+	place-items: center;
+	width: 34px;
+	height: 34px;
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	border-radius: 12px;
+	background: rgba(255, 255, 255, 0.045);
+	color: var(--text-muted);
+	cursor: pointer;
+	transition: transform 160ms ease, border-color 160ms ease, background 160ms ease, color 160ms ease, box-shadow 160ms ease;
+}
+
+.serverSettingsButton svg {
+	width: 17px;
+	height: 17px;
+	fill: currentColor;
+}
+
+.serverSettingsButton:hover {
+	transform: translateY(-1px);
+	border-color: rgba(88, 101, 242, 0.42);
+	background: rgba(88, 101, 242, 0.14);
+	color: #fff;
+	box-shadow: 0 12px 26px rgba(88, 101, 242, 0.18);
+}
+
+.serverSettingsBackdrop {
+	position: fixed;
+	inset: 0;
+	z-index: var(--server-settings-backdrop-z, 1200);
+	border: 0;
+	background: rgba(0, 0, 0, 0.48);
+	backdrop-filter: blur(10px);
+}
+
+.serverSettingsPanel {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	z-index: var(--server-settings-panel-z, 1201);
+	width: min(1180px, calc(100vw - 28px));
+	height: min(860px, calc(100vh - 28px));
+	max-height: calc(100vh - 28px);
+	transform: translate(-50%, -50%);
+	display: grid;
+	grid-template-rows: auto minmax(0, 1fr);
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	border-radius: 24px;
+	background:
+		radial-gradient(circle at 12% 0%, rgba(88, 101, 242, 0.18), transparent 34%),
+		rgba(19, 20, 27, 0.98);
+	box-shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
+	overflow: hidden;
+}
+
+.serverSettingsHeader {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 18px;
+	padding: 18px 20px;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.serverSettingsIdentity {
+	display: flex;
+	align-items: center;
+	gap: 14px;
+	min-width: 0;
+}
+
+.serverSettingsIcon {
+	display: grid;
+	place-items: center;
+	width: 48px;
+	height: 48px;
+	border-radius: 16px;
+	background: linear-gradient(135deg, rgba(88, 101, 242, 0.28), rgba(155, 92, 255, 0.18));
+	color: #fff;
+	font-weight: 800;
+	overflow: hidden;
+}
+
+.serverSettingsIcon img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.serverSettingsIdentity h2 {
+	margin: 2px 0 0;
+	font-size: 1.25rem;
+}
+
+.serverSettingsBody {
+	display: grid;
+	grid-template-columns: 250px minmax(0, 1fr);
+	min-height: 0;
+}
+
+.serverSettingsNav {
+	display: grid;
+	align-content: start;
+	gap: 8px;
+	padding: 16px;
+	border-right: 1px solid rgba(255, 255, 255, 0.08);
+	background: rgba(0, 0, 0, 0.16);
+}
+
+.serverSettingsNav button {
+	border: 1px solid transparent;
+	border-radius: 12px;
+	padding: 11px 12px;
+	background: transparent;
+	color: var(--text-muted);
+	text-align: left;
+	font: inherit;
+	font-weight: 700;
+	cursor: pointer;
+}
+
+.serverSettingsNav button:hover,
+.serverSettingsNav button.isActive {
+	border-color: rgba(88, 101, 242, 0.26);
+	background: rgba(88, 101, 242, 0.14);
+	color: #fff;
+}
+
+.serverSettingsContent {
+	display: grid;
+	align-content: start;
+	gap: 14px;
+	padding: 22px;
+	overflow-y: auto;
+}
+
+.serverSettingsCard,
+.serverSettingsStats > div {
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	border-radius: 18px;
+	background: rgba(255, 255, 255, 0.045);
+}
+
+.serverSettingsCard {
+	display: grid;
+	gap: 12px;
+	padding: 16px;
+}
+
+.serverSettingsSectionTitle {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	gap: 12px;
+}
+
+/* ---- apps/web/src/app/styles/launcher-parts/part-05.css ---- */
+.serverSettingsSectionTitle h3 {
+	margin: 0;
+	font-size: 1rem;
+}
+
+.serverSettingsSectionTitle span,
+.serverSettingsHint,
+.serverSettingsRoadmap,
+.serverSettingsPreviewRow span {
+	color: var(--text-muted);
+}
+
+.serverSettingsPreviewRow {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+	padding: 10px 0;
+	border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.serverSettingsPreviewRow code {
+	font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace);
+	font-size: 0.82rem;
+	color: #d7dcff;
+}
+
+.serverSettingsHint {
+	margin: 0;
+	line-height: 1.55;
+}
+
+.serverSettingsStats {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 10px;
+}
+
+.serverSettingsStats > div {
+	display: grid;
+	gap: 4px;
+	padding: 14px;
+}
+
+.serverSettingsStats strong {
+	font-size: 1.2rem;
+	color: #fff;
+}
+
+.serverSettingsStats span {
+	color: var(--text-muted);
+	font-size: 0.82rem;
+}
+
+.serverInfoPanel,
+.serverAutomationPanel {
+	display: grid;
+	gap: 18px;
+}
+
+.serverInfoHero {
+	display: grid;
+	grid-template-columns: auto 1fr;
+	gap: 16px;
+	align-items: center;
+	padding: 18px;
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	border-radius: 18px;
+	background: rgba(255, 255, 255, 0.035);
+}
+
+.serverInfoIcon {
+	display: grid;
+	place-items: center;
+	width: 74px;
+	height: 74px;
+	overflow: hidden;
+	border-radius: 22px;
+	background: linear-gradient(135deg, rgba(45, 226, 179, 0.72), rgba(124, 140, 255, 0.34));
+	color: #fff;
+	font-size: 28px;
+	font-weight: 800;
+}
+
+.serverInfoIcon img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.serverInfoHero h3 {
+	margin: 0 0 6px;
+	font-size: 22px;
+}
+
+.serverInfoHero p {
+	margin: 0;
+	color: var(--text-muted);
+	line-height: 1.5;
+}
+
+.serverInfoGrid,
+.serverAutomationGrid {
+	display: grid;
+	gap: 12px;
+}
+
+.serverAutomationGrid {
+	grid-template-columns: 1fr;
+}
+
+.serverInfoGrid > div,
+.serverAutomationCard {
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	border-radius: 16px;
+	background: rgba(255, 255, 255, 0.035);
+}
+
+.serverInfoGrid > div {
+	display: grid;
+	gap: 7px;
+	padding: 14px;
+}
+
+.serverInfoGrid span {
+	color: var(--text-muted);
+	font-size: 12px;
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+}
+
+.serverInfoGrid code {
+	overflow-wrap: anywhere;
+	color: rgba(255, 255, 255, 0.9);
+	font-family: inherit;
+}
+
+.serverAutomationCard {
+	display: grid;
+	gap: 14px;
+	padding: 16px;
+	background:
+		linear-gradient(145deg, rgba(45, 226, 179, 0.055), transparent 46%),
+		rgba(255, 255, 255, 0.028);
+}
+
+.serverAutomationSettingRow {
+	grid-template-columns: minmax(0, 1fr) minmax(260px, 340px);
+	align-items: center;
+}
+
+.serverAutomationCardHeader {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	gap: 12px;
+}
+
+.serverAutomationCard h4 {
+	margin: 0 0 6px;
+	font-size: 16px;
+}
+
+.serverAutomationCard p,
+.serverAutomationCard span {
+	margin: 0;
+	color: var(--text-muted);
+	line-height: 1.45;
+}
+
+.serverAutomationCard span {
+	color: rgba(255, 255, 255, 0.72);
+	font-size: 13px;
+}
+
+.serverAutomationCardHeader > span {
+	padding: 5px 9px;
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	border-radius: 999px;
+	background: rgba(255, 255, 255, 0.045);
+	white-space: nowrap;
+}
+
+.serverAutomationSettingCopy {
+	align-items: center;
+}
+
+.serverAutomationCardHeader > span.isActive {
+	border-color: rgba(87, 242, 135, 0.25);
+	background: rgba(87, 242, 135, 0.1);
+	color: #9ff2bb;
+}
+
+.serverAutomationSettingControls {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) auto;
+	gap: 10px;
+	align-items: end;
+}
+
+.serverAutomationCard button {
+	justify-self: start;
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	border-radius: 12px;
+	background: rgba(255, 255, 255, 0.05);
+	color: var(--text-muted);
+	padding: 9px 12px;
+}
+
+.serverAutomationCard .iconButton {
+	display: grid;
+	place-items: center;
+	width: 39px;
+	height: 39px;
+	padding: 0;
+}
+
+.serverAutomationCard .iconButton svg {
+	width: 18px;
+	height: 18px;
+	fill: none;
+	stroke: currentColor;
+	stroke-width: 1.8;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+}
+
+.serverAutomationSummary {
+	min-height: 40px;
+	color: var(--text-muted);
+	line-height: 1.45;
+}
+
+.serverAutomationActions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+}
+
+.serverAutomationActions button:not(.danger) {
+	border-color: rgba(45, 226, 179, 0.28);
+	background: rgba(45, 226, 179, 0.13);
+	color: #fff;
+}
+
+.serverAutomationActions button.danger {
+	border-color: rgba(237, 66, 69, 0.28);
+	background: rgba(237, 66, 69, 0.12);
+	color: #ffb8ba;
+}
+
+.serverAutomationActions button:disabled {
+	cursor: not-allowed;
+	opacity: 0.52;
+}
+
+.serverAutomationModalBackdrop {
+	z-index: 1300;
+}
+
+.serverAutomationModal {
+	position: fixed;
+	inset: 50% auto auto 50%;
+	z-index: 1301;
+	display: grid;
+	grid-template-rows: auto minmax(0, 1fr) auto;
+	width: min(940px, calc(100vw - 28px));
+	max-height: min(860px, calc(100vh - 28px));
+	overflow: hidden;
+	transform: translate(-50%, -50%);
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	border-radius: 28px;
+	background:
+		radial-gradient(circle at 10% 0%, rgba(45, 226, 179, 0.14), transparent 36%),
+		radial-gradient(circle at 100% 16%, rgba(124, 140, 255, 0.11), transparent 36%),
+		rgba(8, 13, 18, 0.985);
+	box-shadow: 0 30px 110px rgba(0, 0, 0, 0.58);
+}
+
+.serverAutomationModalHeader,
+.serverAutomationModalFooter {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	gap: 16px;
+	padding: 20px 22px;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.serverAutomationModalHeader h2 {
+	margin: 4px 0 6px;
+	font-size: 24px;
+}
+
+.serverAutomationModalHeader span,
+.serverAutomationModalFooter p {
+	color: var(--text-muted);
+	line-height: 1.45;
+}
+
+.serverAutomationVariableChips {
+	display: grid;
+	gap: 9px;
+	min-width: 0;
+}
+
+.serverAutomationVariableChips strong {
+	color: var(--text-main);
+	font-size: 12px;
+	font-weight: 900;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+}
+
+.serverAutomationVariableChips div {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 6px;
+	max-height: 82px;
+	overflow-y: auto;
+	padding-right: 4px;
+}
+
+.serverAutomationVariableChips code {
+	border: 1px solid rgba(45, 226, 179, 0.18);
+	border-radius: 999px;
+	background: rgba(45, 226, 179, 0.08);
+	color: #b7ffe9;
+	font-family: inherit;
+	font-size: 12px;
+	padding: 5px 8px;
+}
+
+.serverAutomationModalBody {
+	display: grid;
+	gap: 16px;
+	min-height: 0;
+	overflow-y: auto;
+	padding: 22px;
+}
+
+.serverAutomationModeSwitch {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+}
+
+.serverAutomationModeSwitch button,
+.serverAutomationModalFooter button {
+	border: 1px solid rgba(255, 255, 255, 0.085);
+	border-radius: 14px;
+	background: rgba(255, 255, 255, 0.05);
+	color: rgba(255, 255, 255, 0.82);
+	padding: 10px 13px;
+}
+
+.serverAutomationModeSwitch button.isSelected,
+.serverAutomationModalFooter button.primary {
+	border-color: rgba(45, 226, 179, 0.3);
+	background: rgba(45, 226, 179, 0.14);
+	color: #fff;
+}
+
+.serverAutomationPreview {
+	display: grid;
+	gap: 8px;
+	padding: 16px;
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	border-radius: 16px;
+	background: rgba(255, 255, 255, 0.035);
+}
+
+.serverAutomationPreview p {
+	white-space: pre-wrap;
+	color: rgba(255, 255, 255, 0.82);
+	line-height: 1.5;
+}
+
+.serverAutomationEmbedControls {
+	display: grid;
+	gap: 14px;
+	padding: 16px;
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	border-radius: 18px;
+	background:
+		linear-gradient(145deg, rgba(45, 226, 179, 0.055), transparent 46%),
+		rgba(255, 255, 255, 0.03);
+}
+
+.serverAutomationEmbedGrid {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) minmax(180px, 0.35fr);
+	gap: 12px;
+}
+
+.serverAutomationEmbedGrid input[type="color"] {
+	min-height: 44px;
+	padding: 4px;
+}
+
+.serverLogEditor {
+	display: grid;
+	grid-template-columns: 240px minmax(0, 1fr);
+	gap: 16px;
+	min-height: 0;
+}
+
+.serverLogEventTabs {
+	display: grid;
+	align-content: start;
+	gap: 8px;
+}
+
+.serverLogEventTabs button {
+	display: grid;
+	gap: 4px;
+	width: 100%;
+	border: 1px solid rgba(255, 255, 255, 0.075);
+	border-radius: 14px;
+	background: rgba(255, 255, 255, 0.035);
+	color: var(--text);
+	padding: 12px;
+	text-align: left;
+}
+
+/* ---- apps/web/src/app/styles/launcher-parts/part-06.css ---- */
+.serverLogEventTabs button.isActive {
+	border-color: rgba(45, 226, 179, 0.28);
+	background: rgba(45, 226, 179, 0.11);
+}
+
+.serverLogEventTabs small {
+	color: var(--text-muted);
+}
+
+.serverLogEventEditor {
+	display: grid;
+	gap: 14px;
+	min-width: 0;
+}
+
+.serverAutomationModalFooter {
+	align-items: center;
+	border-top: 1px solid rgba(255, 255, 255, 0.08);
+	border-bottom: 0;
+}
+
+.serverAutomationModalFooter div {
+	display: flex;
+	gap: 10px;
+}
+
+.serverSettingsRoadmap {
+	margin: 0;
+	padding-left: 18px;
+	line-height: 1.6;
+}
+
+@media (max-width: 760px) {
+	.serverSettingsBody {
+		grid-template-columns: 1fr;
+	}
+
+	.serverSettingsNav {
+		grid-auto-flow: column;
+		grid-auto-columns: max-content;
+		overflow-x: auto;
+		border-right: 0;
+		border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+	}
+
+	.serverSettingsStats {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	.serverInfoHero,
+	.serverInfoGrid,
+	.serverAutomationGrid,
+	.serverAutomationSettingRow {
+		grid-template-columns: 1fr;
+	}
+
+	.serverAutomationSettingControls {
+		grid-template-columns: 1fr auto;
+	}
+
+	.serverAutomationModal {
+		width: calc(100vw - 18px);
+		max-height: calc(100vh - 18px);
+		border-radius: 22px;
+	}
+
+	.serverAutomationModalHeader,
+	.serverAutomationModalFooter {
+		display: grid;
+	}
+
+	.serverLogEditor,
+	.serverAutomationEmbedGrid {
+		grid-template-columns: 1fr;
+	}
+}
+
+.serverSettingsFormSurface,
+.serverRoleEditor {
+	display: grid;
+	gap: 16px;
+	min-width: 0;
+}
+
+.serverSettingsField {
+	display: grid;
+	gap: 8px;
+}
+
+.serverSettingsField > span {
+	color: var(--text-muted);
+	font-size: 0.78rem;
+	font-weight: 800;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+}
+
+.serverSettingsField input,
+.serverSettingsField textarea,
+.serverSettingsField select,
+.serverSettingsToolbar input {
+	width: 100%;
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	border-radius: 12px;
+	background: rgba(0, 0, 0, 0.22);
+	color: var(--text-main);
+	font: inherit;
+	padding: 11px 12px;
+	outline: none;
+}
+
+.serverSettingsField select {
+	appearance: none;
+	min-height: 43px;
+}
+
+.serverSettingsField textarea {
+	min-height: 116px;
+	resize: vertical;
+}
+
+.serverSettingsField input:focus,
+.serverSettingsField textarea:focus,
+.serverSettingsToolbar input:focus {
+	border-color: rgba(88, 101, 242, 0.55);
+	box-shadow: 0 0 0 3px rgba(88, 101, 242, 0.14);
+}
+
+.serverSettingsActions,
+.serverSettingsToolbar {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	flex-wrap: wrap;
+}
+
+.serverSettingsActions button,
+.serverSettingsToolbar button {
+	border: 1px solid rgba(88, 101, 242, 0.35);
+	border-radius: 12px;
+	background: linear-gradient(135deg, rgba(88, 101, 242, 0.24), rgba(155, 92, 255, 0.16));
+	color: #fff;
+	font-weight: 800;
+	padding: 10px 12px;
+	cursor: pointer;
+}
+
+.serverSettingsActions button:disabled,
+.serverSettingsToolbar button:disabled,
+.serverRolePermissions button:disabled,
+.serverRoleList button:disabled {
+	opacity: 0.48;
+	cursor: not-allowed;
+}
+
+.serverSettingsActions button.danger,
+.serverRoleDetail button.danger {
+	border-color: rgba(248, 113, 113, 0.4);
+	background: rgba(248, 113, 113, 0.14);
+}
+
+.serverMemberList,
+.serverRoleList {
+	display: grid;
+	gap: 8px;
+}
+
+.serverMemberRow {
+	display: grid;
+	grid-template-columns: 42px minmax(0, 1fr) minmax(120px, 220px);
+	align-items: center;
+	gap: 12px;
+	width: 100%;
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	border-radius: 14px;
+	background: rgba(255, 255, 255, 0.04);
+	color: inherit;
+	text-align: left;
+	padding: 10px;
+	cursor: pointer;
+}
+
+.serverMemberRow:hover,
+.serverRoleList button:hover,
+.serverRoleList button.isActive {
+	border-color: rgba(88, 101, 242, 0.34);
+	background: rgba(88, 101, 242, 0.12);
+}
+
+.serverMemberAvatar {
+	display: grid;
+	place-items: center;
+	width: 38px;
+	height: 38px;
+	border-radius: 999px;
+	background: rgba(255, 255, 255, 0.08);
+	font-weight: 900;
+	overflow: hidden;
+}
+
+.serverMemberAvatar img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.serverMemberMain,
+.serverMemberRoles {
+	min-width: 0;
+}
+
+.serverMemberMain strong,
+.serverMemberMain small,
+.serverMemberRoles {
+	display: block;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.serverMemberMain small,
+.serverMemberRoles {
+	color: var(--text-muted);
+	font-size: 0.8rem;
+}
+
+.serverRoleLayout {
+	display: grid;
+	grid-template-columns: minmax(180px, 260px) minmax(0, 1fr);
+	gap: 14px;
+	min-height: 0;
+}
+
+.serverRoleList {
+	max-height: 520px;
+	overflow-y: auto;
+	padding-right: 4px;
+}
+
+.serverRoleList button {
+	display: grid;
+	grid-template-columns: 16px minmax(0, 1fr) auto;
+	align-items: center;
+	gap: 10px;
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	border-radius: 12px;
+	background: rgba(255, 255, 255, 0.04);
+	color: inherit;
+	text-align: left;
+	padding: 10px;
+	cursor: pointer;
+}
+
+.serverRoleList button span:nth-child(2) {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.serverRoleList button small {
+	color: var(--text-muted);
+}
+
+.serverRoleDetail {
+	display: grid;
+	gap: 14px;
+}
+
+.serverRoleSwitches {
+	display: flex;
+	gap: 14px;
+	flex-wrap: wrap;
+	color: var(--text-muted);
+}
+
+.serverRoleSwitches label {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.serverRolePermissions {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 8px;
+}
+
+.serverRolePermissions button {
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	border-radius: 12px;
+	background: rgba(255, 255, 255, 0.04);
+	color: var(--text-muted);
+	font: inherit;
+	font-weight: 700;
+	padding: 9px 10px;
+	text-align: left;
+	cursor: pointer;
+}
+
+.serverRolePermissions button.isEnabled {
+	border-color: rgba(34, 197, 94, 0.34);
+	background: rgba(34, 197, 94, 0.12);
+	color: #dcfce7;
+}
+
+.serverRolePermissions button.isEnabled.isDanger {
+	border-color: rgba(248, 113, 113, 0.42);
+	background: rgba(248, 113, 113, 0.14);
+	color: #fee2e2;
+}
+
+@media (max-width: 860px) {
+	.serverMemberRow,
+	.serverRoleLayout {
+		grid-template-columns: 1fr;
+	}
+
+	.serverRolePermissions {
+		grid-template-columns: 1fr;
+	}
+}
+
+.serverSettingsPanel {
+	grid-template-rows: auto minmax(0, 1fr) auto;
+}
+
+.serverSettingsInlineDanger {
+	justify-self: start;
+	border: 1px solid rgba(248, 113, 113, 0.34);
+	border-radius: 12px;
+	background: rgba(248, 113, 113, 0.12);
+	color: #fee2e2;
+	font-weight: 800;
+	padding: 10px 12px;
+	cursor: pointer;
+}
+
+.serverSettingsInlineDanger:disabled {
+	opacity: 0.48;
+	cursor: not-allowed;
+}
+
+/* La barre des paramètres serveur reprend le composant visuel des paramètres bot. */
+.serverSettingsSaveNotice {
+	position: absolute;
+}
+
+.serverSettingsSaveNotice .settingsSaveButton:disabled {
+	opacity: 0.48;
+	cursor: not-allowed;
+}
+
+.serverMemberTable {
+	display: grid;
+	gap: 6px;
+	min-width: 0;
+}
+
+.serverMemberTableHead,
+.serverMemberTableRow {
+	display: grid;
+	grid-template-columns: minmax(220px, 1.3fr) minmax(135px, 0.7fr) minmax(90px, 0.45fr) minmax(160px, 0.8fr) 42px;
+	align-items: center;
+	gap: 12px;
+}
+
+.serverMemberTableHead {
+	padding: 0 12px 6px;
+	color: var(--text-muted);
+	font-size: 0.72rem;
+	font-weight: 900;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+}
+
+.serverMemberTableRow {
+	position: relative;
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	border-radius: 14px;
+	background: rgba(255, 255, 255, 0.04);
+	padding: 10px 12px;
+}
+
+.serverMemberTableRow:hover {
+	border-color: rgba(88, 101, 242, 0.3);
+	background: rgba(88, 101, 242, 0.1);
+}
+
+.serverMemberIdentityCell {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	min-width: 0;
+	border: 0;
+	background: transparent;
+	color: inherit;
+	font: inherit;
+	text-align: left;
+	padding: 0;
+	cursor: pointer;
+}
+
+.serverMemberIdentityCell span:last-child,
+.serverMemberRolesCell,
+.serverMemberJoinedCell,
+.serverMemberInviteCell {
+	min-width: 0;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.serverMemberIdentityCell strong,
+.serverMemberIdentityCell small {
+	display: block;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+/* ---- apps/web/src/app/styles/launcher-parts/part-07.css ---- */
+.serverMemberIdentityCell small,
+.serverMemberJoinedCell,
+.serverMemberInviteCell,
+.serverMemberRolesCell {
+	color: var(--text-muted);
+	font-size: 0.8rem;
+}
+
+.serverMemberMoreCell {
+	position: relative;
+	display: flex;
+	justify-content: flex-end;
+}
+
+.serverMemberMoreButton {
+	display: grid;
+	place-items: center;
+	width: 32px;
+	height: 32px;
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	border-radius: 10px;
+	background: rgba(255, 255, 255, 0.05);
+	color: #fff;
+	cursor: pointer;
+}
+
+.serverMemberMoreButton svg {
+	width: 18px;
+	height: 18px;
+	fill: currentColor;
+}
+
+.serverMemberActionMenu {
+	position: absolute;
+	right: 0;
+	top: 38px;
+	z-index: 20;
+	display: grid;
+	gap: 4px;
+	width: min(260px, 70vw);
+	max-height: 360px;
+	overflow-y: auto;
+	padding: 8px;
+	border: 1px solid rgba(255, 255, 255, 0.12);
+	border-radius: 14px;
+	background: rgba(18, 19, 26, 0.98);
+	box-shadow: 0 18px 45px rgba(0, 0, 0, 0.42);
+}
+
+.serverMemberActionMenu button {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	width: 100%;
+	border: 0;
+	border-radius: 10px;
+	background: transparent;
+	color: var(--text-main);
+	font: inherit;
+	font-weight: 750;
+	padding: 9px 10px;
+	text-align: left;
+	cursor: pointer;
+}
+
+.serverMemberActionMenu button:hover:not(:disabled) {
+	background: rgba(88, 101, 242, 0.16);
+}
+
+.serverMemberActionMenu button.danger {
+	color: #fecaca;
+}
+
+.serverMemberActionMenu button:disabled {
+	opacity: 0.45;
+	cursor: not-allowed;
+}
+
+.serverMemberActionBack {
+	color: var(--text-muted) !important;
+}
+
+.serverMemberRolePicker {
+	display: grid;
+	gap: 4px;
+}
+
+.serverMemberRolePicker button.isAssigned {
+	background: rgba(34, 197, 94, 0.12);
+	color: #dcfce7;
+}
+
+@media (max-width: 900px) {
+	.serverMemberTableHead {
+		display: none;
+	}
+
+	.serverMemberTableRow {
+		grid-template-columns: minmax(0, 1fr) 42px;
+	}
+
+	.serverMemberJoinedCell,
+	.serverMemberInviteCell,
+	.serverMemberRolesCell {
+		grid-column: 1 / -1;
+	}
+}
+
+.serverSettingsFloatingSaveBar {
+	position: absolute;
+	left: 50%;
+	bottom: 18px;
+	z-index: 9;
+}
+
+.serverSettingsFloatingSaveBar .settingsCancelButton,
+.serverSettingsFloatingSaveBar .settingsSaveButton {
+	flex: 0 0 auto;
+}
+
+.serverSettingsField.isDisabled {
+	opacity: 0.48;
+}
+
+.serverSettingsField.isDisabled input,
+.serverSettingsField.isDisabled textarea {
+	cursor: not-allowed;
+	background: rgba(255, 255, 255, 0.035);
+	border-color: rgba(255, 255, 255, 0.06);
+	color: rgba(246, 248, 255, 0.52);
+}
+
+.serverRoleColorField {
+	gap: 10px;
+}
+
+.serverRoleColorPreviewRow {
+	display: grid;
+	grid-template-columns: 34px minmax(0, 1fr) 42px;
+	align-items: center;
+	gap: 10px;
+}
+
+.serverRoleColorPreview {
+	width: 34px;
+	height: 34px;
+	border-radius: 12px;
+	border: 1px solid rgba(255, 255, 255, 0.18);
+	box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.16);
+}
+
+.serverRoleNativeColor {
+	min-height: 36px;
+	padding: 3px !important;
+	cursor: pointer;
+}
+
+.serverRoleColorPresets {
+	display: grid;
+	grid-template-columns: repeat(6, minmax(0, 1fr));
+	gap: 8px;
+}
+
+.serverRoleColorPresets button {
+	min-height: 28px;
+	border: 2px solid rgba(255, 255, 255, 0.14);
+	border-radius: 10px;
+	box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.16);
+	cursor: pointer;
+}
+
+.serverRoleColorPresets button.isSelected {
+	border-color: rgba(255, 255, 255, 0.88);
+	box-shadow: 0 0 0 3px rgba(88, 101, 242, 0.24), inset 0 0 0 1px rgba(0, 0, 0, 0.2);
+}
+.serverSettingsFieldError {
+	color: #fca5a5;
+	font-size: 0.8rem;
+}
+
+.serverRolePermissions {
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.serverRolePermissionSwitch {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) auto;
+	align-items: center;
+	gap: 12px;
+}
+
+.serverRolePermissionText {
+	display: grid;
+	gap: 2px;
+	min-width: 0;
+}
+
+.serverRolePermissionText strong,
+.serverRolePermissionText small {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.serverRolePermissionText small {
+	font-size: 0.76rem;
+	color: var(--text-muted);
+}
+
+.serverRolePermissionToggle {
+	position: relative;
+	width: 40px;
+	height: 22px;
+	border-radius: 999px;
+	background: rgba(255, 255, 255, 0.12);
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	transition: background 0.16s ease, border-color 0.16s ease;
+}
+
+.serverRolePermissionToggle span {
+	position: absolute;
+	top: 50%;
+	left: 3px;
+	width: 16px;
+	height: 16px;
+	border-radius: 999px;
+	background: rgba(255, 255, 255, 0.72);
+	transform: translateY(-50%);
+	transition: transform 0.16s ease, background 0.16s ease;
+}
+
+.serverRolePermissionSwitch.isAllowed .serverRolePermissionToggle {
+	background: rgba(88, 101, 242, 0.62);
+	border-color: rgba(139, 151, 255, 0.54);
+}
+
+.serverRolePermissionSwitch.isAllowed .serverRolePermissionToggle span {
+	background: #fff;
+	transform: translate(17px, -50%);
+}
+
+.serverRolePermissionSwitch.isAllowed.isDanger .serverRolePermissionToggle {
+	background: rgba(248, 113, 113, 0.6);
+	border-color: rgba(254, 202, 202, 0.5);
+}
+
+.serverRolePermissionSwitch.isLocked {
+	background: rgba(255, 255, 255, 0.035);
+	border-color: rgba(255, 255, 255, 0.06);
+	box-shadow: none;
+}
+
+.serverRolePermissionSwitch.isLocked .serverRolePermissionText strong,
+.serverRolePermissionSwitch.isLocked .serverRolePermissionText small {
+	color: rgba(246, 248, 255, 0.46);
+}
+
+.serverRolePermissionSwitch.isLocked .serverRolePermissionToggle {
+	background: rgba(255, 255, 255, 0.055);
+	border-color: rgba(255, 255, 255, 0.06);
+}
+
+.serverRolePermissionSwitch.isLocked .serverRolePermissionToggle span {
+	background: rgba(255, 255, 255, 0.34);
+}

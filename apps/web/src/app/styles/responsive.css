@@ -1,0 +1,1294 @@
+/* Consolidated from responsive-parts/*.css. Keep domain styles in this file. */
+
+/* ---- apps/web/src/app/styles/responsive-parts/part-01.css ---- */
+/* Responsive final. Import dernier obligatoire. */
+
+.botOpsCommandTable strong {
+	color: #fff;
+	font-size: 14px;
+}
+
+.botOpsCommandTable p,
+.botOpsCommandTable span,
+.botOpsCommandTable em,
+.botOpsEmpty {
+	margin: 0;
+	color: #b5bac1;
+	font-size: 12px;
+	font-style: normal;
+}
+
+.botOpsCommandTable span,
+.botOpsCommandTable em {
+	text-align: right;
+}
+
+.botOpsCommandTable em.isOk {
+	color: #57f287;
+}
+
+.botOpsCommandTable em.isWarn {
+	color: #fee75c;
+}
+
+.botOpsLogFilters {
+	display: flex;
+	gap: 8px;
+	margin-bottom: 12px;
+}
+
+.botOpsLogFilters button {
+	padding: 7px 10px;
+	border-radius: 999px;
+	font-size: 12px;
+	font-weight: 800;
+}
+
+.botOpsLogFilters button.isActive {
+	background: #5865f2;
+	border-color: #5865f2;
+	color: #fff;
+}
+
+.botOpsLogRow,
+.botOpsIncidentRow {
+	overflow: hidden;
+}
+
+.botOpsLogRow>button,
+.botOpsIncidentRow>button {
+	width: 100%;
+	display: grid;
+	grid-template-columns: 78px 58px minmax(0, 1fr) 24px;
+	align-items: center;
+	gap: 10px;
+	padding: 11px 12px;
+	border: 0;
+	background: transparent;
+	color: inherit;
+	cursor: pointer;
+	text-align: left;
+}
+
+.botOpsIncidentRow>button {
+	grid-template-columns: 28px minmax(0, 1fr) 24px;
+}
+
+.botOpsLogRow,
+.botOpsIncidentRow {
+	border-radius: 14px;
+	background: rgba(255, 255, 255, 0.04);
+	border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.botOpsLogRow.isError,
+.botOpsIncidentRow.isError {
+	border-color: rgba(237, 66, 69, 0.22);
+}
+
+.botOpsLogRow.isWarn,
+.botOpsIncidentRow.isWarn {
+	border-color: rgba(250, 166, 26, 0.22);
+}
+
+.botOpsLogRow.isInfo,
+.botOpsIncidentRow.isInfo {
+	border-color: rgba(88, 101, 242, 0.18);
+}
+
+.botOpsLogRow.isDebug {
+	border-color: rgba(142, 148, 159, 0.18);
+}
+
+.botOpsLogRow time {
+	color: #8e949f;
+	font-size: 11px;
+	font-variant-numeric: tabular-nums;
+}
+
+.botOpsLogRow span {
+	padding: 3px 7px;
+	border-radius: 999px;
+	background: rgba(255, 255, 255, 0.07);
+	color: #dbdee1;
+	font-size: 10px;
+	font-weight: 850;
+	text-transform: uppercase;
+	text-align: center;
+}
+
+.botOpsLogRow p,
+.botOpsIncidentRow p {
+	margin: 0;
+	color: #dbdee1;
+	font-size: 12px;
+	line-height: 1.35;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.botOpsIncidentRow strong {
+	display: block;
+	margin-bottom: 3px;
+	color: #fff;
+	font-size: 13px;
+}
+
+.botOpsIncidentRow>button>span {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 24px;
+	height: 24px;
+	border-radius: 50%;
+	background: rgba(255, 255, 255, 0.08);
+	font-size: 12px;
+	font-weight: 900;
+}
+
+.botOpsLogRow em,
+.botOpsIncidentRow em {
+	color: #8e949f;
+	font-style: normal;
+	font-weight: 900;
+	text-align: center;
+}
+
+.botOpsLogRow.isExpanded p,
+.botOpsIncidentRow.isExpanded p {
+	white-space: normal;
+}
+
+.botOpsLogDetail,
+.botOpsIncidentBody {
+	padding: 0 12px 12px;
+	display: grid;
+	gap: 10px;
+}
+
+.botOpsFlow {
+	display: grid;
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+	gap: 8px;
+}
+
+.botOpsFlowStep {
+	padding: 10px;
+	border-radius: 12px;
+	background: rgba(0, 0, 0, 0.2);
+	border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.botOpsFlowStep strong {
+	display: block;
+	color: #f2f3f5;
+	font-size: 12px;
+}
+
+.botOpsFlowStep p {
+	margin-top: 5px;
+	color: #b5bac1;
+	font-size: 11px;
+	line-height: 1.35;
+	white-space: normal;
+}
+
+.botOpsFlowStep.isOk {
+	box-shadow: inset 0 2px 0 #23a55a;
+}
+
+.botOpsFlowStep.isWarn {
+	box-shadow: inset 0 2px 0 #faa61a;
+}
+
+.botOpsFlowStep.isError {
+	box-shadow: inset 0 2px 0 #ed4245;
+}
+
+.botOpsFlowStep.isIdle {
+	opacity: 0.72;
+}
+
+.botOpsLogDetail pre {
+	max-height: 260px;
+	overflow: auto;
+	margin: 0;
+	padding: 12px;
+	border-radius: 12px;
+	background: rgba(0, 0, 0, 0.28);
+	border: 1px solid rgba(255, 255, 255, 0.06);
+	color: #c9cdfb;
+	font-size: 11px;
+	line-height: 1.45;
+	white-space: pre-wrap;
+}
+
+.botOpsIncidentLogs {
+	display: grid;
+	gap: 6px;
+}
+
+.botOpsIncidentLogs button {
+	padding: 8px 10px;
+	border-radius: 10px;
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	background: rgba(0, 0, 0, 0.16);
+	color: #dbdee1;
+	font-size: 12px;
+	text-align: left;
+	cursor: pointer;
+}
+
+@keyframes botOpsPageIn {
+	from {
+		opacity: 0;
+		transform: translateY(8px);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@media (max-width: 1120px) {
+	.botOpsStatusGrid {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+	}
+
+	.botOpsMainGrid,
+	.botOpsGraphs {
+		grid-template-columns: 1fr;
+	}
+}
+
+@media (max-width: 720px) {
+	.botOpsHeader {
+		align-items: flex-start;
+		flex-direction: column;
+		padding: 18px;
+	}
+
+	.botOpsHeaderRight {
+		width: 100%;
+		justify-content: space-between;
+	}
+
+	.botOpsScroll {
+		padding: 16px 18px 28px;
+	}
+
+	.botOpsStatusGrid {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	.botOpsGuildList div,
+	.botOpsCommandTable article {
+		grid-template-columns: 1fr;
+	}
+
+	.botOpsGuildList span,
+	.botOpsGuildList em,
+	.botOpsCommandTable span,
+	.botOpsCommandTable em {
+		text-align: left;
+	}
+
+	.botOpsFlow {
+		grid-template-columns: 1fr;
+	}
+
+	.botOpsLogRow>button {
+		grid-template-columns: 66px 52px minmax(0, 1fr) 18px;
+	}
+}
+
+/* Observatoire: vue légère. */
+.botOpsFocusGrid {
+	display: grid;
+	grid-template-columns: minmax(360px, 1.2fr) repeat(2, minmax(260px, 0.8fr));
+	gap: 14px;
+}
+
+.botOpsIncidentPanel .botOpsPanelHead strong {
+	max-width: 260px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	text-transform: none;
+}
+
+.botOpsIssueStack {
+	display: grid;
+	gap: 8px;
+}
+
+.botOpsIssueStack button {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) auto;
+	gap: 4px 12px;
+	align-items: center;
+	padding: 11px 12px;
+	border-radius: 13px;
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	background: rgba(255, 255, 255, 0.045);
+	color: inherit;
+	cursor: pointer;
+	text-align: left;
+	transition: background 140ms ease, border-color 140ms ease, transform 140ms ease;
+}
+
+.botOpsIssueStack button:hover {
+	background: rgba(255, 255, 255, 0.075);
+	border-color: rgba(255, 255, 255, 0.15);
+	transform: translateY(-1px);
+}
+
+.botOpsIssueStack strong {
+	color: #f2f3f5;
+	font-size: 13px;
+}
+
+.botOpsIssueStack span {
+	grid-column: 1 / 2;
+	color: #b5bac1;
+	font-size: 12px;
+	line-height: 1.35;
+}
+
+.botOpsIssueStack em {
+	grid-row: 1 / span 2;
+	grid-column: 2 / 3;
+	color: #8e949f;
+	font-size: 11px;
+	font-style: normal;
+	font-weight: 850;
+}
+
+.botOpsIssueStack .isError {
+	border-color: rgba(237, 66, 69, 0.28);
+}
+
+.botOpsIssueStack .isWarn {
+	border-color: rgba(250, 166, 26, 0.24);
+}
+
+.botOpsIssueStack .isInfo {
+	border-color: rgba(35, 165, 90, 0.2);
+}
+
+.botOpsDonutWrap {
+	display: grid;
+	grid-template-columns: 132px minmax(0, 1fr);
+	gap: 16px;
+	align-items: center;
+}
+
+.botOpsDonut {
+	position: relative;
+	width: 132px;
+	aspect-ratio: 1;
+	border-radius: 50%;
+	background: conic-gradient(var(--botOpsPie, #5865f2 0deg 360deg));
+	box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08), 0 14px 32px rgba(0, 0, 0, 0.22);
+}
+
+.botOpsDonut::after {
+	content: "";
+	position: absolute;
+	inset: 22px;
+	border-radius: 50%;
+	background: #1e1f22;
+	box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+.botOpsDonut strong,
+.botOpsDonut span {
+	position: absolute;
+	inset-inline: 20px;
+	z-index: 1;
+	display: block;
+	text-align: center;
+}
+
+.botOpsDonut strong {
+	top: 48px;
+	color: #fff;
+	font-size: 18px;
+	font-weight: 900;
+}
+
+.botOpsDonut span {
+	top: 70px;
+	color: #8e949f;
+	font-size: 10px;
+	font-weight: 850;
+	letter-spacing: 0.05em;
+	text-transform: uppercase;
+}
+
+/* ---- apps/web/src/app/styles/responsive-parts/part-02.css ---- */
+.botOpsLegend {
+	display: grid;
+	gap: 8px;
+}
+
+.botOpsLegend div {
+	display: grid;
+	grid-template-columns: 10px minmax(0, 1fr) auto;
+	align-items: center;
+	gap: 8px;
+	color: #b5bac1;
+	font-size: 12px;
+}
+
+.botOpsLegend i {
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+}
+
+.botOpsLegend strong {
+	color: #f2f3f5;
+	font-size: 12px;
+}
+
+.botOpsGraphs.isClean {
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.botOpsChart.isArea {
+	position: relative;
+	height: 240px;
+	cursor: crosshair;
+}
+
+.botOpsArea {
+	stroke: none;
+	opacity: 0.28;
+}
+
+.botOpsArea.isActivity {
+	fill: #5865f2;
+}
+
+.botOpsArea.isGateway {
+	fill: #23a55a;
+}
+
+.botOpsChart.isArea .botOpsLine {
+	stroke-width: 2.2;
+}
+
+.botOpsChart.isArea circle {
+	display: none;
+}
+
+.botOpsHoverLine {
+	stroke: rgba(255, 255, 255, 0.24);
+	stroke-width: 1;
+	stroke-dasharray: 4 4;
+	vector-effect: non-scaling-stroke;
+}
+
+.botOpsChartTooltip {
+	position: absolute;
+	z-index: 4;
+	min-width: 170px;
+	padding: 10px 11px;
+	border-radius: 12px;
+	border: 1px solid rgba(255, 255, 255, 0.12);
+	background: rgba(17, 18, 20, 0.94);
+	box-shadow: 0 16px 36px rgba(0, 0, 0, 0.34);
+	pointer-events: none;
+	transform: translate(calc(-50% + 0px), calc(-100% - 14px));
+	transition: left 60ms linear, top 60ms linear, opacity 80ms ease;
+}
+
+.botOpsChartTooltip strong,
+.botOpsChartTooltip span,
+.botOpsChartTooltip small {
+	display: block;
+}
+
+.botOpsChartTooltip strong {
+	color: #fff;
+	font-size: 12px;
+	font-weight: 900;
+}
+
+.botOpsChartTooltip span {
+	margin-top: 4px;
+	color: #dbdee1;
+	font-size: 13px;
+	font-weight: 850;
+}
+
+.botOpsChartTooltip small {
+	margin-top: 5px;
+	color: #8e949f;
+	font-size: 11px;
+	line-height: 1.35;
+}
+
+.botOpsEventsPanel.isPreview {
+	max-width: none;
+}
+
+@media (max-width: 1180px) {
+
+	.botOpsFocusGrid,
+	.botOpsGraphs.isClean {
+		grid-template-columns: 1fr;
+	}
+}
+
+@media (max-width: 720px) {
+	.botOpsDonutWrap {
+		grid-template-columns: 1fr;
+	}
+
+	.botOpsDonut {
+		width: 118px;
+	}
+}
+
+/* Sync Slash Studio + lecture seule. */
+.topbarIconButton.slashCommandTopbarButton {
+	position: relative;
+}
+
+.topbarIconButton.slashCommandTopbarButton.isDisabled {
+	border-color: rgba(255, 205, 128, 0.24);
+	background: rgba(255, 205, 128, 0.08);
+	cursor: not-allowed;
+	opacity: 0.82;
+}
+
+.topbarReadonlyBadge {
+	position: absolute;
+	right: -5px;
+	bottom: -5px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 17px;
+	height: 17px;
+	border: 1px solid rgba(255, 205, 128, 0.45);
+	border-radius: 999px;
+	background: rgba(14, 16, 24, 0.96);
+	font-size: 10px;
+	line-height: 1;
+	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.36);
+	pointer-events: none;
+}
+
+.slashSyncStatus {
+	display: grid;
+	min-width: min(320px, 42vw);
+	max-width: 440px;
+	gap: 2px;
+	padding: 7px 10px;
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	border-radius: 12px;
+	background: rgba(0, 0, 0, 0.18);
+}
+
+.slashSyncStatus strong {
+	font-size: 11px;
+	font-weight: 950;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+}
+
+.slashSyncStatus span {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	color: var(--muted);
+}
+
+.slashSyncStatus.is-syncing {
+	border-color: rgba(88, 101, 242, 0.36);
+	background: rgba(88, 101, 242, 0.12);
+}
+
+.slashSyncStatus.is-synced {
+	border-color: rgba(39, 214, 163, 0.28);
+	background: rgba(39, 214, 163, 0.1);
+}
+
+.slashSyncStatus.is-error {
+	border-color: rgba(255, 104, 116, 0.34);
+	background: rgba(255, 104, 116, 0.1);
+}
+
+.slashCommandSyncBadge {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: 3px 7px;
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	border-radius: 999px;
+	font-size: 10px;
+	font-weight: 950;
+	text-transform: uppercase;
+	white-space: nowrap;
+}
+
+.slashCommandSyncBadge.is-syncing {
+	border-color: rgba(88, 101, 242, 0.42);
+	background: rgba(88, 101, 242, 0.14);
+	color: rgba(218, 223, 255, 0.98);
+}
+
+.slashCommandSyncBadge.is-synced {
+	border-color: rgba(39, 214, 163, 0.36);
+	background: rgba(39, 214, 163, 0.12);
+	color: rgba(207, 255, 238, 0.98);
+}
+
+.slashCommandSyncBadge.is-error {
+	border-color: rgba(255, 104, 116, 0.4);
+	background: rgba(255, 104, 116, 0.12);
+	color: rgba(255, 205, 210, 0.98);
+}
+
+.reactionPicker,
+.composerMentionMenu,
+.messageContextMenu {
+	max-width: calc(100vw - 24px);
+	max-height: calc(100vh - 24px);
+}
+
+.slashCommandsPanelToolbar {
+	flex-wrap: wrap;
+}
+
+@media (max-width: 760px) {
+	.slashSyncStatus {
+		width: 100%;
+		max-width: none;
+	}
+
+	.slashCommandsPanelToolbar .slashCommandActions {
+		width: 100%;
+	}
+}
+
+/* Recherche messages: style Discord. */
+.discordSearchPanel {
+	position: fixed;
+	top: 62px;
+	right: 18px;
+	z-index: 132;
+	display: grid;
+	grid-template-rows: auto auto auto auto minmax(0, 1fr);
+	width: min(424px, calc(100vw - 28px));
+	max-height: min(650px, calc(100vh - 82px));
+	border: 1px solid rgba(10, 10, 12, 0.75);
+	border-radius: 8px;
+	background: #2b2d31;
+	box-shadow: 0 18px 46px rgba(0, 0, 0, 0.52);
+	overflow: hidden;
+}
+
+.discordSearchHeader {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 14px;
+	padding: 16px 16px 12px;
+	background: #2b2d31;
+}
+
+.discordSearchHeader h3 {
+	max-width: 310px;
+	overflow: hidden;
+	color: #f2f3f5;
+	font-size: 22px;
+	font-weight: 800;
+	letter-spacing: -0.02em;
+	line-height: 1.1;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.discordSearchInputWrap {
+	display: grid;
+	gap: 8px;
+	padding: 10px 12px;
+	border-top: 1px solid rgba(255, 255, 255, 0.06);
+	border-bottom: 1px solid rgba(0, 0, 0, 0.38);
+	background: #313338;
+}
+
+.discordSearchInputWrap span {
+	color: #b5bac1;
+	font-size: 11px;
+	font-weight: 850;
+	letter-spacing: 0.085em;
+	text-transform: uppercase;
+}
+
+.discordSearchInputWrap input {
+	width: 100%;
+	min-height: 40px;
+	padding: 0 12px;
+	border: 1px solid rgba(88, 101, 242, 0.72);
+	border-radius: 8px;
+	outline: 2px solid rgba(88, 101, 242, 0.18);
+	background: #1e1f22;
+	color: #f2f3f5;
+	font-size: 15px;
+	box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.28);
+}
+
+.discordSearchToolbar {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 10px;
+	padding: 12px 12px 6px;
+	background: #2b2d31;
+}
+
+.discordSearchToolbar strong {
+	color: #f2f3f5;
+	font-size: 14px;
+	font-weight: 800;
+}
+
+.discordSearchToolbarActions,
+.discordSearchQuickFilters {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.discordSearchPill,
+.discordSearchQuickFilters button,
+.discordSearchJumpButton {
+	min-height: 32px;
+	border: 1px solid rgba(255, 255, 255, 0.07);
+	border-radius: 8px;
+	background: #383a40;
+	color: #dbdee1;
+	font-size: 12px;
+	font-weight: 850;
+}
+
+.discordSearchPill {
+	display: inline-flex;
+	align-items: center;
+	gap: 7px;
+	padding: 0 11px;
+}
+
+.discordSearchPill:hover,
+.discordSearchQuickFilters button:hover,
+.discordSearchJumpButton:hover {
+	background: #42444b;
+	color: #fff;
+}
+
+.discordSearchPill.isActive,
+.discordSearchQuickFilters button.isActive {
+	border-color: rgba(88, 101, 242, 0.58);
+	background: rgba(88, 101, 242, 0.24);
+	color: #fff;
+}
+
+.discordSearchQuickFilters {
+	padding: 0 12px 10px;
+	background: #2b2d31;
+}
+
+.discordSearchQuickFilters button {
+	padding: 0 10px;
+}
+
+.discordSearchResults {
+	min-height: 0;
+	overflow-y: auto;
+	padding: 2px 12px 14px;
+	background: #2b2d31;
+}
+
+.discordSearchChannelGroup {
+	display: grid;
+	gap: 8px;
+	padding: 4px 0 14px;
+}
+
+.discordSearchChannelHeader {
+	display: grid;
+	grid-template-columns: auto minmax(0, auto) auto 1fr auto;
+	align-items: center;
+	gap: 6px;
+	color: #f2f3f5;
+	font-size: 15px;
+	font-weight: 850;
+}
+
+.discordSearchChannelHeader strong {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.discordSearchChannelHeader span {
+	color: #b5bac1;
+	font-weight: 800;
+}
+
+.discordSearchChannelHeader small {
+	justify-self: end;
+	color: #dbdee1;
+	font-size: 11px;
+	font-weight: 850;
+	letter-spacing: 0.04em;
+}
+
+/* ---- apps/web/src/app/styles/responsive-parts/part-03.css ---- */
+.discordSearchHash {
+	color: #dbdee1 !important;
+	font-size: 18px;
+}
+
+.discordSearchMessageStack {
+	display: grid;
+	gap: 8px;
+}
+
+.discordSearchResultCard {
+	display: grid;
+	grid-template-columns: 40px minmax(0, 1fr) auto;
+	align-items: start;
+	gap: 10px;
+	padding: 10px;
+	border: 1px solid #404249;
+	border-radius: 8px;
+	background: #313338;
+	transition: background 120ms ease, border-color 120ms ease;
+}
+
+.discordSearchResultCard:hover {
+	border-color: #53565f;
+	background: #35373d;
+}
+
+.discordSearchAvatar {
+	margin-top: 1px;
+}
+
+.discordSearchResultBody {
+	display: grid;
+	gap: 4px;
+	min-width: 0;
+}
+
+.discordSearchMeta {
+	display: flex;
+	align-items: baseline;
+	gap: 8px;
+	min-width: 0;
+}
+
+.discordSearchMeta .authorNameLine {
+	min-width: 0;
+	overflow: hidden;
+	color: #f2f3f5;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.discordSearchMeta time {
+	flex: 0 0 auto;
+	color: #949ba4;
+	font-size: 12px;
+}
+
+.discordSearchResultBody p {
+	display: -webkit-box;
+	overflow: hidden;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 3;
+	color: #dbdee1;
+	font-size: 14px;
+	line-height: 1.38;
+}
+
+.discordSearchResultBody mark {
+	border-radius: 2px;
+	background: rgba(250, 166, 26, 0.32);
+	color: #f2f3f5;
+	padding: 0 1px;
+}
+
+.discordSearchAttachmentLine {
+	overflow: hidden;
+	color: #b5bac1;
+	font-size: 12px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.discordSearchJumpButton {
+	align-self: center;
+	padding: 0 10px;
+	opacity: 0;
+	transform: translateX(4px);
+	transition: opacity 120ms ease, transform 120ms ease;
+}
+
+.discordSearchResultCard:hover .discordSearchJumpButton,
+.discordSearchJumpButton:focus-visible {
+	opacity: 1;
+	transform: translateX(0);
+}
+
+.discordSearchEmpty {
+	margin: 18px 0 0;
+	padding: 28px 18px;
+	border-radius: 8px;
+	background: #313338;
+	color: #b5bac1;
+	font-size: 16px;
+	line-height: 1.45;
+	text-align: center;
+}
+
+@media (max-width: 520px) {
+	.discordSearchPanel {
+		top: 56px;
+		right: 8px;
+		width: calc(100vw - 16px);
+		max-height: calc(100vh - 68px);
+	}
+
+	.discordSearchToolbar {
+		align-items: flex-start;
+		flex-direction: column;
+	}
+
+	.discordSearchToolbarActions,
+	.discordSearchQuickFilters {
+		flex-wrap: wrap;
+	}
+
+	.discordSearchResultCard {
+		grid-template-columns: 36px minmax(0, 1fr);
+	}
+
+	.discordSearchJumpButton {
+		grid-column: 2;
+		justify-self: start;
+		opacity: 1;
+		transform: none;
+	}
+}
+
+.syncQueueIndicator {
+	position: fixed;
+	right: clamp(16px, 3vw, 28px);
+	bottom: 82px;
+	z-index: 2147483600;
+	display: grid;
+	grid-template-columns: auto auto 1fr;
+	align-items: center;
+	gap: 6px 10px;
+	max-width: min(420px, calc(100vw - 28px));
+	padding: 10px 12px;
+	border: 1px solid rgba(255, 255, 255, 0.12);
+	border-radius: 14px;
+	background: rgba(30, 31, 36, 0.94);
+	box-shadow: 0 18px 48px rgba(0, 0, 0, 0.42);
+	color: var(--text-primary, #f2f3f5);
+	backdrop-filter: blur(14px);
+	pointer-events: none;
+}
+
+.syncQueueIndicator strong {
+	font-size: 12px;
+	letter-spacing: .02em;
+}
+
+.syncQueueIndicator span:not(.syncQueueDot) {
+	min-width: 0;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	color: var(--text-secondary, #b5bac1);
+	font-size: 12px;
+}
+
+.syncQueueIndicator small {
+	grid-column: 2 / -1;
+	color: var(--text-muted, #949ba4);
+	font-size: 11px;
+}
+
+.syncQueueDot {
+	width: 9px;
+	height: 9px;
+	border-radius: 999px;
+	background: #949ba4;
+	box-shadow: 0 0 0 4px rgba(148, 155, 164, .16);
+}
+
+.syncQueue-queued .syncQueueDot,
+.syncQueue-running .syncQueueDot {
+	background: #fee75c;
+	box-shadow: 0 0 0 4px rgba(254, 231, 92, .16);
+}
+
+.syncQueue-completed .syncQueueDot {
+	background: #57f287;
+	box-shadow: 0 0 0 4px rgba(87, 242, 135, .16);
+}
+
+.syncQueue-failed .syncQueueDot {
+	background: #ed4245;
+	box-shadow: 0 0 0 4px rgba(237, 66, 69, .16);
+}
+
+@media (max-width: 640px) {
+	.syncQueueIndicator {
+		left: 14px;
+		right: 14px;
+		bottom: 76px;
+	}
+}
+
+.discordSearchSource {
+	margin-left: 8px;
+	color: var(--text-muted, #949ba4);
+	font-size: 11px;
+	font-weight: 600;
+}
+
+.discordSearchWarning {
+	margin: 10px 14px 0;
+	padding: 8px 10px;
+	border-radius: 10px;
+	background: rgba(254, 231, 92, .12);
+	color: #fee75c;
+	font-size: 12px;
+}
+
+/* Notifications unifiées. */
+.toastStack {
+	position: fixed;
+	right: clamp(16px, 3vw, 28px);
+	bottom: clamp(16px, 3vw, 28px);
+	z-index: 2147483600;
+	display: grid;
+	gap: 10px;
+	width: min(380px, calc(100vw - 32px));
+	pointer-events: none;
+}
+
+.toast {
+	display: grid;
+	grid-template-columns: 10px minmax(0, 1fr);
+	align-items: center;
+	gap: 10px;
+	min-height: 46px;
+	padding: 12px 14px;
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	border-radius: 14px;
+	background: rgba(30, 31, 36, 0.96);
+	color: var(--text-primary, #f2f3f5);
+	box-shadow: 0 18px 48px rgba(0, 0, 0, 0.42);
+	backdrop-filter: blur(14px);
+	pointer-events: auto;
+	animation: toastIn 220ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.toast span {
+	min-width: 0;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	font-size: 13px;
+	line-height: 1.35;
+	font-weight: 600;
+}
+
+.toast::before {
+	content: "";
+	width: 10px;
+	height: 10px;
+	border-radius: 999px;
+	background: var(--accent, #5865f2);
+	box-shadow: 0 0 0 5px rgba(88, 101, 242, 0.16);
+	flex: 0 0 auto;
+}
+
+.toast-success::before {
+	background: var(--success, #57f287);
+	box-shadow: 0 0 0 5px rgba(87, 242, 135, 0.16);
+}
+
+.toast-warning::before {
+	background: var(--warn, #fee75c);
+	box-shadow: 0 0 0 5px rgba(254, 231, 92, 0.16);
+}
+
+.toast-error::before {
+	background: var(--error, #ed4245);
+	box-shadow: 0 0 0 5px rgba(237, 66, 69, 0.16);
+}
+
+.toast.isLeaving {
+	animation: toastOut 220ms cubic-bezier(0.4, 0, 1, 1) forwards;
+}
+
+@media (max-width: 640px) {
+	.toastStack {
+		left: 14px;
+		right: 14px;
+		bottom: 14px;
+		width: auto;
+	}
+}
+
+/* Embeds riches: pages. */
+.embedStudioModal {
+	width: min(1280px, calc(100vw - 24px));
+	max-height: min(920px, calc(100vh - 24px));
+	border-radius: 18px;
+}
+
+.embedStudioHeader .subtle {
+	margin: 4px 0 0;
+	color: var(--muted);
+	font-size: 12px;
+	font-weight: 800;
+}
+
+.embedStudioGrid {
+	grid-template-columns: minmax(0, 1.08fr) minmax(340px, 0.72fr);
+	gap: 14px;
+}
+
+.embedStudioForm {
+	padding-right: 8px;
+}
+
+.embedStudioBuilder {
+	display: grid;
+	gap: 12px;
+}
+
+.embedStudioBuilder .commandMarkdownField {
+	display: grid;
+	gap: 8px;
+	min-width: 0;
+}
+
+.embedStudioBuilder .commandMarkdownField>span,
+.embedStudioColorField>span {
+	color: rgba(223, 229, 240, 0.66);
+	font-size: 11px;
+	font-weight: 950;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+}
+
+.embedStudioBuilder .commandMarkdownField input,
+.embedStudioBuilder .commandMarkdownField textarea,
+.embedStudioBuilder .settingsField input {
+	width: 100%;
+	min-width: 0;
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	border-radius: 14px;
+	background: rgba(255, 255, 255, 0.055);
+	color: var(--text);
+	padding: 13px;
+	font: inherit;
+	font-size: 14px;
+}
+
+.embedStudioBuilder .commandMarkdownField textarea {
+	min-height: 150px;
+	resize: vertical;
+	line-height: 1.5;
+}
+
+.embedStudioColorField input[type="color"] {
+	min-height: 48px;
+	padding: 5px;
+}
+
+.embedStudioPreview {
+	position: sticky;
+	top: 0;
+	max-height: 100%;
+	overflow-y: auto;
+	border: 1px solid rgba(255, 255, 255, 0.075);
+	border-radius: 16px;
+	background: linear-gradient(180deg, rgba(43, 45, 49, 0.92), rgba(30, 31, 34, 0.92));
+}
+
+.embedStudioPreviewMeta {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 10px;
+	padding: 8px 10px;
+	border: 1px solid rgba(255, 255, 255, 0.075);
+	border-radius: 12px;
+	background: rgba(0, 0, 0, 0.16);
+	color: var(--muted);
+	font-size: 12px;
+	font-weight: 900;
+}
+
+.embedStudioPreviewMeta strong {
+	color: var(--text);
+}
+
+.embedStudioPageStrip {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 6px;
+}
+
+.embedStudioPageStrip button {
+	border: 1px solid rgba(255, 255, 255, 0.09);
+	border-radius: 999px;
+	background: rgba(255, 255, 255, 0.055);
+	color: var(--text);
+	padding: 7px 10px;
+	font: inherit;
+	font-size: 12px;
+	font-weight: 900;
+	cursor: pointer;
+}
+
+.embedStudioPageStrip button.isActive {
+	border-color: rgba(39, 214, 163, 0.42);
+	background: rgba(39, 214, 163, 0.14);
+	color: rgba(207, 255, 238, 0.98);
+}
+
+/* ---- apps/web/src/app/styles/responsive-parts/part-04.css ---- */
+.embedValidationNote.isOk {
+	color: rgba(151, 255, 206, 0.95);
+}
+
+.embedStudioActions {
+	align-items: center;
+}
+
+@media (max-width: 980px) {
+	.embedStudioGrid {
+		grid-template-columns: 1fr;
+	}
+
+	.embedStudioPreview {
+		position: static;
+	}
+}

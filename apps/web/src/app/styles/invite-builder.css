@@ -1,0 +1,182 @@
+/* Invitation OAuth2 du bot. Réutilise le gabarit des paramètres serveur. */
+
+.botInviteModeSwitch {
+	min-width: 220px;
+	justify-content: flex-end;
+}
+
+.botInviteFormPanel {
+	display: grid;
+	gap: 12px;
+}
+
+.botInviteClientField input,
+.botInviteTechnicalGrid input,
+.botInviteUrlPanel textarea {
+	font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+.botInviteTechnicalGrid {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 12px;
+}
+
+.botInvitePermissionPanel {
+	gap: 12px;
+}
+
+.botInvitePermissionToolbar {
+	align-items: center;
+}
+
+.botInvitePermissionToolbar .botInviteUrlActions {
+	justify-content: flex-end;
+}
+
+.botInvitePermissionList {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 8px;
+	max-height: 420px;
+	overflow: auto;
+	padding-right: 4px;
+}
+
+.botInvitePermissionRow {
+	display: grid;
+	grid-template-columns: 22px minmax(0, 1fr);
+	gap: 10px;
+	align-items: start;
+	width: 100%;
+	padding: 11px 12px;
+	border: 1px solid rgba(255, 255, 255, 0.075);
+	border-radius: 14px;
+	background: rgba(255, 255, 255, 0.028);
+	color: rgba(238, 247, 244, 0.9);
+	text-align: left;
+	cursor: pointer;
+	transition: border-color 160ms ease, background 160ms ease;
+}
+
+.botInvitePermissionRow:hover {
+	border-color: rgba(255, 255, 255, 0.14);
+	background: rgba(255, 255, 255, 0.045);
+}
+
+.botInvitePermissionRow.isSelected {
+	border-color: rgba(45, 226, 179, 0.34);
+	background: rgba(45, 226, 179, 0.065);
+}
+
+.botInvitePermissionRow.isAdvanced:not(.isSelected) {
+	background: rgba(255, 255, 255, 0.018);
+}
+
+.botInvitePermissionRow strong {
+	display: block;
+	font-size: 13px;
+	color: rgba(247, 255, 252, 0.94);
+}
+
+.botInvitePermissionRow small {
+	display: block;
+	margin-top: 3px;
+	font-size: 12px;
+	line-height: 1.35;
+	color: rgba(222, 236, 232, 0.62);
+}
+
+.botInvitePermissionCheck {
+	display: inline-grid;
+	place-items: center;
+	width: 20px;
+	height: 20px;
+	border-radius: 7px;
+	border: 1px solid rgba(255, 255, 255, 0.14);
+	background: rgba(255, 255, 255, 0.045);
+	color: rgb(22, 32, 29);
+	font-weight: 800;
+	font-size: 12px;
+}
+
+.botInvitePermissionRow.isSelected .botInvitePermissionCheck {
+	border-color: rgba(45, 226, 179, 0.58);
+	background: rgba(45, 226, 179, 0.86);
+}
+
+.botInviteUrlPanel {
+	display: grid;
+	gap: 10px;
+}
+
+.botInviteUrlPanel textarea {
+	width: 100%;
+	min-height: 94px;
+	resize: vertical;
+	font-size: 12px;
+	line-height: 1.45;
+}
+
+.botInviteUrlActions {
+	display: flex;
+	gap: 10px;
+	flex-wrap: wrap;
+	align-items: center;
+}
+
+.botInviteNotice,
+.botInviteWarning {
+	margin: 0;
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	background: rgba(255, 255, 255, 0.03);
+	border-radius: 14px;
+	padding: 10px 12px;
+	color: rgba(232, 242, 239, 0.66);
+	font-size: 12px;
+	line-height: 1.45;
+}
+
+.botInviteWarning {
+	margin-top: 10px;
+	border-color: rgba(255, 173, 96, 0.24);
+	background: rgba(255, 173, 96, 0.08);
+	color: rgba(255, 224, 190, 0.9);
+}
+
+@media (max-width: 980px) {
+	.botInviteTechnicalGrid,
+	.botInvitePermissionList {
+		grid-template-columns: 1fr;
+	}
+
+	.botInviteModeSwitch {
+		width: 100%;
+		min-width: 0;
+	}
+}
+
+/* Ajustements strictement nécessaires aux paramètres bot.
+   Le gabarit, la navigation, la taille et les surfaces réutilisent les classes serverSettings*. */
+.botSettingsAvatar img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	border-radius: inherit;
+}
+
+.discordDangerBadge {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-width: max-content;
+	padding: 5px 9px;
+	border-radius: 999px;
+	border: 1px solid rgba(255, 96, 116, 0.22);
+	background: rgba(255, 96, 116, 0.08);
+	color: rgba(255, 198, 205, 0.92);
+	font-size: 11px;
+	font-weight: 800;
+	letter-spacing: 0.02em;
+	text-transform: uppercase;
+}

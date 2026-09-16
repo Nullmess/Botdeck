@@ -1,0 +1,270 @@
+// Schéma SQLite local.
+
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "windows"]
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+/// Serveur Discord visible.
+model Guild {
+  botAccountId String
+  id           String
+  name         String
+  iconUrl      String?
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+  botAccount   BotAccount @relation(fields: [botAccountId], references: [id], onDelete: Cascade)
+  channels     Channel[]
+
+  @@id([botAccountId, id])
+  @@index([botAccountId, updatedAt])
+}
+
+/// Salon Discord indexé.
+model Channel {
+  botAccountId String
+  id           String
+  guildId      String
+  name         String
+  type         String
+  topic        String?
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+  botAccount   BotAccount @relation(fields: [botAccountId], references: [id], onDelete: Cascade)
+  guild        Guild      @relation(fields: [botAccountId, guildId], references: [botAccountId, id], onDelete: Cascade)
+  messages     Message[]
+
+  @@id([botAccountId, id])
+  @@index([botAccountId, guildId])
+  @@index([botAccountId, updatedAt])
+}
+
+/// Utilisateur Discord normalisé.
+model User {
+  botAccountId String
+  id           String
+  username     String
+  displayName  String?
+  avatarUrl    String?
+  bot          Boolean    @default(false)
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+  botAccount   BotAccount @relation(fields: [botAccountId], references: [id], onDelete: Cascade)
+  messages     Message[]
+  presences    Presence[]
+
+  @@id([botAccountId, id])
+  @@index([botAccountId, updatedAt])
+}
+
+/// Message en mémoire recherche.
+model Message {
+  botAccountId     String
+  id               String
+  channelId        String
+  authorId         String
+  authorTag        String?
+  authorAvatarUrl  String?
+  content          String
+  createdAt        DateTime
+  editedAt         DateTime?
+  pinned           Boolean    @default(false)
+  type             Int?
+  attachmentsJson  String?
+  embedsJson       String?
+  reactionsJson    String?
+  replyToMessageId String?
+  system           Boolean    @default(false)
+  botAccount       BotAccount @relation(fields: [botAccountId], references: [id], onDelete: Cascade)
+  channel          Channel    @relation(fields: [botAccountId, channelId], references: [botAccountId, id], onDelete: Cascade)
+  author           User       @relation(fields: [botAccountId, authorId], references: [botAccountId, id], onDelete: Cascade)
+
+  @@id([botAccountId, id])
+  @@index([botAccountId, channelId, createdAt])
+  @@index([botAccountId, channelId, system, createdAt])
+  @@index([botAccountId, authorId])
+  @@index([botAccountId, createdAt])
+}
+
+/// Présence Discord en mémoire.
+model Presence {
+  id           String     @id @default(cuid())
+  botAccountId String
+  userId       String
+  status       String
+  activity     String?
+  updatedAt    DateTime   @updatedAt
+  botAccount   BotAccount @relation(fields: [botAccountId], references: [id], onDelete: Cascade)
+  user         User       @relation(fields: [botAccountId, userId], references: [botAccountId, id], onDelete: Cascade)
+
+  @@unique([botAccountId, userId])
+  @@index([botAccountId, userId])
+}
+
+/// Bot local, token chiffré.
+model BotAccount {
+  id                    String                         @id @default(cuid())
+  name                  String
+  tokenCiphertext       String
+  tokenIv               String
+  tokenAuthTag          String
+  discordUserId         String?
+  avatarUrl             String?
+  enabled               Boolean                        @default(true)
+  readOnlyMode          Boolean                        @default(false)
+  readOnlyBlockMessages Boolean                        @default(false)
+  readOnlyBlockChannels Boolean                        @default(false)
+  readOnlyBlockModeration Boolean                      @default(false)
+  commandStudioDisabled Boolean                        @default(false)
+  lastConnectedAt       DateTime?
+  lastError             String?
+  createdAt             DateTime                       @default(now())
+  updatedAt             DateTime                       @updatedAt
+  guilds                Guild[]
+  channels              Channel[]
+  users                 User[]
+  messages              Message[]
+  presences             Presence[]
+  commandDefinitions    ApplicationCommandDefinition[]
+  guildWelcomeConfigs   GuildWelcomeConfig[]
+  guildGoodbyeConfigs   GuildGoodbyeConfig[]
+  guildLogConfigs       GuildLogConfig[]
+  roleAutomationRules   GuildRoleAutomationRule[]
+  memberActivities      GuildMemberActivity[]
+  voiceSessions         GuildVoiceSession[]
+
+  @@index([enabled])
+}
+
+/// Commande persistée Slash Studio.
+model ApplicationCommandDefinition {
+  botAccountId String
+  commandId    String
+  scope        String
+  guildId      String?
+  name         String
+  draftJson    String
+  runtimeJson  String
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+  botAccount   BotAccount @relation(fields: [botAccountId], references: [id], onDelete: Cascade)
+
+  @@id([botAccountId, commandId])
+  @@index([botAccountId, scope, guildId])
+  @@index([botAccountId, name])
+}
+
+
+/// Configuration welcome par serveur.
+model GuildWelcomeConfig {
+  botAccountId     String
+  guildId          String
+  channelId        String
+  messageType      String     @default("message")
+  messageTemplate  String
+  embedPagesJson   String?
+  enabled          Boolean    @default(true)
+  createdAt        DateTime   @default(now())
+  updatedAt        DateTime   @updatedAt
+  botAccount       BotAccount @relation(fields: [botAccountId], references: [id], onDelete: Cascade)
+
+  @@id([botAccountId, guildId])
+  @@index([botAccountId, channelId])
+}
+
+
+/// Configuration goodbye par serveur.
+model GuildGoodbyeConfig {
+  botAccountId     String
+  guildId          String
+  channelId        String
+  messageType      String     @default("message")
+  messageTemplate  String
+  embedPagesJson   String?
+  enabled          Boolean    @default(true)
+  createdAt        DateTime   @default(now())
+  updatedAt        DateTime   @updatedAt
+  botAccount       BotAccount @relation(fields: [botAccountId], references: [id], onDelete: Cascade)
+
+  @@id([botAccountId, guildId])
+  @@index([botAccountId, channelId])
+}
+
+
+/// Configuration logs par serveur.
+model GuildLogConfig {
+  botAccountId     String
+  guildId          String
+  channelId        String
+  eventConfigsJson String?
+  enabled          Boolean    @default(true)
+  createdAt        DateTime   @default(now())
+  updatedAt        DateTime   @updatedAt
+  botAccount       BotAccount @relation(fields: [botAccountId], references: [id], onDelete: Cascade)
+
+  @@id([botAccountId, guildId])
+  @@index([botAccountId, channelId])
+}
+
+
+/// Règle d'automatisation des rôles par serveur.
+model GuildRoleAutomationRule {
+  id                    String     @id @default(cuid())
+  botAccountId          String
+  guildId               String
+  roleId                String
+  enabled               Boolean    @default(true)
+  conditionMode         String     @default("all")
+  minMessages           Int?
+  minVoiceSeconds       Int?
+  minMemberAgeSeconds   Int?
+  removeWhenInvalid     Boolean    @default(false)
+  ignoreBots            Boolean    @default(true)
+  applyToExistingMembers Boolean   @default(false)
+  createdAt             DateTime   @default(now())
+  updatedAt             DateTime   @updatedAt
+  botAccount            BotAccount @relation(fields: [botAccountId], references: [id], onDelete: Cascade)
+
+  @@index([botAccountId, guildId])
+  @@index([botAccountId, guildId, roleId])
+}
+
+
+/// Statistiques d'activité membre pour les rôles automatiques.
+model GuildMemberActivity {
+  botAccountId       String
+  guildId            String
+  userId             String
+  messageCount       Int       @default(0)
+  voiceSeconds       Int       @default(0)
+  joinedAt           DateTime?
+  lastMessageAt      DateTime?
+  lastVoiceAt        DateTime?
+  createdAt          DateTime  @default(now())
+  updatedAt          DateTime  @updatedAt
+  botAccount         BotAccount @relation(fields: [botAccountId], references: [id], onDelete: Cascade)
+
+  @@id([botAccountId, guildId, userId])
+  @@index([botAccountId, guildId])
+  @@index([botAccountId, guildId, updatedAt])
+}
+
+
+/// Session vocale en cours, restaurable après redémarrage.
+model GuildVoiceSession {
+  botAccountId String
+  guildId      String
+  userId       String
+  channelId    String
+  startedAt    DateTime
+  updatedAt    DateTime @updatedAt
+  botAccount   BotAccount @relation(fields: [botAccountId], references: [id], onDelete: Cascade)
+
+  @@id([botAccountId, guildId, userId])
+  @@index([botAccountId, guildId])
+}

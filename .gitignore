@@ -1,0 +1,17 @@
+node_modules/
+apps/web/node_modules/
+packages/shared/node_modules/
+.next/
+apps/web/.next/
+apps/web/.turbo/
+.botdeck/
+apps/web/.botdeck/
+release/
+Botdeck-*/
+bin/
+.cache/
+debug.log
+.env
+.env.local
+apps/web/prisma/dev.db
+*.tsbuildinfo
