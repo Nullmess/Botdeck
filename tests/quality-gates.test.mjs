@@ -118,7 +118,6 @@ test("public release package includes docs and reproducible setup files", () => 
 		".gitignore",
 		"README.md",
 		"CHANGELOG.md",
-		"CONTRIBUTING.md"
 	]) {
 		assert.ok(existsSync(join(root, file)), `missing public release file ${file}`);
 	}

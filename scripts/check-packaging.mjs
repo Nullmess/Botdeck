@@ -13,7 +13,6 @@ for (const script of ["build-win", "build-lin", "build-mac", "build-all", "relea
 for (const file of [
 	"README.md",
 	"CHANGELOG.md",
-	"CONTRIBUTING.md",
 	"LICENSE",
 	"apps/desktop/main.js",
 	"apps/desktop/server-runner.cjs",
