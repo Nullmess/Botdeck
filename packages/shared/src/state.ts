@@ -4,6 +4,7 @@ import type {
 	ChannelSummary,
 	GuildSummary,
 	ForumPostSummary,
+	GuildBanSummary,
 	GuildInviteSummary,
 	GuildMemberSummary,
 	MessageSummary,
@@ -120,12 +121,12 @@ function upsertGuildInvites(state: WorkspaceState, guildId: string, invites: Gui
 	};
 }
 
-function upsertGuildResource<T>(state: WorkspaceState, key: "bansByGuildId", guildId: string, items: T[]): WorkspaceState {
+function upsertGuildBans(state: WorkspaceState, guildId: string, bans: GuildBanSummary[]): WorkspaceState {
 	return {
 		...state,
-		[key]: {
-			...state[key],
-			[guildId]: items
+		bansByGuildId: {
+			...state.bansByGuildId,
+			[guildId]: bans
 		}
 	};
 }
@@ -303,7 +304,7 @@ export function applyWorkspaceEvent(state: WorkspaceState, event: ClientEvent): 
 		case "state.guildInvites":
 			return upsertGuildInvites(state, event.guildId, event.invites);
 		case "state.guildBans":
-			return upsertGuildResource(state, "bansByGuildId", event.guildId, event.bans);
+			return upsertGuildBans(state, event.guildId, event.bans);
 		case "state.guildAutomationConfig":
 			return {
 				...state,

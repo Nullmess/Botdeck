@@ -4,8 +4,10 @@ import { spawnSync } from "node:child_process";
 import fs from "node:fs";
 import https from "node:https";
 import path from "node:path";
+import extractZip from "@electron-internal/extract-zip";
 
 const root = path.resolve(import.meta.dirname, "..");
+const npmCommand = process.platform === "win32" ? "npm.cmd" : "npm";
 const runtimeVersion = process.env.BOTDECK_NODE_RUNTIME_VERSION || process.versions.node;
 const nextVersion = JSON.parse(await fs.promises.readFile(path.join(root, "node_modules", "next", "package.json"), "utf8")).version;
 const runtimeDir = path.join(root, "bin", "win32-x64");
@@ -34,12 +36,12 @@ if (!fs.existsSync(nodeExe)) {
 	const extractDir = path.join(cacheDir, `extract-${runtimeVersion}`);
 	await fs.promises.rm(extractDir, { recursive: true, force: true });
 	await fs.promises.mkdir(extractDir, { recursive: true });
-	run("unzip", ["-q", "-o", zipPath, `${zipBase}/node.exe`, "-d", extractDir]);
+	await extractZip(zipPath, { dir: extractDir });
 	await fs.promises.copyFile(path.join(extractDir, zipBase, "node.exe"), nodeExe);
 	await fs.promises.rm(extractDir, { recursive: true, force: true });
 }
 
-run("npm", [
+run(npmCommand, [
 	"install",
 	"--force",
 	"--no-save",

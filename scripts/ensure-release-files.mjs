@@ -26,5 +26,5 @@ ensureFile(
 );
 ensureFile(
   ".github/workflows/ci.yml",
-  `name: Botdeck CI\n\non:\n  push:\n  pull_request:\n\njobs:\n  check:\n    runs-on: ubuntu-latest\n\n    steps:\n      - name: Checkout\n        uses: actions/checkout@v4\n\n      - name: Setup Node\n        uses: actions/setup-node@v4\n        with:\n          node-version-file: .node-version\n          cache: npm\n\n      - name: Install dependencies\n        run: npm ci\n\n      - name: Run quality gate\n        run: npm run check\n\n      - name: Run production audit\n        run: npm run audit:prod\n\n      - name: Build\n        run: npm run build\n`,
+  `name: Botdeck CI\n\non:\n  push:\n  pull_request:\n\njobs:\n  check:\n    runs-on: ubuntu-latest\n\n    steps:\n      - name: Checkout\n        uses: actions/checkout@v7\n\n      - name: Setup Node\n        uses: actions/setup-node@v7\n        with:\n          node-version-file: .node-version\n          cache: npm\n\n      - name: Install dependencies\n        run: npm ci\n\n      - name: Run quality gate\n        run: npm run check\n\n      - name: Run production audit\n        run: npm run audit:prod\n\n      - name: Build\n        run: npm run build\n`,
 );

@@ -1,4 +1,4 @@
-// Patch unzip packager (Impact réduit aux màj).
+// Patch d’extraction du packager Electron (sans dépendance système `unzip`).
 
 import fs from "node:fs";
 import path from "node:path";
@@ -10,19 +10,11 @@ if (!fs.existsSync(unzipModule)) {
 	process.exit(0);
 }
 
-const patched = `import { spawnSync } from 'node:child_process';
+const patched = `import extractZip from '@electron-internal/extract-zip';
 
-// Extrait l’archive Electron.
+// Extrait l’archive Electron avec l’extracteur Node fourni avec Botdeck.
 export async function extractElectronZip(zipPath, targetDir) {
-    const result = spawnSync('unzip', ['-q', '-o', zipPath, '-d', targetDir], {
-        stdio: 'inherit'
-    });
-    if (result.error?.code === 'ENOENT') {
-        throw new Error('The \`unzip\` command is required to package Electron apps in this Node version.');
-    }
-    if (result.status !== 0) {
-        throw new Error(\`Failed to extract Electron from \${zipPath}\`);
-    }
+    await extractZip(zipPath, { dir: targetDir });
 }
 //# sourceMappingURL=unzip.js.map
 `;

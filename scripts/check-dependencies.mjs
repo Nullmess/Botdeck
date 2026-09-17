@@ -37,7 +37,7 @@ function packageEntry(lockfile, path) {
 
 function assertLockedVersion(lockfile, packageName, expectedVersion) {
 	if (allowedNonRegistrySpecs.some((rule) => rule.test(expectedVersion))) return;
-	const candidates = [`node_modules/${packageName}`, `apps/web/node_modules/${packageName}`];
+	const candidates = [`node_modules/${packageName}`, `apps/web/node_modules/${packageName}`, `packages/shared/node_modules/${packageName}`];
 	const found = candidates.map((path) => lockfile.packages?.[path]?.version).filter(Boolean);
 	if (!found.includes(expectedVersion)) {
 		failures.push(`package-lock.json: ${packageName} must lock ${expectedVersion}, found ${found.length ? found.join(", ") : "nothing"}`);
@@ -46,10 +46,12 @@ function assertLockedVersion(lockfile, packageName, expectedVersion) {
 
 const rootPkg = await readJson("package.json");
 const webPkg = await readJson("apps/web/package.json");
+const sharedPkg = await readJson("packages/shared/package.json");
 const lockfile = await readJson("package-lock.json");
 
 checkManifest("package.json", rootPkg);
 checkManifest("apps/web/package.json", webPkg);
+checkManifest("packages/shared/package.json", sharedPkg);
 
 
 if (webPkg.dependencies?.next !== "16.2.9") failures.push("apps/web/package.json: Next must stay pinned to the stable release 16.2.9");
@@ -65,12 +67,15 @@ for (const scriptName of ["build-win", "build-lin", "build-mac"]) {
 
 const rootLockEntry = packageEntry(lockfile, "");
 const webLockEntry = packageEntry(lockfile, "apps/web");
+const sharedLockEntry = packageEntry(lockfile, "packages/shared");
 if (rootLockEntry) checkManifest("package-lock.json root package", rootLockEntry);
 if (webLockEntry) checkManifest("package-lock.json apps/web package", webLockEntry);
+if (sharedLockEntry) checkManifest("package-lock.json packages/shared package", sharedLockEntry);
 
 for (const [name, version] of Object.entries(rootPkg.devDependencies || {})) assertLockedVersion(lockfile, name, version);
 for (const [name, version] of Object.entries(webPkg.dependencies || {})) assertLockedVersion(lockfile, name, version);
 for (const [name, version] of Object.entries(webPkg.devDependencies || {})) assertLockedVersion(lockfile, name, version);
+for (const [name, version] of Object.entries(sharedPkg.devDependencies || {})) assertLockedVersion(lockfile, name, version);
 
 const overrides = rootPkg.overrides || {};
 if (overrides.postcss !== "8.5.15") failures.push("package.json overrides.postcss must pin the audited fixed version 8.5.15");

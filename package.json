@@ -32,14 +32,16 @@
 		"check:deps": "node scripts/check-dependencies.mjs",
 		"audit:prod": "npm audit --omit=dev --audit-level=high",
 		"check:css": "node scripts/check-css.mjs",
-		"package:check": "node scripts/check-packaging.mjs"
+		"package:check": "node scripts/check-packaging.mjs",
+		"doctor": "node scripts/doctor.mjs"
 	},
 	"devDependencies": {
 		"@electron/get": "5.0.0",
 		"@electron/packager": "20.0.1",
 		"electron": "42.5.0",
 		"rimraf": "6.1.3",
-		"typescript": "5.9.3"
+		"typescript": "5.9.3",
+		"@electron-internal/extract-zip": "1.0.4"
 	},
 	"description": "Local desktop app for managing Discord bots, servers, messages, slash commands, permissions, automations and runtime health.",
 	"keywords": [

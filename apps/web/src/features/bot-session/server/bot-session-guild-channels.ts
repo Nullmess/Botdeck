@@ -130,6 +130,7 @@ import {
   normalizeGuild,
   normalizeGuildMember,
   normalizeGuildInvite,
+  normalizeGuildBan,
   normalizeForumPost,
   normalizeMemberProfile,
   normalizeMessage,

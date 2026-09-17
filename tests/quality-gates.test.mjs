@@ -109,7 +109,7 @@ test("repository contains persistent CI and tests", () => {
 
 
 
-test("public release package includes docs and reproducible setup files", () => {
+test("public release package includes reproducible setup files", () => {
 	for (const file of [
 		".github/workflows/ci.yml",
 		".node-version",
@@ -143,7 +143,9 @@ test("build assets are static and build-safe", () => {
 });
 
 test("workspace runner exits after successful scripts", () => {
-	assert.match(read("scripts/run-workspaces.mjs"), /process\.exit\(0\);\s*$/);
+	const runner = read("scripts/run-workspaces.mjs");
+	assert.match(runner, /--workspace/);
+	assert.match(runner, /process\.exit\(0\);\s*$/);
 });
 
 test("large modules are split into focused slices", () => {

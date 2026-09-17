@@ -13,5 +13,12 @@
   "scripts": {
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },
-  "description": "Shared Botdeck protocol and model types."
+  "description": "Shared Botdeck protocol and model types.",
+  "devDependencies": {
+    "typescript": "5.9.3"
+  },
+  "engines": {
+    "node": ">=22.16.0 <25",
+    "npm": ">=10 <12"
+  }
 }

@@ -1,11 +1,11 @@
-// Install Electron contrôlée (Téléchargement si manquant)
+// Installation Electron contrôlée (téléchargement si manquant).
 
-import { spawnSync } from "node:child_process";
 import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
 import { createRequire } from "node:module";
 import { downloadArtifact } from "@electron/get";
+import extractZip from "@electron-internal/extract-zip";
 
 const require = createRequire(import.meta.url);
 const root = path.resolve(import.meta.dirname, "..");
@@ -36,10 +36,10 @@ const zipPath = await downloadArtifact({
 
 await fs.promises.rm(distPath, { recursive: true, force: true });
 await fs.promises.mkdir(distPath, { recursive: true });
-unzip(zipPath, distPath);
+await extractZip(zipPath, { dir: distPath });
 await fs.promises.writeFile(path.join(electronDir, "path.txt"), executablePath);
 
-// Vérif l’installation locale.
+// Vérifie l’installation locale.
 function isInstalled() {
 	try {
 		const version = fs.readFileSync(path.join(distPath, "version"), "utf8").replace(/^v/, "").trim();
@@ -50,22 +50,7 @@ function isInstalled() {
 	}
 }
 
-// Décompresse sans shell exotique.
-function unzip(zipPath, targetDir) {
-	const result = spawnSync("unzip", ["-q", "-o", zipPath, "-d", targetDir], {
-		stdio: "inherit"
-	});
-
-	if (result.error?.code === "ENOENT") {
-		throw new Error("The `unzip` command is required to install Electron in this Node version.");
-	}
-
-	if (result.status !== 0) {
-		throw new Error(`Failed to extract Electron from ${zipPath}.`);
-	}
-}
-
-// Calcule le dossier Electron cible.
+// Calcule le binaire Electron cible.
 function getPlatformPath(targetPlatform) {
 	switch (targetPlatform || os.platform()) {
 		case "mas":

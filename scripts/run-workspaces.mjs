@@ -7,6 +7,8 @@ import { join } from "node:path";
 
 const require = createRequire(import.meta.url);
 const projectRoot = process.cwd();
+const npmCommand = process.platform === "win32" ? "npm.cmd" : "npm";
+
 // Nettoie les valeurs .env citées.
 function unquoteEnvValue(value) {
 	const trimmed = value.trim();
@@ -45,16 +47,19 @@ if (!scriptName) {
 }
 
 const packages = [
-	"packages/shared",
-	"apps/web"
+	{ path: "packages/shared", workspace: "@botdeck/shared" },
+	{ path: "apps/web", workspace: "@botdeck/web" }
 ];
 
 for (const pkg of packages) {
-	const manifestPath = `${projectRoot}/${pkg}/package.json`;
+	const manifestPath = join(projectRoot, pkg.path, "package.json");
 	const manifest = require(manifestPath);
 	if (!manifest.scripts || !manifest.scripts[scriptName]) continue;
 
-	const result = spawnSync("npm", ["--prefix", pkg, "run", scriptName], {
+	// Use npm workspace mode from the monorepo root. This keeps root/workspace
+	// node_modules/.bin resolution consistent on Linux, macOS and Windows.
+	const result = spawnSync(npmCommand, ["run", scriptName, "--workspace", pkg.workspace], {
+		cwd: projectRoot,
 		stdio: "inherit",
 		shell: false,
 		env: {
@@ -63,6 +68,11 @@ for (const pkg of packages) {
 			NEXT_TELEMETRY_DISABLED: process.env.NEXT_TELEMETRY_DISABLED ?? "1"
 		}
 	});
+
+	if (result.error) {
+		console.error(`Failed to run ${scriptName} in ${pkg.workspace}: ${result.error.message}`);
+		process.exit(1);
+	}
 
 	if (result.status !== 0) {
 		process.exit(result.status ?? 1);

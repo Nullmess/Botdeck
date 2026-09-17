@@ -65,11 +65,14 @@ Supported Node.js versions:
 >=22.16.0 <25
 ```
 
-Install dependencies:
+Install dependencies from the repository root:
 
 ```shell
 npm ci
+npm run doctor
 ```
+
+The install and development scripts are distro-independent and work on standard Linux environments including Arch/CachyOS and Alpine setups with the system libraries required by Electron.
 
 Generate the Prisma client and apply local database migrations:
 
