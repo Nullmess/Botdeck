@@ -54,7 +54,7 @@ checkManifest("apps/web/package.json", webPkg);
 checkManifest("packages/shared/package.json", sharedPkg);
 
 
-if (webPkg.dependencies?.next !== "16.2.9") failures.push("apps/web/package.json: Next must stay pinned to the stable release 16.2.9");
+if (webPkg.dependencies?.next !== "16.3.5") failures.push("apps/web/package.json: Next must stay pinned to the stable release 16.3.5");
 if (webPkg.dependencies?.react !== webPkg.dependencies?.["react-dom"]) failures.push("apps/web/package.json: react and react-dom versions must match");
 if (rootPkg.devDependencies?.electron !== "42.5.0") failures.push("package.json: Electron must stay pinned to 42.5.0");
 
@@ -78,18 +78,18 @@ for (const [name, version] of Object.entries(webPkg.devDependencies || {})) asse
 for (const [name, version] of Object.entries(sharedPkg.devDependencies || {})) assertLockedVersion(lockfile, name, version);
 
 const overrides = rootPkg.overrides || {};
-if (overrides.postcss !== "8.5.15") failures.push("package.json overrides.postcss must pin the audited fixed version 8.5.15");
-if (overrides["@electron/get"]?.undici !== "7.28.0") failures.push("package.json overrides.@electron/get.undici must pin 7.28.0");
-if (overrides["discord.js"]?.undici !== "6.27.0") failures.push("package.json overrides.discord.js.undici must pin 6.27.0");
-if (overrides["@discordjs/rest"]?.undici !== "6.27.0") failures.push("package.json overrides.@discordjs/rest.undici must pin 6.27.0");
+if (overrides.postcss !== "8.5.28") failures.push("package.json overrides.postcss must pin the audited fixed version 8.5.28");
+if (overrides["@electron/get"]?.undici !== "7.29.0") failures.push("package.json overrides.@electron/get.undici must pin 7.29.0");
+if (overrides["discord.js"]?.undici !== "6.28.0") failures.push("package.json overrides.discord.js.undici must pin 6.28.0");
+if (overrides["@discordjs/rest"]?.undici !== "6.28.0") failures.push("package.json overrides.@discordjs/rest.undici must pin 6.28.0");
 
-if (lockfile.packages?.["node_modules/postcss"]?.version !== "8.5.15") failures.push("package-lock.json: postcss override must resolve to 8.5.15");
-if (lockfile.packages?.["node_modules/@electron/get/node_modules/undici"]?.version && lockfile.packages["node_modules/@electron/get/node_modules/undici"].version !== "7.28.0") {
-	failures.push("package-lock.json: @electron/get undici override must resolve to 7.28.0");
+if (lockfile.packages?.["node_modules/postcss"]?.version !== "8.5.28") failures.push("package-lock.json: postcss override must resolve to 8.5.28");
+if (lockfile.packages?.["node_modules/@electron/get/node_modules/undici"]?.version && lockfile.packages["node_modules/@electron/get/node_modules/undici"].version !== "7.29.0") {
+	failures.push("package-lock.json: @electron/get undici override must resolve to 7.29.0");
 }
-if (lockfile.packages?.["node_modules/undici"]?.version !== "7.28.0") failures.push("package-lock.json: root undici override must resolve to 7.28.0");
-if (lockfile.packages?.["node_modules/discord.js/node_modules/undici"]?.version !== "6.27.0") failures.push("package-lock.json: discord.js undici override must resolve to 6.27.0");
-if (lockfile.packages?.["node_modules/@discordjs/rest/node_modules/undici"]?.version !== "6.27.0") failures.push("package-lock.json: @discordjs/rest undici override must resolve to 6.27.0");
+if (lockfile.packages?.["node_modules/undici"]?.version !== "7.29.0") failures.push("package-lock.json: root undici override must resolve to 7.29.0");
+if (lockfile.packages?.["node_modules/discord.js/node_modules/undici"]?.version !== "6.28.0") failures.push("package-lock.json: discord.js undici override must resolve to 6.28.0");
+if (lockfile.packages?.["node_modules/@discordjs/rest/node_modules/undici"]?.version !== "6.28.0") failures.push("package-lock.json: @discordjs/rest undici override must resolve to 6.28.0");
 
 if (failures.length) {
 	console.error("Dependency stability check failed:");
